@@ -1,1097 +1,272 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6-Week Speed & Plyometrics Program</title>
+<title>Speed Works — Basketball Athlete Development</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --black: #0d0d0d;
-  --white: #f5f2ed;
-  --court: #c8860a;
-  --court-light: #e8a52a;
-  --teal: #1a8c6e;
-  --teal-light: #e0f5ee;
-  --slate: #2a2f3a;
-  --muted: #6b7280;
-  --border: #e2ddd6;
-  --card-bg: #ffffff;
-  --page-bg: #f5f2ed;
-  --speed-color: #1a8c6e;
-  --cod-color: #6b4fcf;
-  --vert-color: #c8860a;
-  --bound-color: #c44a2a;
-  --agil-color: #1a6fb5;
-}
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--page-bg);
-  color: var(--black);
-  font-family: 'Barlow', sans-serif;
-  font-size: 15px;
-  line-height: 1.6;
+background: #0d0d0d;
+color: #f5f2ed;
+font-family: ‘Barlow’, sans-serif;
+min-height: 100vh;
 }
 
-/* HEADER */
-.header {
-  background: var(--black);
-  color: var(--white);
-  padding: 48px 40px 40px;
-  position: relative;
-  overflow: hidden;
+.hero {
+padding: 60px 40px 48px;
+position: relative;
+overflow: hidden;
+border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.header::before {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 300px; height: 300px;
-  border: 40px solid rgba(200,134,10,0.15);
-  border-radius: 50%;
+.hero::before {
+content: ‘’;
+position: absolute; top: -80px; right: -80px;
+width: 400px; height: 400px;
+border: 60px solid rgba(200,134,10,0.08);
+border-radius: 50%;
 }
-.header::after {
-  content: '';
-  position: absolute;
-  bottom: -80px; left: 30%;
-  width: 200px; height: 200px;
-  border: 30px solid rgba(26,140,110,0.12);
-  border-radius: 50%;
+.hero::after {
+content: ‘’;
+position: absolute; bottom: -60px; left: 20%;
+width: 250px; height: 250px;
+border: 40px solid rgba(26,140,110,0.07);
+border-radius: 50%;
 }
-.header-inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
-.header-tag {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--court);
-  margin-bottom: 12px;
-}
-.header h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(42px, 7vw, 72px);
-  font-weight: 800; line-height: .95;
-  text-transform: uppercase;
-  letter-spacing: -.02em;
-  margin-bottom: 16px;
-}
-.header h1 span { color: var(--court); }
-.header-meta {
-  display: flex; gap: 24px; flex-wrap: wrap;
-  font-size: 14px; color: rgba(245,242,237,0.6);
-  margin-bottom: 28px;
-}
-.header-meta strong { color: var(--white); }
-.header-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-.header-pill {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 12px; font-weight: 600; letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 5px 12px; border-radius: 3px;
-  border: 1px solid rgba(245,242,237,0.2);
-  color: rgba(245,242,237,0.7);
+.hero-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+
+.site-tag {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 12px; font-weight: 700; letter-spacing: .14em;
+text-transform: uppercase; color: #c8860a;
+margin-bottom: 14px;
 }
 
-/* WEEK NAV */
-.week-nav {
-  background: var(--black);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 0 40px;
-  display: flex; gap: 0;
-  overflow-x: auto;
+h1 {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: clamp(52px, 10vw, 96px);
+font-weight: 800; line-height: .9;
+text-transform: uppercase; letter-spacing: -.02em;
+margin-bottom: 20px;
 }
-.week-nav::-webkit-scrollbar { display: none; }
-.wk-tab {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px; font-weight: 700; letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 14px 20px;
-  color: rgba(245,242,237,0.4);
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-  white-space: nowrap;
-  transition: color .2s, border-color .2s;
-  user-select: none;
-}
-.wk-tab:hover { color: rgba(245,242,237,0.8); }
-.wk-tab.active { color: var(--court); border-bottom-color: var(--court); }
+h1 span { color: #c8860a; }
 
-/* MAIN LAYOUT */
-.main { max-width: 900px; margin: 0 auto; padding: 36px 40px 60px; }
-
-/* WEEK HEADER BAND */
-.week-band {
-  background: var(--black);
-  color: var(--white);
-  border-radius: 8px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-}
-.week-band-left {}
-.week-eyebrow {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 12px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--court);
-  margin-bottom: 4px;
-}
-.week-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 28px; font-weight: 800;
-  text-transform: uppercase; letter-spacing: -.01em;
-  line-height: 1;
-}
-.week-focus {
-  font-size: 13px; color: rgba(245,242,237,0.55);
-  margin-top: 8px; max-width: 500px; line-height: 1.5;
-}
-.week-badge {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px; font-weight: 700; letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 6px 14px; border-radius: 4px;
-  flex-shrink: 0; align-self: flex-start;
-  margin-top: 4px;
-}
-.badge-build { background: rgba(26,140,110,0.2); color: #4ecfa8; }
-.badge-easy { background: rgba(26,111,181,0.2); color: #6eb8f5; }
-.badge-hard { background: rgba(200,134,10,0.2); color: #f0b83a; }
-
-/* BLOCKS GRID */
-.blocks-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-.block-full { grid-column: 1 / -1; }
-
-.block-card {
-  background: var(--card-bg);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-}
-.block-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 16px 10px;
-  border-bottom: 1px solid var(--border);
-}
-.block-header-left { display: flex; align-items: center; gap: 10px; }
-.block-icon {
-  width: 28px; height: 28px; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px; flex-shrink: 0;
-}
-.icon-warmup { background: #f3e8ff; }
-.icon-speed { background: var(--teal-light); }
-.icon-vert { background: #fff3cd; }
-.icon-bound { background: #fde8e2; }
-.icon-cod { background: #ede8ff; }
-.icon-agil { background: #e3effe; }
-.icon-cool { background: #e8f5e9; }
-.block-name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 16px; font-weight: 700; letter-spacing: .02em;
-  text-transform: uppercase;
-}
-.block-time {
-  font-size: 12px; font-weight: 600; color: var(--muted);
-  background: #f5f2ed; border-radius: 20px;
-  padding: 2px 10px;
+.hero-sub {
+font-size: 16px; color: rgba(245,242,237,0.5);
+max-width: 420px; line-height: 1.6;
 }
 
-.block-body { padding: 14px 16px; }
-
-/* DRILL ITEM */
-.drill-item {
-  display: flex; gap: 12px; align-items: flex-start;
-  padding: 10px 0;
-  border-bottom: 1px solid #f0ede8;
-  cursor: pointer;
-  transition: background .15s;
-  margin: 0 -16px;
-  padding-left: 16px; padding-right: 16px;
-}
-.drill-item:last-child { border-bottom: none; }
-.drill-item:hover { background: #faf8f5; }
-
-.collapsible-header:hover { background: #faf8f5; }
-.drill-item.has-info { cursor: pointer; }
-.drill-item.has-info:hover { background: #faf8f5; }
-
-/* Video link placeholder */
-.drill-video-link {
-  display: inline-flex; align-items: center; gap: 5px;
-  margin-top: 5px;
-  font-size: 11px; font-weight: 600;
-  color: #185FA5;
-  text-decoration: none;
-  opacity: 0.75;
-}
-.drill-video-link:hover { opacity: 1; text-decoration: underline; }
-
-.drill-info { flex: 1; min-width: 0; }
-.drill-name {
-  font-weight: 600; font-size: 14px;
-  line-height: 1.3; margin-bottom: 3px;
-}
-.drill-spec {
-  font-size: 12px; color: var(--muted);
-  margin-bottom: 4px;
-}
-.drill-cue {
-  font-size: 12px; color: var(--teal);
-  font-style: italic;
+/* PROGRAMS SECTION */
+.programs {
+max-width: 800px;
+margin: 0 auto;
+padding: 48px 40px 64px;
 }
 
-/* TAGS */
-.drill-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
-.dtag {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px; font-weight: 700; letter-spacing: .05em;
-  text-transform: uppercase;
-  padding: 1px 7px; border-radius: 2px;
+.section-label {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 11px; font-weight: 700; letter-spacing: .14em;
+text-transform: uppercase; color: rgba(245,242,237,0.3);
+margin-bottom: 20px;
 }
-.tag-speed { background: #d0f2e6; color: #0a5c47; }
-.tag-vert  { background: #fff0c2; color: #7a4f00; }
-.tag-bound { background: #fde0d7; color: #8a2a10; }
-.tag-cod   { background: #ede8ff; color: #3b2e8c; }
-.tag-agil  { background: #ddeeff; color: #0e3d72; }
 
-/* LOAD BAR SECTION */
-.load-section {
-  background: var(--card-bg);
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  padding: 16px 20px;
-  margin-bottom: 14px;
+.program-card {
+background: #161616;
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: 10px;
+padding: 28px 32px;
+margin-bottom: 14px;
+display: grid;
+grid-template-columns: 1fr auto;
+gap: 20px;
+align-items: center;
+text-decoration: none;
+color: inherit;
+transition: border-color .2s, background .2s;
+position: relative;
+overflow: hidden;
 }
-.load-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
-.load-item {}
-.load-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 5px; }
-.load-track { height: 5px; background: #eee; border-radius: 3px; margin-bottom: 3px; }
-.load-fill { height: 100%; border-radius: 3px; }
-.load-pct { font-size: 12px; font-weight: 600; }
+.program-card::before {
+content: ‘’;
+position: absolute; left: 0; top: 0; bottom: 0;
+width: 3px;
+background: #c8860a;
+border-radius: 3px 0 0 3px;
+}
+.program-card:hover {
+border-color: rgba(200,134,10,0.4);
+background: #1a1a1a;
+}
 
-/* COACH NOTE */
-.coach-note {
-  background: #fffbf0;
-  border-left: 3px solid var(--court);
-  border-radius: 0 8px 8px 0;
-  padding: 14px 18px;
-  margin-bottom: 20px;
-  font-size: 13px; line-height: 1.6;
-  color: #4a3800;
+.card-eyebrow {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 11px; font-weight: 700; letter-spacing: .1em;
+text-transform: uppercase; color: #c8860a;
+margin-bottom: 6px;
 }
-.coach-note strong { font-weight: 600; color: var(--black); display: block; margin-bottom: 3px; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; }
+.card-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 26px; font-weight: 800;
+text-transform: uppercase; letter-spacing: -.01em;
+margin-bottom: 8px; line-height: 1;
+}
+.card-desc {
+font-size: 13px; color: rgba(245,242,237,0.45);
+line-height: 1.55; max-width: 480px;
+}
+.card-pills {
+display: flex; gap: 6px; flex-wrap: wrap;
+margin-top: 12px;
+}
+.cpill {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 10px; font-weight: 700; letter-spacing: .05em;
+text-transform: uppercase;
+padding: 3px 8px; border-radius: 2px;
+background: rgba(255,255,255,0.06);
+color: rgba(245,242,237,0.5);
+}
 
-/* EQUIPMENT BOX */
-.equip-row {
-  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px;
+.card-arrow {
+font-size: 24px;
+color: rgba(200,134,10,0.5);
+font-weight: 300;
+flex-shrink: 0;
+transition: transform .2s, color .2s;
 }
-.equip-pill {
-  font-size: 13px; font-weight: 500;
-  padding: 6px 14px;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  display: flex; align-items: center; gap: 6px;
+.program-card:hover .card-arrow {
+transform: translateX(4px);
+color: #c8860a;
 }
-.equip-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); }
 
-/* PROGRESS BAR TRACK */
-.progress-strip {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px 20px;
-  margin-bottom: 24px;
+/* Sub-links (Quick Guide + coach guide) */
+.sub-cards {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+margin-bottom: 14px;
 }
-.progress-strip-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 12px; font-weight: 700; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--muted);
-  margin-bottom: 12px;
+.sub-card {
+background: #161616;
+border: 1px solid rgba(255,255,255,0.06);
+border-radius: 8px;
+padding: 18px 20px;
+text-decoration: none;
+color: inherit;
+transition: border-color .2s, background .2s;
+display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
-.prog-dots { display: flex; align-items: center; gap: 0; }
-.prog-dot {
-  width: 28px; height: 28px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 12px; font-weight: 700;
-  flex-shrink: 0; cursor: pointer;
-  transition: transform .15s;
-  z-index: 1;
+.sub-card:hover {
+border-color: rgba(26,140,110,0.4);
+background: #1a1a1a;
 }
-.prog-dot:hover { transform: scale(1.1); }
-.prog-dot.done { background: var(--black); color: var(--white); }
-.prog-dot.current { background: var(--court); color: var(--white); box-shadow: 0 0 0 3px rgba(200,134,10,0.25); }
-.prog-dot.future { background: #e8e4de; color: var(--muted); }
-.prog-line { flex: 1; height: 2px; background: #e2ddd6; }
-.prog-line.done { background: var(--black); }
-
-/* HIDDEN */
-.week-panel { display: none; }
-.week-panel.active { display: block; }
+.sub-card::before { display: none; }
+.sub-card-left {}
+.sub-card-label {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 10px; font-weight: 700; letter-spacing: .1em;
+text-transform: uppercase; color: #1a8c6e;
+margin-bottom: 4px;
+}
+.sub-card-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 17px; font-weight: 800;
+text-transform: uppercase;
+}
+.sub-card-desc {
+font-size: 12px; color: rgba(245,242,237,0.4);
+margin-top: 3px;
+}
+.sub-arrow {
+font-size: 18px; color: rgba(26,140,110,0.4);
+transition: transform .2s, color .2s;
+}
+.sub-card:hover .sub-arrow {
+transform: translateX(3px);
+color: #1a8c6e;
+}
 
 /* FOOTER */
-.footer {
-  background: var(--black);
-  color: rgba(245,242,237,0.4);
-  text-align: center;
-  padding: 20px;
-  font-size: 12px;
-}
-
-/* PRINT */
-@media print {
-  .week-nav, .wk-tab { display: none !important; }
-  .week-panel { display: block !important; page-break-after: always; }
-  .blocks-grid { grid-template-columns: 1fr; }
+footer {
+border-top: 1px solid rgba(255,255,255,0.06);
+padding: 20px 40px;
+text-align: center;
+font-size: 12px;
+color: rgba(245,242,237,0.2);
 }
 
 @media (max-width: 600px) {
-  .main { padding: 20px 16px 40px; }
-  .header { padding: 32px 20px; }
-  .week-nav { padding: 0 16px; }
-  .blocks-grid { grid-template-columns: 1fr; }
-  .load-grid { grid-template-columns: repeat(3,1fr); }
+.hero { padding: 40px 20px 36px; }
+.programs { padding: 32px 20px 48px; }
+.program-card { grid-template-columns: 1fr; padding: 22px 20px; }
+.card-arrow { display: none; }
+.sub-cards { grid-template-columns: 1fr; }
+footer { padding: 20px; }
 }
 </style>
+
 </head>
 <body>
 
-<div class="header">
-  <div class="header-inner">
-    <div class="header-tag">Basketball Athlete Development</div>
-    <h1>Speed &<br><span>Plyometrics</span></h1>
-    <div class="header-meta">
-      <span><strong>6 Weeks</strong> · Beginner to Intermediate</span>
-      <span><strong>45 min</strong> · Once per week</span>
-      <span><strong>Peaks</strong> · Week 5–6</span>
-    </div>
-    <div class="header-pills">
-      <div class="header-pill">Speed</div>
-      <div class="header-pill">Vertical jump</div>
-      <div class="header-pill">Bounding</div>
-      <div class="header-pill">Change of direction</div>
-      <div class="header-pill">Agility</div>
-      <div class="header-pill">Minimal equipment</div>
-    </div>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="site-tag">Basketball Athlete Development</div>
+    <h1>Speed<br><span>Works</span></h1>
+    <p class="hero-sub">Training programs for speed, explosiveness, and on-court athleticism.</p>
   </div>
 </div>
 
-<div class="week-nav" id="weekNav">
-  <div class="wk-tab active" onclick="setWeek(0)">Week 1</div>
-  <div class="wk-tab" onclick="setWeek(1)">Week 2</div>
-  <div class="wk-tab" onclick="setWeek(2)">Week 3</div>
-  <div class="wk-tab" onclick="setWeek(3)">Week 4</div>
-  <div class="wk-tab" onclick="setWeek(4)">Week 5</div>
-  <div class="wk-tab" onclick="setWeek(5)">Week 6</div>
-</div>
+<div class="programs">
+  <div class="section-label">Programs</div>
 
-<div class="main">
+  <!-- MAIN INTERACTIVE PROGRAM -->
 
-  <!-- PROGRESS STRIP -->
-  <div class="progress-strip">
-    <div class="progress-strip-label">Program progress</div>
-    <div class="prog-dots" id="progDots"></div>
-  </div>
-
-  <!-- EQUIPMENT -->
-  <div class="equip-row">
-    <div class="equip-pill"><div class="equip-dot"></div>Flat outdoor surface</div>
-    <div class="equip-pill"><div class="equip-dot"></div>3–5 cones or markers</div>
-    <div class="equip-pill"><div class="equip-dot"></div>Low step or box (wk 3+)</div>
-    <div class="equip-pill"><div class="equip-dot"></div>Water bottle</div>
-  </div>
-
-  <!-- WEEK PANELS -->
-  <div id="weekPanels"></div>
-
-</div>
-
-<div class="footer">
-  Basketball Athlete Development · 6-Week Speed &amp; Plyometrics Program · Beginner Level
-</div>
-
-<script>
-const weeks = [
-  {
-    num: 1, label: "Intro", theme: "Movement foundations", intensity: "Build",
-    focus: "Learn landing mechanics, sprint posture, and basic footwork. Quality over speed — every rep should be controlled.",
-    blocks: [
-      {
-        name: "Dynamic warm-up", icon: "icon-warmup", iconChar: "◎", time: "10 min", type: "warmup",
-        note: "Each drill = 1 length (~20 yds / court length). Walk back as recovery. Do all in sequence.",
-        drills: [
-          { name: "Jog", spec: "1 length", cue: "Easy pace — just get blood moving, tall posture", anim: "run", tags: [] , drillInfo: {focus:"Warm-up — raise body temperature",setup:"Any straight path, court length or similar.",steps:["Start at an easy, relaxed pace — this is not a sprint","Stay tall: head up, shoulders relaxed, arms swinging naturally at your sides","Land midfoot, not on your heels","Breathe through your nose if possible — if you can't, you're going too fast"],why:"The jog gradually raises your core temperature and gets blood moving to your muscles. Everything in the warm-up works better when the body is already warm."}},
-          { name: "High knees", spec: "1 length", cue: "Drive knees to hip height, quick rhythm, arms pump", anim: "skip", tags: [] , drillInfo: {focus:"Hip flexor activation + stride rate",setup:"Straight line, one court length.",steps:["Drive each knee up to hip height with every step — don't let them stay low","Pull your toes up toward your shin on the raised foot (dorsiflexion)","Pump your arms in opposition — right knee, left arm forward","Stay on the balls of your feet — no flat-footed landing","Keep your torso upright and tall — resist leaning back"],why:"High knees train the hip flexors and reinforce the knee drive pattern used in sprinting. Fast, high knees = faster stride frequency."}},
-          { name: "Butt kicks", spec: "1 length", cue: "Heels to glutes, stay on balls of feet, lean slight forward", anim: "run", tags: [] , drillInfo: {focus:"Hamstring activation + stride mechanics",setup:"Straight line, one court length.",steps:["Drive your heel up toward your glute with each step — aim to touch","Keep your knees pointing down, not swinging forward","Stay on the balls of your feet with a slight forward lean","Arms pump in rhythm with the legs","Keep steps quick — this is about turnover, not covering distance"],why:"Butt kicks activate the hamstrings and reinforce the recovery phase of the stride — when the foot pulls back up after ground contact. Neglecting this causes slow leg turnover."}},
-          { name: "Light skips", spec: "1 length", cue: "Low skip, relaxed — feel the rhythm before adding power", anim: "skip", tags: [] , drillInfo: {focus:"Rhythm + coordination",setup:"Straight line, one court length.",steps:["Step on one foot, then skip (small hop) on that same foot before stepping on the other","Keep it low and relaxed — this is not a power skip","Arms swing gently in rhythm","Focus on finding a smooth, consistent rhythm before the more demanding drills"],why:"Light skips bridge the gap between jogging and the explosive skip drills later in the warm-up. They also activate the calves and ankles with minimal stress."}},
-          { name: "3-step squat", spec: "1 length", cue: "3 steps → squat hold 1 sec → stand → repeat. Hips back and down", anim: "hip", tags: [] , drillInfo: {focus:"Quad and glute activation + hip mobility",setup:"Straight line, one court length. No equipment.",steps:["Take 3 normal walking steps","On the 3rd step, sink into a squat — feet shoulder-width, hips back and down, chest tall","Hold the bottom position for 1 full second","Drive through both heels to stand, then take 3 more steps and repeat"],why:"Activates the quads, glutes, and hip flexors in a controlled range of motion. Also reinforces the squat landing position used in every jump drill later in the session."}},
-          { name: "3-step kick", spec: "1 length", cue: "3 steps → straight-leg kick to hip height → repeat. Keep torso tall", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility + balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","On the 3rd step, swing the opposite leg forward in a straight-leg kick — aim for hip height or above","Reach the opposite hand toward the foot as it rises","Keep the standing leg straight and tall — don't hunch forward to meet the foot","Lower the leg with control and continue walking"],why:"Actively lengthens the hamstring under mild load while also challenging single-leg balance. The straight-leg requirement forces the hamstring to work through full range."}},
-          { name: "3-step lunge", spec: "1 length", cue: "3 steps → deep lunge hold 1 sec. Front knee over ankle, back knee low", anim: "stretch", tags: [] , drillInfo: {focus:"Hip flexor stretch + quad activation",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Step into a deep forward lunge — front knee directly over the ankle, not past the toes","Rear knee drops to about 1–2 inches from the ground","Keep torso upright — don't let the chest fall forward","Hold 1 second, then drive through the front heel to stand"],why:"One of the most important warm-up drills for athletes — opens the hip flexors on the rear leg while loading the front quad. Hip flexors that don't get warmed up restrict stride length."}},
-          { name: "3-step hip hug", spec: "1 length", cue: "3 steps → pull one knee to chest, balance 1 sec. Standing tall", anim: "hip", tags: [] , drillInfo: {focus:"Glute activation + single-leg balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up toward your chest using both hands, hugging it in","Balance on the standing leg for 1 full second — leg straight, hips level","Keep the chest tall and look forward, not down","Release and continue"],why:"Activates the glutes and hip stabilizers while building the single-leg balance needed for landing and cutting mechanics. Shaky balance here is a red flag for landing control."}},
-          { name: "3-step hip flex and open", spec: "1 length", cue: "3 steps → pull knee up, rotate leg out (external rotation). Open the hip", anim: "hip", tags: [] , drillInfo: {focus:"Hip external rotation + mobility",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up to hip height","From that position, externally rotate the hip — imagine stepping over a low fence, opening the knee out to the side","Hold briefly at the top of the rotation","Lower the leg with control and continue"],why:"Opens the hip external rotators, which are critical for lateral cutting, defensive slides, and absorbing impact on one-leg landings. Tight external rotators lead to knee valgus (caving in) on cuts."}},
-          { name: "3-step SL RDL", spec: "1 length", cue: "3 steps → single-leg RDL: hinge forward, back leg extends. Flat back", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring + glute strength under stretch",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Balance on one leg with a soft knee","Hinge forward at the hip — chest moves toward the ground, rear leg extends straight behind you","Keep your back flat — think 'proud chest' the whole way down","Reach your hands toward the ground, then drive the hips forward to return to standing"],why:"The single-leg RDL is one of the best hamstring activation drills available. It loads the hamstring eccentrically (as it lengthens), which is exactly how it gets stressed during sprinting and bounding. Also builds the hip stability needed for single-leg landings."}},
-          { name: "3-step quad stretch and reach", spec: "1 length", cue: "3 steps → pull heel to glute, reach opposite arm overhead. Balance", anim: "stretch", tags: [] , drillInfo: {focus:"Quad stretch + hip flexor opening",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one heel up to your glute — grab the ankle or the shoelaces","Reach the opposite arm straight overhead as high as you can","Balance on the standing leg — keep it tall and straight","Hold 1–2 seconds, then release and continue"],why:"The overhead reach creates a full-body stretch from the quad through the hip flexor to the shoulder. It also forces better balance than a standard quad stretch because the reach shifts your center of gravity."}},
-          { name: "3-step hamstring scoop", spec: "1 length", cue: "3 steps → straight-leg forward, scoop hands under foot. Feel the pull", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility — active",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Extend one leg straight forward with the heel on the ground, toe pointing up","Hinge from the hip (not the lower back) and reach both hands underneath the foot — 'scoop' under it","Hold 1 second — feel the hamstring lengthen","Return to standing and continue"],why:"This is an active hamstring stretch — the muscle is lengthening while also being gently loaded, which is more sport-specific than a passive hold. Prepares the hamstrings for the eccentric demands of sprinting and bounding."}},
-          { name: "Straight-leg kicks", spec: "1 length", cue: "Swing straight legs forward while running — kick ahead of you, toe up, keep moving", anim: "skip", tags: [] , drillInfo: {focus:"Hamstring activation + hip flexor mobility while moving",setup:"Straight line, one court length.",steps:["Walk or jog forward at a steady pace","With each step, swing the opposite leg forward in a straight-leg kick — toes pointed up","Reach the opposite hand toward the rising foot as it kicks up","Keep moving forward — this is not a stationary drill","Maintain a light, rhythmic pace"],why:"Unlike the 3-step kick which pauses, straight-leg kicks are continuous — training the hip flexors and hamstrings to work together at tempo. Great final primer before explosive work."}},
-          { name: "Anklers", spec: "1 length", cue: "Short quick hops on balls of feet — minimal knee bend, stiff ankles, fast turnover", anim: "ankl", tags: [] , drillInfo: {focus:"Ankle stiffness + reactive strength",setup:"Straight line, one court length.",steps:["Start standing tall on the balls of your feet","Take short, rapid hops moving forward — the power comes from the ankle only","Keep knee bend minimal — the ankle acts like a stiff spring, not a piston","Ground contact should be brief and quiet","Move forward continuously at a quick tempo"],why:"Ankle stiffness is a major factor in sprint speed and jump height. The faster the ankle can load and unload, the more elastic energy is captured. This drill directly trains the achilles tendon and calf to act as a spring — which is exactly what happens at every foot strike during sprinting."}}
-        ]
-      },
-      {
-        name: "Speed mechanics", icon: "icon-speed", iconChar: "▶", time: "10 min", type: "speed",
-        drills: [
-          { name: "A-skip", spec: "2×20m", cue: "Drive knee up, toe pulled up (dorsiflexed)", anim: "skip", tags: ["speed"], drillInfo: {
-              focus: "Sprint mechanics — knee drive and arm action",
-              setup: "Mark a 20–30m straight line on the court or pavement. No equipment needed.",
-              steps: [
-                "Start in a tall upright stance, weight on the balls of your feet",
-                "Begin a skip rhythm — push off one foot, skip, land, push off the other",
-                "On each skip, drive the lead knee up forcefully to hip height — think 'knee to pocket'",
-                "Pull the toes up toward the shin (dorsiflexion) on the raised foot — never let the foot hang down",
-                "Drive the opposite arm forward in sync with the knee — elbow bent at 90 degrees",
-                "Land on the ball of the foot directly under your hip, not in front of you",
-                "Keep the torso tall and relaxed — no leaning forward or back"
-              ],
-              why: "The A-skip drills the exact knee drive and foot position used in sprinting. Every time your foot strikes the ground in a sprint, the mechanics should look like this. Consistent reps build the motor pattern so it happens automatically at full speed."
-            } },
-          { name: "B-skip", spec: "2×20m", cue: "Extend leg forward, paw the ground back", anim: "skip", tags: ["speed"], drillInfo: {
-              focus: "Sprint mechanics — pawing action and ground contact",
-              setup: "Same as A-skip — 20–30m straight line. Do A-skips first every session before moving to B-skips.",
-              steps: [
-                "Begin exactly like the A-skip — skip rhythm, knee drives to hip height, toes pulled up",
-                "At the top of the knee drive, extend the leg forward so it is nearly straight out in front of you",
-                "From that extended position, actively pull the leg back and down — 'paw' the ground like you're scraping mud off the bottom of your shoe",
-                "The foot should make contact directly under the hip, not out in front",
-                "Simultaneously drive the opposite arm forward to match the leg action",
-                "The claw-back motion should feel aggressive — you are pulling the ground behind you"
-              ],
-              why: "The B-skip isolates the pawing or clawing motion that happens at ground contact in a sprint. Elite sprinters don't just lift their feet — they actively pull the ground backward. This drill trains that habit. A-skip builds the drive, B-skip builds the pull."
-            } },
-          { name: "Falling start sprint", spec: "4×10m", cue: "Lean forward until you fall, then explode", anim: "run", tags: ["speed"],
-            drillInfo: { focus: "Hip flexion + first step", steps: ["Start with toes on the line", "Keep body aligned as you fall forward", "At the last second, flex at the hip and explode into the sprint"], why: "Trains the body to use gravity as the trigger — the lean forces a positive shin angle and aggressive first step without overthinking it." } },
-          { name: "Standing broad jump", spec: "3×3 reps", cue: "Arm swing + hip drive, land both feet together — stick 2 sec", anim: "jump", tags: ["bound"] }
-        ]
-      },
-      {
-        name: "Vertical jump intro", icon: "icon-vert", iconChar: "↑", time: "10 min", type: "vert",
-        drills: [
-          { name: "Squat jump", spec: "3×5 reps", cue: "Stick landing 2 full seconds — knees over toes", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Concentric power + landing mechanics",setup:"Open space, no equipment.",steps:["Stand with feet shoulder-width, toes slightly out","Drop into a squat and pause for 1 full second at the bottom — no bouncing","From the paused position, explode straight up as high as possible","Drive both arms up overhead to add height","Land on both feet simultaneously — absorb through the hips and knees","STICK the landing for 2 full seconds before the next rep — knees should not cave in"],why:"The paused squat jump removes elastic energy and forces pure muscle power to produce the jump. It also makes landing mechanics visible — if you can't land controlled from a squat jump, you're not ready for more reactive plyometrics."}},
-          { name: "Countermovement jump", spec: "3×5 reps", cue: "Swing arms hard, land quiet and balanced", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Elastic energy + vertical power",setup:"Open space, no equipment.",steps:["Stand tall with feet shoulder-width","Quickly dip down — hips back, knees bent — and immediately reverse upward in one fluid motion","Swing both arms down during the dip then drive them hard overhead as you jump","The dip and jump should feel like one movement, not two separate actions","Reach full extension at the top — ankles, knees, hips all extended","Land soft on both feet — absorb with flexed knees and hips"],why:"The countermovement uses the stretch-shortening cycle — the muscle stores elastic energy in the dip and releases it explosively. This is how athletes jump in real sports. Faster dip = more elastic energy = higher jump."}},
-          { name: "Box step-up + jump", spec: "2×5 each leg", cue: "Drive through the front heel, extend fully", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Single-leg power + hip extension",setup:"A low box, step, or bench — 6 to 12 inches high.",steps:["Stand facing the box with feet hip-width","Step one foot up onto the box — that foot does all the work","Drive through the heel of the elevated foot to stand up onto the box","At the top, continue driving upward into a single-leg jump — reach for max height","Land with both feet on the ground in front of the box, absorb the landing","Alternate legs each rep"],why:"This drill builds the single-leg pushing power used in basketball — layups, cuts off one leg, and one-footed takeoffs all start with this exact hip extension pattern. It also shows asymmetry — if one leg is significantly weaker, it will be obvious here."}}
-        ]
-      },
-      {
-        name: "Change of direction", icon: "icon-cod", iconChar: "⇄", time: "10 min", type: "cod",
-        drills: [
-          { name: "5-10-5 pro agility", spec: "4 reps", cue: "Walk through first, then build. Low hips on cuts", anim: "cone", tags: ["cod"], drillInfo: {
-              focus: "Change of direction — lateral acceleration",
-              setup: "Place 3 cones in a straight line, each exactly 5 yards apart. You start at the middle cone. The drill covers 5 yards right, 10 yards left, then 5 yards back to the middle — total of 20 yards.",
-              steps: [
-                "Stand at the middle cone in an athletic stance — feet shoulder-width, hips down, weight on the balls of your feet",
-                "On go, sprint 5 yards to your right and touch the cone (or line) with your right hand",
-                "Push off hard and sprint 10 yards all the way to the left cone — touch with your left hand",
-                "Drive back 5 yards to the middle cone and finish through the line"
-              ],
-              why: "The key is the plant and cut — not the sprint. Stay low through the turn, drive off the outside foot, and reach down to touch without over-striding. Shadow cuts (not touching the line) don't count."
-            } },
-          { name: "Two-cone lateral shuffle", spec: "3×10m each way", cue: "Stay low, don't cross feet", anim: "slide", tags: ["cod", "agil"] , drillInfo: {focus:"Lateral speed + change of direction",setup:"2 cones placed 10 meters apart.",steps:["Start at one cone in a defensive athletic stance — feet wide, hips down, weight on balls of feet","Shuffle laterally toward the opposite cone — don't cross your feet","Touch or reach the second cone and immediately push back","Drive off the outside foot on each direction change — don't just stop and restart","Keep your head and chest up throughout — don't look at the ground"],why:"The two-cone shuffle isolates pure lateral speed and the stop-start change of direction. The quality of the push-off at each cone is what separates fast athletes from slow ones — it should be a single explosive step, not multiple choppy steps."}},
-          { name: "3-cone L-drill", spec: "4 reps", cue: "Walk through first — cone to cone, around the middle, back through. Low hips on every turn", anim: "cone", tags: ["agil", "cod"], drillInfo: {
-              focus: "Change of direction — multi-directional cutting",
-              setup: "Place 3 cones in an L-shape: Cone A at the start, Cone B 5 yards straight ahead, Cone C 5 yards to the right of Cone B. The L shape is formed by A→B (straight) and B→C (right turn).",
-              steps: [
-                "Start at Cone A. Sprint straight to Cone B and touch it",
-                "Sprint back to Cone A and touch it",
-                "Sprint back to Cone B, round it tightly — stay low and lean into the turn",
-                "Sprint around the outside of Cone C, looping around it and back to Cone B",
-                "Finish by sprinting from B back through A"
-              ],
-              why: "The L-drill tests more movement patterns than the 5-10-5 — forward sprint, backpedal, change of direction, and a curved run around the cones. Don't brake into Cone B on the loop — carry speed through the turn by planting your outside foot and leaning."
-            } }
-        ]
-      },
-      {
-        name: "Cool-down", icon: "icon-cool", iconChar: "—", time: "7 min", type: "cool",
-        drills: [
-          { name: "Walking quad stretch", spec: "30s each leg", cue: "Tall posture, don't lean forward", anim: "stretch", tags: [] },
-          { name: "Hip flexor lunge stretch", spec: "30s each side", cue: "Tuck pelvis under, feel the front of the hip", anim: "stretch", tags: [] },
-          { name: "Calf stretch on wall", spec: "30s each leg", cue: "Heel flat on ground, straight leg", anim: "stretch", tags: [] }
-        ]
-      }
-    ],
-    load: { speed: 30, cod: 30, vert: 25, bound: 10, agil: 30 },
-    note: "Stick landing is the #1 priority this week. Every jump should stick for 2 full seconds. If landings are noisy or knees cave in, slow down and reset before the next rep."
-  },
-  {
-    num: 2, label: "Base", theme: "Volume + pattern grooming", intensity: "Build",
-    focus: "Add reps and distance to last week's patterns. Introduce lateral bounds and basic bounding for ground coverage.",
-    blocks: [
-      {
-        name: "Dynamic warm-up", icon: "icon-warmup", iconChar: "◎", time: "10 min", type: "warmup",
-        note: "Each drill = 1 length (~20 yds / court length). Walk back as recovery.",
-        drills: [
-          { name: "Jog", spec: "1 length", cue: "Easy pace, tall posture", anim: "run", tags: [] , drillInfo: {focus:"Warm-up — raise body temperature",setup:"Any straight path, court length or similar.",steps:["Start at an easy, relaxed pace — this is not a sprint","Stay tall: head up, shoulders relaxed, arms swinging naturally at your sides","Land midfoot, not on your heels","Breathe through your nose if possible — if you can't, you're going too fast"],why:"The jog gradually raises your core temperature and gets blood moving to your muscles. Everything in the warm-up works better when the body is already warm."}},
-          { name: "High knees", spec: "1 length", cue: "Drive knees to hip height, quick rhythm", anim: "skip", tags: [] , drillInfo: {focus:"Hip flexor activation + stride rate",setup:"Straight line, one court length.",steps:["Drive each knee up to hip height with every step — don't let them stay low","Pull your toes up toward your shin on the raised foot (dorsiflexion)","Pump your arms in opposition — right knee, left arm forward","Stay on the balls of your feet — no flat-footed landing","Keep your torso upright and tall — resist leaning back"],why:"High knees train the hip flexors and reinforce the knee drive pattern used in sprinting. Fast, high knees = faster stride frequency."}},
-          { name: "Butt kicks", spec: "1 length", cue: "Heels to glutes, stay on balls of feet", anim: "run", tags: [] , drillInfo: {focus:"Hamstring activation + stride mechanics",setup:"Straight line, one court length.",steps:["Drive your heel up toward your glute with each step — aim to touch","Keep your knees pointing down, not swinging forward","Stay on the balls of your feet with a slight forward lean","Arms pump in rhythm with the legs","Keep steps quick — this is about turnover, not covering distance"],why:"Butt kicks activate the hamstrings and reinforce the recovery phase of the stride — when the foot pulls back up after ground contact. Neglecting this causes slow leg turnover."}},
-          { name: "Light skips", spec: "1 length", cue: "Relaxed rhythm, low skip", anim: "skip", tags: [] , drillInfo: {focus:"Rhythm + coordination",setup:"Straight line, one court length.",steps:["Step on one foot, then skip (small hop) on that same foot before stepping on the other","Keep it low and relaxed — this is not a power skip","Arms swing gently in rhythm","Focus on finding a smooth, consistent rhythm before the more demanding drills"],why:"Light skips bridge the gap between jogging and the explosive skip drills later in the warm-up. They also activate the calves and ankles with minimal stress."}},
-          { name: "3-step squat", spec: "1 length", cue: "3 steps → squat hold 1 sec → repeat", anim: "hip", tags: [] , drillInfo: {focus:"Quad and glute activation + hip mobility",setup:"Straight line, one court length. No equipment.",steps:["Take 3 normal walking steps","On the 3rd step, sink into a squat — feet shoulder-width, hips back and down, chest tall","Hold the bottom position for 1 full second","Drive through both heels to stand, then take 3 more steps and repeat"],why:"Activates the quads, glutes, and hip flexors in a controlled range of motion. Also reinforces the squat landing position used in every jump drill later in the session."}},
-          { name: "3-step kick", spec: "1 length", cue: "3 steps → straight-leg kick to hip height", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility + balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","On the 3rd step, swing the opposite leg forward in a straight-leg kick — aim for hip height or above","Reach the opposite hand toward the foot as it rises","Keep the standing leg straight and tall — don't hunch forward to meet the foot","Lower the leg with control and continue walking"],why:"Actively lengthens the hamstring under mild load while also challenging single-leg balance. The straight-leg requirement forces the hamstring to work through full range."}},
-          { name: "3-step lunge", spec: "1 length", cue: "3 steps → deep lunge hold. Front knee over ankle", anim: "stretch", tags: [] , drillInfo: {focus:"Hip flexor stretch + quad activation",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Step into a deep forward lunge — front knee directly over the ankle, not past the toes","Rear knee drops to about 1–2 inches from the ground","Keep torso upright — don't let the chest fall forward","Hold 1 second, then drive through the front heel to stand"],why:"One of the most important warm-up drills for athletes — opens the hip flexors on the rear leg while loading the front quad. Hip flexors that don't get warmed up restrict stride length."}},
-          { name: "3-step hip hug", spec: "1 length", cue: "3 steps → pull knee to chest, balance 1 sec", anim: "hip", tags: [] , drillInfo: {focus:"Glute activation + single-leg balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up toward your chest using both hands, hugging it in","Balance on the standing leg for 1 full second — leg straight, hips level","Keep the chest tall and look forward, not down","Release and continue"],why:"Activates the glutes and hip stabilizers while building the single-leg balance needed for landing and cutting mechanics. Shaky balance here is a red flag for landing control."}},
-          { name: "3-step hip flex and open", spec: "1 length", cue: "3 steps → pull knee up, rotate leg out externally", anim: "hip", tags: [] , drillInfo: {focus:"Hip external rotation + mobility",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up to hip height","From that position, externally rotate the hip — imagine stepping over a low fence, opening the knee out to the side","Hold briefly at the top of the rotation","Lower the leg with control and continue"],why:"Opens the hip external rotators, which are critical for lateral cutting, defensive slides, and absorbing impact on one-leg landings. Tight external rotators lead to knee valgus (caving in) on cuts."}},
-          { name: "3-step SL RDL", spec: "1 length", cue: "3 steps → single-leg hinge, back leg extends. Flat back", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring + glute strength under stretch",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Balance on one leg with a soft knee","Hinge forward at the hip — chest moves toward the ground, rear leg extends straight behind you","Keep your back flat — think 'proud chest' the whole way down","Reach your hands toward the ground, then drive the hips forward to return to standing"],why:"The single-leg RDL is one of the best hamstring activation drills available. It loads the hamstring eccentrically (as it lengthens), which is exactly how it gets stressed during sprinting and bounding. Also builds the hip stability needed for single-leg landings."}},
-          { name: "3-step quad stretch and reach", spec: "1 length", cue: "3 steps → heel to glute, reach opposite arm up", anim: "stretch", tags: [] , drillInfo: {focus:"Quad stretch + hip flexor opening",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one heel up to your glute — grab the ankle or the shoelaces","Reach the opposite arm straight overhead as high as you can","Balance on the standing leg — keep it tall and straight","Hold 1–2 seconds, then release and continue"],why:"The overhead reach creates a full-body stretch from the quad through the hip flexor to the shoulder. It also forces better balance than a standard quad stretch because the reach shifts your center of gravity."}},
-          { name: "3-step hamstring scoop", spec: "1 length", cue: "3 steps → straight-leg forward, scoop under foot", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility — active",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Extend one leg straight forward with the heel on the ground, toe pointing up","Hinge from the hip (not the lower back) and reach both hands underneath the foot — 'scoop' under it","Hold 1 second — feel the hamstring lengthen","Return to standing and continue"],why:"This is an active hamstring stretch — the muscle is lengthening while also being gently loaded, which is more sport-specific than a passive hold. Prepares the hamstrings for the eccentric demands of sprinting and bounding."}},
-          { name: "Straight-leg kicks", spec: "1 length", cue: "Straight legs kick forward as you run — quick rhythm, reach arms to meet the foot", anim: "skip", tags: [] , drillInfo: {focus:"Hamstring activation + hip flexor mobility while moving",setup:"Straight line, one court length.",steps:["Walk or jog forward at a steady pace","With each step, swing the opposite leg forward in a straight-leg kick — toes pointed up","Reach the opposite hand toward the rising foot as it kicks up","Keep moving forward — this is not a stationary drill","Maintain a light, rhythmic pace"],why:"Unlike the 3-step kick which pauses, straight-leg kicks are continuous — training the hip flexors and hamstrings to work together at tempo. Great final primer before explosive work."}},
-          { name: "Anklers", spec: "1 length", cue: "Quick hops on balls of feet — stiff ankle, fast turnover", anim: "ankl", tags: [] , drillInfo: {focus:"Ankle stiffness + reactive strength",setup:"Straight line, one court length.",steps:["Start standing tall on the balls of your feet","Take short, rapid hops moving forward — the power comes from the ankle only","Keep knee bend minimal — the ankle acts like a stiff spring, not a piston","Ground contact should be brief and quiet","Move forward continuously at a quick tempo"],why:"Ankle stiffness is a major factor in sprint speed and jump height. The faster the ankle can load and unload, the more elastic energy is captured. This drill directly trains the achilles tendon and calf to act as a spring — which is exactly what happens at every foot strike during sprinting."}}
-        ]
-      },
-      {
-        name: "Speed + acceleration", icon: "icon-speed", iconChar: "▶", time: "12 min", type: "speed",
-        drills: [
-          { name: "A-skip", spec: "2×30m", cue: "Rhythm first, then add power", anim: "skip", tags: ["speed"], drillInfo: {
-              focus: "Sprint mechanics — knee drive and arm action",
-              setup: "Mark a 20–30m straight line on the court or pavement. No equipment needed.",
-              steps: [
-                "Start in a tall upright stance, weight on the balls of your feet",
-                "Begin a skip rhythm — push off one foot, skip, land, push off the other",
-                "On each skip, drive the lead knee up forcefully to hip height — think 'knee to pocket'",
-                "Pull the toes up toward the shin (dorsiflexion) on the raised foot — never let the foot hang down",
-                "Drive the opposite arm forward in sync with the knee — elbow bent at 90 degrees",
-                "Land on the ball of the foot directly under your hip, not in front of you",
-                "Keep the torso tall and relaxed — no leaning forward or back"
-              ],
-              why: "The A-skip drills the exact knee drive and foot position used in sprinting. Every time your foot strikes the ground in a sprint, the mechanics should look like this. Consistent reps build the motor pattern so it happens automatically at full speed."
-            } },
-          { name: "Falling start sprint", spec: "5×10m", cue: "Arms drive hard for first 3 steps", anim: "run", tags: ["speed"],
-            drillInfo: { focus: "Hip flexion + first step", steps: ["Start with toes on the line", "Keep body aligned as you fall forward", "At the last second, flex at the hip and explode into the sprint"], why: "Trains the body to use gravity as the trigger — the lean forces a positive shin angle and aggressive first step without overthinking it." } },
-          { name: "Half kneeling start", spec: "4×10m each stance", cue: "Dominant stance first, then switch. Drive hips forward as back foot pushes off", anim: "run", tags: ["speed"],
-            drillInfo: { focus: "Hip extension + power", steps: ["Feet staggered, rear knee down on the ground", "Hands in sprint position — one by face, opposite by hip", "Drive back foot forward and push hips forward simultaneously"], why: "Sinking the hips lower forces you to overcome a greater range of motion, which means more force needed on that first step. Builds explosive hip extension." } , drillInfo: {focus:"Hip extension + explosive first step",setup:"Open space, 10m sprint lane.",steps:["Begin with feet staggered — one foot forward, rear knee on the ground","Place hands in sprint position — one by the face, opposite hand near the hip","Drive the rear foot forward as the first step","Simultaneously push the hips forward to create hip extension","Accelerate hard for 10m from the kneeling position"],why:"The kneeling position sinks the hips lower than a standing start, which means you must overcome a greater range of motion to take that first step. This forces more force production and builds explosive hip extension — the engine of acceleration."}},
-          { name: "Wall drive", spec: "3×8 each leg", cue: "45-degree lean, drive knee to hip height", anim: "run", tags: ["speed"] , drillInfo: {focus:"Sprint acceleration mechanics — leg drive",setup:"A wall or fence. Stand about arm's length away.",steps:["Place both hands on the wall at shoulder height, arms straight","Lean into the wall at a 45-degree angle — your body should be in a straight line from heel to head","Drive one knee up to hip height, foot dorsiflexed (toes up)","Hold, then switch legs in a controlled alternating pattern","Keep the hips square and don't let the lower back sag"],why:"The wall drive isolates the single most important movement in acceleration — the hip drive. By removing the need to balance and move forward, you can focus entirely on the knee lift and body angle that power the first few steps of a sprint."}},
-          { name: "20m build-up sprint", spec: "3 reps (60→90%)", cue: "Start controlled, accelerate smoothly", anim: "run", tags: ["speed"] , drillInfo: {focus:"Acceleration into max velocity",setup:"Mark a 20m straight line.",steps:["Start from a standing or walking position","Begin at 60% effort — relaxed, controlled acceleration","By the 10m mark, increase to around 80%","By 15–18m, push to 90% and hold through the line","Do not tense up as speed increases — stay relaxed in the shoulders and face"],why:"Build-up sprints teach the athlete to accelerate gradually rather than going all-out from step one. Gradual acceleration produces better mechanics and higher top-end speeds than frantic explosions from the start."}},
-          { name: "Alternate-leg bound", spec: "3×20m", cue: "Max distance per stride — hang time, not speed", anim: "bound", tags: ["bound"] , drillInfo: {focus:"Horizontal power + bounding stride length",setup:"A straight 20–25m line.",steps:["Start with a few jogging steps to build momentum","Push off one foot with maximum force — drive the opposite knee up high and forward","Reach for maximum distance on each stride — prioritize hang time and length over speed","Land on the opposite foot, immediately load and push off again","Arms drive in opposition to legs — left knee up, right arm forward","Keep bounding continuously down the full length"],why:"Alternate-leg bounding develops the explosive hip and knee extension that powers sprinting and jumping. Fewer strides to cover the same distance = more power per stride. Count your strides each set and try to reduce them."}}
-        ]
-      },
-      {
-        name: "Bounding intro", icon: "icon-bound", iconChar: "⟿", time: "8 min", type: "bound",
-        drills: [
-          { name: "Alternate-leg bound", spec: "3×20m", cue: "Cover max distance per stride — not speed", anim: "bound", tags: ["bound"] , drillInfo: {focus:"Horizontal power + bounding stride length",setup:"A straight 20–25m line.",steps:["Start with a few jogging steps to build momentum","Push off one foot with maximum force — drive the opposite knee up high and forward","Reach for maximum distance on each stride — prioritize hang time and length over speed","Land on the opposite foot, immediately load and push off again","Arms drive in opposition to legs — left knee up, right arm forward","Keep bounding continuously down the full length"],why:"Alternate-leg bounding develops the explosive hip and knee extension that powers sprinting and jumping. Fewer strides to cover the same distance = more power per stride. Count your strides each set and try to reduce them."}},
-          { name: "Single-leg hop", spec: "2×10m each leg", cue: "Consistent rhythm, same distance each hop", anim: "bound", tags: ["bound"] , drillInfo: {focus:"Unilateral power + rhythm",setup:"A straight 10m line.",steps:["Balance on one foot at the start","Push off and hop forward on the same foot — cover as much distance as possible per hop","Land on the same foot and immediately load for the next hop","Try to keep each hop the same distance — consistency matters as much as distance","Complete the full 10m on one leg, then switch"],why:"Single-leg hops expose side-to-side strength differences that bilateral (two-legged) drills hide. If one leg hops noticeably shorter or less consistently, that's the leg to focus on. Trains the achilles, calf, and hip extensors on each side independently."}},
-          { name: "Standing broad jump", spec: "3×3 reps", cue: "Arm swing + hip drive, land both feet together", anim: "jump", tags: ["bound", "vert"] }
-        ]
-      },
-      {
-        name: "Vertical + lateral", icon: "icon-vert", iconChar: "↑", time: "10 min", type: "vert",
-        drills: [
-          { name: "Countermovement jump", spec: "4×5 reps", cue: "Faster dip than week 1 — more elastic", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Elastic energy + vertical power",setup:"Open space, no equipment.",steps:["Stand tall with feet shoulder-width","Quickly dip down — hips back, knees bent — and immediately reverse upward in one fluid motion","Swing both arms down during the dip then drive them hard overhead as you jump","The dip and jump should feel like one movement, not two separate actions","Reach full extension at the top — ankles, knees, hips all extended","Land soft on both feet — absorb with flexed knees and hips"],why:"The countermovement uses the stretch-shortening cycle — the muscle stores elastic energy in the dip and releases it explosively. This is how athletes jump in real sports. Faster dip = more elastic energy = higher jump."}},
-          { name: "Lateral bound", spec: "3×4 each side", cue: "Stick each landing — no extra hops", anim: "lat", tags: ["cod"] , drillInfo: {focus:"Lateral power + single-leg landing",setup:"Open space. Mark two spots 3–4 meters apart.",steps:["Stand on one foot with a slight bend in the knee","Push off laterally — drive off the inside edge of the foot, not the toe","Reach as far sideways as possible and land on the opposite foot only","STICK the landing for 1 full second — knee tracks over the second toe, hips back, no wobble","Load the landing leg and push back the other way","Reach the arm opposite to the landing foot toward the ground on each landing"],why:"Lateral bounding builds the frontal plane power used in defensive slides, cut-off moves, and any sidestep. Knee cave on landing is the number one error — if the knee dives inward, slow down and focus on the stick before adding reps."}},
-          { name: "Skater jump", spec: "3×6 each side", cue: "Controlled — reach opposite hand to landing foot", anim: "lat", tags: ["cod"] , drillInfo: {focus:"Lateral deceleration + balance",setup:"Open space.",steps:["Stand on one foot","Leap sideways, crossing the free leg slightly behind the landing leg as you jump","Land on the opposite foot in a slight forward lean — mimic a speed skater's body position","Reach the opposite hand down toward the landing foot","Hold the landing for 1 second, then push back the other way"],why:"The skater jump trains deceleration on one leg — the ability to stop lateral momentum and redirect. This is the exact movement in a defensive close-out or a crossover dribble cut. The reaching hand keeps the athlete honest about how low they're landing."}}
-        ]
-      },
-      {
-        name: "Agility", icon: "icon-agil", iconChar: "✦", time: "7 min", type: "agil",
-        drills: [
-          { name: "T-drill", spec: "4 reps", cue: "Sharp cuts — don't round the cones", anim: "cone", tags: ["agil", "cod"] , drillInfo: {focus:"Multi-directional agility",setup:"4 cones in a T-shape: Cone A at the start. Cone B 10 yards straight ahead. Cone C 5 yards to the left of B. Cone D 5 yards to the right of B.",steps:["Sprint from Cone A to Cone B — touch the base of B","Shuffle laterally left to Cone C — touch it with the left hand. Do not cross your feet","Shuffle all the way right to Cone D — touch with the right hand","Shuffle back left to Cone B — touch it","Backpedal from B back to A to finish","Time from first movement to crossing back through A"],why:"The T-drill tests forward sprint, lateral shuffle in both directions, and backpedal — four movement patterns in one drill. It is widely used at all levels as an agility benchmark. Don't round the cones, don't cross your feet on the shuffle, and touch every base."}},
-          { name: "Cone weave", spec: "3× through 5 cones", cue: "Eyes up, not on feet", anim: "cone", tags: ["agil"] , drillInfo: {focus:"Agility — body control at speed",setup:"5 cones in a straight line, about 1 yard apart.",steps:["Start at one end of the line","Weave through the cones using quick lateral steps — alternating sides of each cone","Stay on the balls of your feet, low hips","Keep your eyes up — don't look at your feet","On return, weave back through in the opposite direction"],why:"The tight cone spacing forces short, rapid direction changes with minimal room for error. Keeping the hips low through every gate is the key — athletes who stand up between cones lose time and control."}}
-        ]
-      },
-      {
-        name: "Cool-down", icon: "icon-cool", iconChar: "—", time: "5 min", type: "cool",
-        drills: [
-          { name: "Full lower body stretch sequence", spec: "5 min", cue: "Quads, hamstrings, hip flexors, calves", anim: "stretch", tags: [] }
-        ]
-      }
-    ],
-    load: { speed: 45, cod: 40, vert: 40, bound: 35, agil: 45 },
-    note: "Watch knee cave on lateral bounds — toes forward, knee tracks over second toe on landing. Bounding is about hang time and distance, not covering ground quickly."
-  },
-  {
-    num: 3, label: "Load", theme: "Increased intensity", intensity: "Build",
-    focus: "Push reps higher, add sprint volume, introduce depth drops. This is the hardest session of the first half.",
-    blocks: [
-      {
-        name: "Dynamic warm-up", icon: "icon-warmup", iconChar: "◎", time: "10 min", type: "warmup",
-        note: "Each drill = 1 length (~20 yds / court length). Walk back as recovery.",
-        drills: [
-          { name: "Jog", spec: "1 length", cue: "Easy pace, tall posture", anim: "run", tags: [] , drillInfo: {focus:"Warm-up — raise body temperature",setup:"Any straight path, court length or similar.",steps:["Start at an easy, relaxed pace — this is not a sprint","Stay tall: head up, shoulders relaxed, arms swinging naturally at your sides","Land midfoot, not on your heels","Breathe through your nose if possible — if you can't, you're going too fast"],why:"The jog gradually raises your core temperature and gets blood moving to your muscles. Everything in the warm-up works better when the body is already warm."}},
-          { name: "High knees", spec: "1 length", cue: "Drive knees to hip height, quick rhythm", anim: "skip", tags: [] , drillInfo: {focus:"Hip flexor activation + stride rate",setup:"Straight line, one court length.",steps:["Drive each knee up to hip height with every step — don't let them stay low","Pull your toes up toward your shin on the raised foot (dorsiflexion)","Pump your arms in opposition — right knee, left arm forward","Stay on the balls of your feet — no flat-footed landing","Keep your torso upright and tall — resist leaning back"],why:"High knees train the hip flexors and reinforce the knee drive pattern used in sprinting. Fast, high knees = faster stride frequency."}},
-          { name: "Butt kicks", spec: "1 length", cue: "Heels to glutes, stay on balls of feet", anim: "run", tags: [] , drillInfo: {focus:"Hamstring activation + stride mechanics",setup:"Straight line, one court length.",steps:["Drive your heel up toward your glute with each step — aim to touch","Keep your knees pointing down, not swinging forward","Stay on the balls of your feet with a slight forward lean","Arms pump in rhythm with the legs","Keep steps quick — this is about turnover, not covering distance"],why:"Butt kicks activate the hamstrings and reinforce the recovery phase of the stride — when the foot pulls back up after ground contact. Neglecting this causes slow leg turnover."}},
-          { name: "Light skips", spec: "1 length", cue: "Relaxed rhythm, low skip", anim: "skip", tags: [] , drillInfo: {focus:"Rhythm + coordination",setup:"Straight line, one court length.",steps:["Step on one foot, then skip (small hop) on that same foot before stepping on the other","Keep it low and relaxed — this is not a power skip","Arms swing gently in rhythm","Focus on finding a smooth, consistent rhythm before the more demanding drills"],why:"Light skips bridge the gap between jogging and the explosive skip drills later in the warm-up. They also activate the calves and ankles with minimal stress."}},
-          { name: "3-step squat", spec: "1 length", cue: "3 steps → squat hold 1 sec → repeat", anim: "hip", tags: [] , drillInfo: {focus:"Quad and glute activation + hip mobility",setup:"Straight line, one court length. No equipment.",steps:["Take 3 normal walking steps","On the 3rd step, sink into a squat — feet shoulder-width, hips back and down, chest tall","Hold the bottom position for 1 full second","Drive through both heels to stand, then take 3 more steps and repeat"],why:"Activates the quads, glutes, and hip flexors in a controlled range of motion. Also reinforces the squat landing position used in every jump drill later in the session."}},
-          { name: "3-step kick", spec: "1 length", cue: "3 steps → straight-leg kick to hip height", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility + balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","On the 3rd step, swing the opposite leg forward in a straight-leg kick — aim for hip height or above","Reach the opposite hand toward the foot as it rises","Keep the standing leg straight and tall — don't hunch forward to meet the foot","Lower the leg with control and continue walking"],why:"Actively lengthens the hamstring under mild load while also challenging single-leg balance. The straight-leg requirement forces the hamstring to work through full range."}},
-          { name: "3-step lunge", spec: "1 length", cue: "3 steps → deep lunge hold. Front knee over ankle", anim: "stretch", tags: [] , drillInfo: {focus:"Hip flexor stretch + quad activation",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Step into a deep forward lunge — front knee directly over the ankle, not past the toes","Rear knee drops to about 1–2 inches from the ground","Keep torso upright — don't let the chest fall forward","Hold 1 second, then drive through the front heel to stand"],why:"One of the most important warm-up drills for athletes — opens the hip flexors on the rear leg while loading the front quad. Hip flexors that don't get warmed up restrict stride length."}},
-          { name: "3-step hip hug", spec: "1 length", cue: "3 steps → pull knee to chest, balance 1 sec", anim: "hip", tags: [] , drillInfo: {focus:"Glute activation + single-leg balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up toward your chest using both hands, hugging it in","Balance on the standing leg for 1 full second — leg straight, hips level","Keep the chest tall and look forward, not down","Release and continue"],why:"Activates the glutes and hip stabilizers while building the single-leg balance needed for landing and cutting mechanics. Shaky balance here is a red flag for landing control."}},
-          { name: "3-step hip flex and open", spec: "1 length", cue: "3 steps → pull knee up, rotate leg out externally", anim: "hip", tags: [] , drillInfo: {focus:"Hip external rotation + mobility",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up to hip height","From that position, externally rotate the hip — imagine stepping over a low fence, opening the knee out to the side","Hold briefly at the top of the rotation","Lower the leg with control and continue"],why:"Opens the hip external rotators, which are critical for lateral cutting, defensive slides, and absorbing impact on one-leg landings. Tight external rotators lead to knee valgus (caving in) on cuts."}},
-          { name: "3-step SL RDL", spec: "1 length", cue: "3 steps → single-leg hinge, back leg extends. Flat back", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring + glute strength under stretch",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Balance on one leg with a soft knee","Hinge forward at the hip — chest moves toward the ground, rear leg extends straight behind you","Keep your back flat — think 'proud chest' the whole way down","Reach your hands toward the ground, then drive the hips forward to return to standing"],why:"The single-leg RDL is one of the best hamstring activation drills available. It loads the hamstring eccentrically (as it lengthens), which is exactly how it gets stressed during sprinting and bounding. Also builds the hip stability needed for single-leg landings."}},
-          { name: "3-step quad stretch and reach", spec: "1 length", cue: "3 steps → heel to glute, reach opposite arm up", anim: "stretch", tags: [] , drillInfo: {focus:"Quad stretch + hip flexor opening",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one heel up to your glute — grab the ankle or the shoelaces","Reach the opposite arm straight overhead as high as you can","Balance on the standing leg — keep it tall and straight","Hold 1–2 seconds, then release and continue"],why:"The overhead reach creates a full-body stretch from the quad through the hip flexor to the shoulder. It also forces better balance than a standard quad stretch because the reach shifts your center of gravity."}},
-          { name: "3-step hamstring scoop", spec: "1 length", cue: "3 steps → straight-leg forward, scoop under foot", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility — active",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Extend one leg straight forward with the heel on the ground, toe pointing up","Hinge from the hip (not the lower back) and reach both hands underneath the foot — 'scoop' under it","Hold 1 second — feel the hamstring lengthen","Return to standing and continue"],why:"This is an active hamstring stretch — the muscle is lengthening while also being gently loaded, which is more sport-specific than a passive hold. Prepares the hamstrings for the eccentric demands of sprinting and bounding."}},
-          { name: "Straight-leg kicks", spec: "1 length", cue: "Straight legs kick forward as you run — quick rhythm, reach arms to meet the foot", anim: "skip", tags: [] , drillInfo: {focus:"Hamstring activation + hip flexor mobility while moving",setup:"Straight line, one court length.",steps:["Walk or jog forward at a steady pace","With each step, swing the opposite leg forward in a straight-leg kick — toes pointed up","Reach the opposite hand toward the rising foot as it kicks up","Keep moving forward — this is not a stationary drill","Maintain a light, rhythmic pace"],why:"Unlike the 3-step kick which pauses, straight-leg kicks are continuous — training the hip flexors and hamstrings to work together at tempo. Great final primer before explosive work."}},
-          { name: "Anklers", spec: "1 length", cue: "Quick hops on balls of feet — stiff ankle, fast turnover", anim: "ankl", tags: [] , drillInfo: {focus:"Ankle stiffness + reactive strength",setup:"Straight line, one court length.",steps:["Start standing tall on the balls of your feet","Take short, rapid hops moving forward — the power comes from the ankle only","Keep knee bend minimal — the ankle acts like a stiff spring, not a piston","Ground contact should be brief and quiet","Move forward continuously at a quick tempo"],why:"Ankle stiffness is a major factor in sprint speed and jump height. The faster the ankle can load and unload, the more elastic energy is captured. This drill directly trains the achilles tendon and calf to act as a spring — which is exactly what happens at every foot strike during sprinting."}}
-        ]
-      },
-      {
-        name: "Speed — acceleration + max", icon: "icon-speed", iconChar: "▶", time: "12 min", type: "speed",
-        drills: [
-          { name: "Falling start 10m", spec: "4 reps", cue: "Aggressive lean, attack the first step", anim: "run", tags: ["speed"],
-            drillInfo: { focus: "Hip flexion + first step", steps: ["Start with toes on the line", "Keep body aligned as you fall forward", "At the last second, flex at the hip and explode into the sprint"], why: "Trains the body to use gravity as the trigger — the lean forces a positive shin angle and aggressive first step without overthinking it." } },
-          { name: "Aggressive crouch start", spec: "4×10m", cue: "Hands wider than shoulders, fingertips on ground. Drive back foot forward, swing opposite arm back", anim: "run", tags: ["speed"],
-            drillInfo: { focus: "Projection + explosion", steps: ["Feet staggered, both knees bent. Hands on the ground just outside shoulder width, up on fingertips", "Create an aggressive forward angle — more than a traditional start", "Drive back foot forward and swing opposite arm back hard to build momentum"], why: "The wider, lower position forces you to cover more ground and really explode to overcome it. Targets projection — applying force backward while quickly flexing the thigh to gain ground." } , drillInfo: {focus:"Projection + explosive extension",setup:"Open space, 10m sprint lane.",steps:["Start with feet staggered — one forward, one back — both knees bent","Place both hands on the ground, just wider than shoulder-width, on your fingertips","Create an aggressive forward angle — more extreme than a standard sprint stance","Drive the rear foot forward as the first step, swinging the opposite arm back hard","Explode out of the position, covering as much ground as possible on the first two steps","Accelerate through 10m"],why:"The wide, low starting position forces the athlete to cover more ground and generate more force just to get moving. It targets projection — driving the body forward at a low angle to build speed quickly. This is closest to how track athletes come out of starting blocks."}},
-          { name: "Flying 20m sprint (rolling start)", spec: "4 reps", cue: "Build into it over 15m, then release", anim: "run", tags: ["speed"] , drillInfo: {focus:"Max velocity sprinting — intro",setup:"Mark a build-up zone and a 20m sprint zone.",steps:["Build into the sprint over 10–15m at a controlled pace","Release into maximum effort at the start of the 20m zone","Maintain tall sprint posture — don't lean forward or tense up at speed","Sprint through and past the finish — don't brake early","Walk back, rest fully, then repeat"],why:"Learning to run fast starts with learning what fast feels like. The rolling start removes the explosive start and lets the athlete focus purely on mechanics at high speed — tall posture, relaxed face and shoulders, quick ground contact."}},
-          { name: "Top-speed 30m sprint", spec: "3 reps", cue: "Full recovery 90s between — no tired sprints", anim: "run", tags: ["speed"] , drillInfo: {focus:"Acceleration into top speed",setup:"A clear 30m straight line.",steps:["Start from a standing or 3-point stance","Accelerate hard for the first 15m — lean forward, drive the knees","Transition to upright sprinting for the final 15m — tall posture, eyes up","Sprint through the finish line — don't decelerate early","Rest fully — 90 seconds minimum between reps"],why:"The 30m sprint trains the full arc from acceleration to top speed in one rep. The transition point around 15m is where athletes often fall apart — the lean should gradually reduce as speed builds, not snap upright suddenly."}},
-          { name: "Single-leg hop", spec: "2×10m each leg", cue: "Consistent distance each hop — same leg all the way down", anim: "bound", tags: ["bound"] , drillInfo: {focus:"Unilateral power + rhythm",setup:"A straight 10m line.",steps:["Balance on one foot at the start","Push off and hop forward on the same foot — cover as much distance as possible per hop","Land on the same foot and immediately load for the next hop","Try to keep each hop the same distance — consistency matters as much as distance","Complete the full 10m on one leg, then switch"],why:"Single-leg hops expose side-to-side strength differences that bilateral (two-legged) drills hide. If one leg hops noticeably shorter or less consistently, that's the leg to focus on. Trains the achilles, calf, and hip extensors on each side independently."}}
-        ]
-      },
-      {
-        name: "Plyometrics — vertical focus", icon: "icon-vert", iconChar: "↑", time: "12 min", type: "vert",
-        drills: [
-          { name: "Depth drop → immediate jump", spec: "3×5 reps", cue: "Step off (don't jump). Hit ground → instant takeoff", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Reactive strength — intro",setup:"A low box or step, 6–10 inches high. Open space in front.",steps:["Stand on the edge of the box — toes near the edge","Step off the box — do NOT jump off. Let gravity bring you down","The moment both feet hit the ground, immediately jump straight up as high as possible","Ground contact should be very brief — under half a second","Land soft, absorb, and reset before the next rep"],why:"This is the entry point to depth jump training. Stepping off (not jumping) ensures you are training the reactive reflex, not just adding another jump. The ground contact time is what matters — shorter contact = better reactive strength."}},
-          { name: "Tuck jump", spec: "3×5 reps", cue: "Knees to chest, land soft on balls of feet", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Explosive vertical power + body control",setup:"Open space, no equipment.",steps:["Start standing with feet hip-width","Jump explosively upward","At the peak, drive both knees up toward your chest simultaneously","Grab or reach for the knees at the top if you can","Release and prepare to land before coming down","Land on both feet with soft knees — absorb fully"],why:"Tuck jumps require maximum vertical force AND hip flexor strength to pull the knees up at the top. They also train body awareness at the peak of a jump — important for contested shots and rebounds."}},
-          { name: "Countermovement jump", spec: "4×5 reps", cue: "Max height — compete with yourself", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Elastic energy + vertical power",setup:"Open space, no equipment.",steps:["Stand tall with feet shoulder-width","Quickly dip down — hips back, knees bent — and immediately reverse upward in one fluid motion","Swing both arms down during the dip then drive them hard overhead as you jump","The dip and jump should feel like one movement, not two separate actions","Reach full extension at the top — ankles, knees, hips all extended","Land soft on both feet — absorb with flexed knees and hips"],why:"The countermovement uses the stretch-shortening cycle — the muscle stores elastic energy in the dip and releases it explosively. This is how athletes jump in real sports. Faster dip = more elastic energy = higher jump."}},
-          { name: "Single-leg jump", spec: "2×5 each leg", cue: "Control the landing — don't wobble", anim: "jump", tags: ["vert", "bound"] , drillInfo: {focus:"Unilateral vertical power",setup:"Open space, no equipment.",steps:["Stand on one foot with a soft knee","Drop into a single-leg quarter squat and explode upward","Drive the free knee up to add height","Land on the same foot — absorb the landing and hold for 2 seconds","Keep the landing knee tracking over the toes — don't let it cave inward","Complete all reps on one leg before switching"],why:"Single-leg vertical jumping is how almost every basketball jump actually happens — layups, contested shots, one-foot cuts. If landing control breaks down here, it will break down in a game."}}
-        ]
-      },
-      {
-        name: "Change of direction — speed", icon: "icon-cod", iconChar: "⇄", time: "8 min", type: "cod",
-        drills: [
-          { name: "5-10-5 timed", spec: "5 reps, 60s rest", cue: "Touch the line — don't shadow cut", anim: "cone", tags: ["cod"], drillInfo: {
-              focus: "Change of direction — lateral acceleration",
-              setup: "Place 3 cones in a straight line, each exactly 5 yards apart. You start at the middle cone. The drill covers 5 yards right, 10 yards left, then 5 yards back to the middle — total of 20 yards.",
-              steps: [
-                "Stand at the middle cone in an athletic stance — feet shoulder-width, hips down, weight on the balls of your feet",
-                "On go, sprint 5 yards to your right and touch the cone (or line) with your right hand",
-                "Push off hard and sprint 10 yards all the way to the left cone — touch with your left hand",
-                "Drive back 5 yards to the middle cone and finish through the line"
-              ],
-              why: "The key is the plant and cut — not the sprint. Stay low through the turn, drive off the outside foot, and reach down to touch without over-striding. Shadow cuts (not touching the line) don't count."
-            } },
-          { name: "L-drill", spec: "4 reps", cue: "Round the cone, don't brake into it", anim: "cone", tags: ["agil", "cod"], drillInfo: {
-              focus: "Change of direction — multi-directional cutting",
-              setup: "Place 3 cones in an L-shape: Cone A at the start, Cone B 5 yards straight ahead, Cone C 5 yards to the right of Cone B. The L shape is formed by A→B (straight) and B→C (right turn).",
-              steps: [
-                "Start at Cone A. Sprint straight to Cone B and touch it",
-                "Sprint back to Cone A and touch it",
-                "Sprint back to Cone B, round it tightly — stay low and lean into the turn",
-                "Sprint around the outside of Cone C, looping around it and back to Cone B",
-                "Finish by sprinting from B back through A"
-              ],
-              why: "The L-drill tests more movement patterns than the 5-10-5 — forward sprint, backpedal, change of direction, and a curved run around the cones. Don't brake into Cone B on the loop — carry speed through the turn by planting your outside foot and leaning."
-            } },
-          { name: "Lateral bound sequence", spec: "4×4 each side", cue: "Explode, stick, reload — one fluid sequence", anim: "lat", tags: ["cod"] , drillInfo: {focus:"Lateral power — repeated",setup:"Open space.",steps:["Same mechanics as the lateral bound","Complete 4 consecutive bounds in one direction without stopping","Each bound should be a max-effort push — don't coast between reps","Stick the final landing, then reset and go back the other way"],why:"Chaining multiple lateral bounds together trains the ability to redirect force repeatedly, which is closer to game reality than isolated single bounds."}}
-        ]
-      },
-      {
-        name: "Cool-down", icon: "icon-cool", iconChar: "—", time: "5 min", type: "cool",
-        drills: [
-          { name: "Full stretch + 5 min walk", spec: "5 min", cue: "Heart rate down, breathe deep", anim: "stretch", tags: [] }
-        ]
-      }
-    ],
-    load: { speed: 60, cod: 55, vert: 60, bound: 50, agil: 55 },
-    note: "Depth drops are new — step off the box, don't jump off. The goal is minimal ground contact on landing before the jump. Walk through it slowly the first time if needed."
-  },
-  {
-    num: 4, label: "Deload", theme: "Recovery + reinforce", intensity: "Easy",
-    focus: "Cut volume by ~40%. Keep patterns sharp but let the body absorb weeks 1–3. This week is not optional — adaptation happens here.",
-    blocks: [
-      {
-        name: "Dynamic warm-up", icon: "icon-warmup", iconChar: "◎", time: "10 min", type: "warmup",
-        note: "Each drill = 1 length (~20 yds). Deload week — keep everything smooth and relaxed. Walk back easy.",
-        drills: [
-          { name: "Jog", spec: "1 length", cue: "Easy conversational pace — no rush", anim: "run", tags: [] , drillInfo: {focus:"Warm-up — raise body temperature",setup:"Any straight path, court length or similar.",steps:["Start at an easy, relaxed pace — this is not a sprint","Stay tall: head up, shoulders relaxed, arms swinging naturally at your sides","Land midfoot, not on your heels","Breathe through your nose if possible — if you can't, you're going too fast"],why:"The jog gradually raises your core temperature and gets blood moving to your muscles. Everything in the warm-up works better when the body is already warm."}},
-          { name: "High knees", spec: "1 length", cue: "Relaxed rhythm, moderate height", anim: "skip", tags: [] , drillInfo: {focus:"Hip flexor activation + stride rate",setup:"Straight line, one court length.",steps:["Drive each knee up to hip height with every step — don't let them stay low","Pull your toes up toward your shin on the raised foot (dorsiflexion)","Pump your arms in opposition — right knee, left arm forward","Stay on the balls of your feet — no flat-footed landing","Keep your torso upright and tall — resist leaning back"],why:"High knees train the hip flexors and reinforce the knee drive pattern used in sprinting. Fast, high knees = faster stride frequency."}},
-          { name: "Butt kicks", spec: "1 length", cue: "Light and easy, stay loose", anim: "run", tags: [] , drillInfo: {focus:"Hamstring activation + stride mechanics",setup:"Straight line, one court length.",steps:["Drive your heel up toward your glute with each step — aim to touch","Keep your knees pointing down, not swinging forward","Stay on the balls of your feet with a slight forward lean","Arms pump in rhythm with the legs","Keep steps quick — this is about turnover, not covering distance"],why:"Butt kicks activate the hamstrings and reinforce the recovery phase of the stride — when the foot pulls back up after ground contact. Neglecting this causes slow leg turnover."}},
-          { name: "Light skips", spec: "1 length", cue: "Low and relaxed — this is a recovery week", anim: "skip", tags: [] , drillInfo: {focus:"Rhythm + coordination",setup:"Straight line, one court length.",steps:["Step on one foot, then skip (small hop) on that same foot before stepping on the other","Keep it low and relaxed — this is not a power skip","Arms swing gently in rhythm","Focus on finding a smooth, consistent rhythm before the more demanding drills"],why:"Light skips bridge the gap between jogging and the explosive skip drills later in the warm-up. They also activate the calves and ankles with minimal stress."}},
-          { name: "3-step squat", spec: "1 length", cue: "3 steps → squat hold 1 sec. Focus on depth and balance", anim: "hip", tags: [] , drillInfo: {focus:"Quad and glute activation + hip mobility",setup:"Straight line, one court length. No equipment.",steps:["Take 3 normal walking steps","On the 3rd step, sink into a squat — feet shoulder-width, hips back and down, chest tall","Hold the bottom position for 1 full second","Drive through both heels to stand, then take 3 more steps and repeat"],why:"Activates the quads, glutes, and hip flexors in a controlled range of motion. Also reinforces the squat landing position used in every jump drill later in the session."}},
-          { name: "3-step kick", spec: "1 length", cue: "3 steps → straight-leg kick, controlled height", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility + balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","On the 3rd step, swing the opposite leg forward in a straight-leg kick — aim for hip height or above","Reach the opposite hand toward the foot as it rises","Keep the standing leg straight and tall — don't hunch forward to meet the foot","Lower the leg with control and continue walking"],why:"Actively lengthens the hamstring under mild load while also challenging single-leg balance. The straight-leg requirement forces the hamstring to work through full range."}},
-          { name: "3-step lunge", spec: "1 length", cue: "3 steps → lunge, feel the stretch. No rush", anim: "stretch", tags: [] , drillInfo: {focus:"Hip flexor stretch + quad activation",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Step into a deep forward lunge — front knee directly over the ankle, not past the toes","Rear knee drops to about 1–2 inches from the ground","Keep torso upright — don't let the chest fall forward","Hold 1 second, then drive through the front heel to stand"],why:"One of the most important warm-up drills for athletes — opens the hip flexors on the rear leg while loading the front quad. Hip flexors that don't get warmed up restrict stride length."}},
-          { name: "3-step hip hug", spec: "1 length", cue: "3 steps → knee to chest, hold balance", anim: "hip", tags: [] , drillInfo: {focus:"Glute activation + single-leg balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up toward your chest using both hands, hugging it in","Balance on the standing leg for 1 full second — leg straight, hips level","Keep the chest tall and look forward, not down","Release and continue"],why:"Activates the glutes and hip stabilizers while building the single-leg balance needed for landing and cutting mechanics. Shaky balance here is a red flag for landing control."}},
-          { name: "3-step hip flex and open", spec: "1 length", cue: "3 steps → knee up, open externally. Own the movement", anim: "hip", tags: [] , drillInfo: {focus:"Hip external rotation + mobility",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up to hip height","From that position, externally rotate the hip — imagine stepping over a low fence, opening the knee out to the side","Hold briefly at the top of the rotation","Lower the leg with control and continue"],why:"Opens the hip external rotators, which are critical for lateral cutting, defensive slides, and absorbing impact on one-leg landings. Tight external rotators lead to knee valgus (caving in) on cuts."}},
-          { name: "3-step SL RDL", spec: "1 length", cue: "3 steps → single-leg hinge, slow and controlled", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring + glute strength under stretch",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Balance on one leg with a soft knee","Hinge forward at the hip — chest moves toward the ground, rear leg extends straight behind you","Keep your back flat — think 'proud chest' the whole way down","Reach your hands toward the ground, then drive the hips forward to return to standing"],why:"The single-leg RDL is one of the best hamstring activation drills available. It loads the hamstring eccentrically (as it lengthens), which is exactly how it gets stressed during sprinting and bounding. Also builds the hip stability needed for single-leg landings."}},
-          { name: "3-step quad stretch and reach", spec: "1 length", cue: "3 steps → heel to glute, reach up. Feel the balance", anim: "stretch", tags: [] , drillInfo: {focus:"Quad stretch + hip flexor opening",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one heel up to your glute — grab the ankle or the shoelaces","Reach the opposite arm straight overhead as high as you can","Balance on the standing leg — keep it tall and straight","Hold 1–2 seconds, then release and continue"],why:"The overhead reach creates a full-body stretch from the quad through the hip flexor to the shoulder. It also forces better balance than a standard quad stretch because the reach shifts your center of gravity."}},
-          { name: "3-step hamstring scoop", spec: "1 length", cue: "3 steps → scoop under foot. Feel the hamstring", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility — active",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Extend one leg straight forward with the heel on the ground, toe pointing up","Hinge from the hip (not the lower back) and reach both hands underneath the foot — 'scoop' under it","Hold 1 second — feel the hamstring lengthen","Return to standing and continue"],why:"This is an active hamstring stretch — the muscle is lengthening while also being gently loaded, which is more sport-specific than a passive hold. Prepares the hamstrings for the eccentric demands of sprinting and bounding."}},
-          { name: "Straight-leg kicks", spec: "1 length", cue: "Straight-leg kicks at relaxed pace — controlled height, no need to max out today", anim: "skip", tags: [] , drillInfo: {focus:"Hamstring activation + hip flexor mobility while moving",setup:"Straight line, one court length.",steps:["Walk or jog forward at a steady pace","With each step, swing the opposite leg forward in a straight-leg kick — toes pointed up","Reach the opposite hand toward the rising foot as it kicks up","Keep moving forward — this is not a stationary drill","Maintain a light, rhythmic pace"],why:"Unlike the 3-step kick which pauses, straight-leg kicks are continuous — training the hip flexors and hamstrings to work together at tempo. Great final primer before explosive work."}},
-          { name: "Anklers", spec: "1 length", cue: "Light quick hops — stiff ankle, feel the rhythm", anim: "ankl", tags: [] , drillInfo: {focus:"Ankle stiffness + reactive strength",setup:"Straight line, one court length.",steps:["Start standing tall on the balls of your feet","Take short, rapid hops moving forward — the power comes from the ankle only","Keep knee bend minimal — the ankle acts like a stiff spring, not a piston","Ground contact should be brief and quiet","Move forward continuously at a quick tempo"],why:"Ankle stiffness is a major factor in sprint speed and jump height. The faster the ankle can load and unload, the more elastic energy is captured. This drill directly trains the achilles tendon and calf to act as a spring — which is exactly what happens at every foot strike during sprinting."}}
-        ]
-      },
-      {
-        name: "Speed — light", icon: "icon-speed", iconChar: "▶", time: "10 min", type: "speed",
-        drills: [
-          { name: "A-skip", spec: "2×20m", cue: "Focus on feel, not intensity", anim: "skip", tags: ["speed"], drillInfo: {
-              focus: "Sprint mechanics — knee drive and arm action",
-              setup: "Mark a 20–30m straight line on the court or pavement. No equipment needed.",
-              steps: [
-                "Start in a tall upright stance, weight on the balls of your feet",
-                "Begin a skip rhythm — push off one foot, skip, land, push off the other",
-                "On each skip, drive the lead knee up forcefully to hip height — think 'knee to pocket'",
-                "Pull the toes up toward the shin (dorsiflexion) on the raised foot — never let the foot hang down",
-                "Drive the opposite arm forward in sync with the knee — elbow bent at 90 degrees",
-                "Land on the ball of the foot directly under your hip, not in front of you",
-                "Keep the torso tall and relaxed — no leaning forward or back"
-              ],
-              why: "The A-skip drills the exact knee drive and foot position used in sprinting. Every time your foot strikes the ground in a sprint, the mechanics should look like this. Consistent reps build the motor pattern so it happens automatically at full speed."
-            } },
-          { name: "Falling start sprint 10m", spec: "3 reps (85% effort)", cue: "Controlled and smooth — not max effort", anim: "run", tags: ["speed"] },
-          { name: "20m build-up", spec: "2 reps", cue: "Easy acceleration, no all-out finish", anim: "run", tags: ["speed"] , drillInfo: {focus:"Acceleration control — deload version",setup:"Mark a 20m straight line.",steps:["Start easy — 50 to 60% effort","Build smoothly over the 20m — no hard acceleration","Finish at around 75 to 80% — not max effort today","Keep everything relaxed and fluid"],why:"On a deload week, build-ups maintain the speed pattern without taxing the nervous system. The goal is to feel fast and fluid, not to push limits."}},
-          { name: "Standing broad jump", spec: "3×3 reps (relaxed)", cue: "Easy effort — reinforce the pattern, not the distance", anim: "jump", tags: ["bound"] }
-        ]
-      },
-      {
-        name: "Jumps — quality only", icon: "icon-vert", iconChar: "↑", time: "8 min", type: "vert",
-        drills: [
-          { name: "Broad jump", spec: "3×3 reps", cue: "Relaxed — just feel the pattern, no max effort", anim: "jump", tags: ["vert", "bound"] , drillInfo: {focus:"Horizontal power + landing",setup:"A line or marker on the ground. Open flat space.",steps:["Stand behind the line with feet hip-width","Drop into a quarter squat, swinging arms back to load","Explosively swing arms forward and jump as far horizontally as possible","Drive the hips forward — this is not a vertical jump, it's a forward jump","Land on both feet simultaneously, hips back, knees bent — absorb the landing","Stick for 2 seconds before stepping out"],why:"The broad jump measures horizontal power — the ability to project force forward. This transfers to first step quickness, acceleration, and bounding. Distance is the metric: track it each week to see progress."}},
-          { name: "Countermovement jump", spec: "3×4 reps", cue: "Smooth and easy — reinforce technique", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Elastic energy + vertical power",setup:"Open space, no equipment.",steps:["Stand tall with feet shoulder-width","Quickly dip down — hips back, knees bent — and immediately reverse upward in one fluid motion","Swing both arms down during the dip then drive them hard overhead as you jump","The dip and jump should feel like one movement, not two separate actions","Reach full extension at the top — ankles, knees, hips all extended","Land soft on both feet — absorb with flexed knees and hips"],why:"The countermovement uses the stretch-shortening cycle — the muscle stores elastic energy in the dip and releases it explosively. This is how athletes jump in real sports. Faster dip = more elastic energy = higher jump."}},
-          { name: "Lateral bound", spec: "2×3 each side", cue: "Controlled, clean landings", anim: "lat", tags: ["cod"] , drillInfo: {focus:"Lateral power + single-leg landing",setup:"Open space. Mark two spots 3–4 meters apart.",steps:["Stand on one foot with a slight bend in the knee","Push off laterally — drive off the inside edge of the foot, not the toe","Reach as far sideways as possible and land on the opposite foot only","STICK the landing for 1 full second — knee tracks over the second toe, hips back, no wobble","Load the landing leg and push back the other way","Reach the arm opposite to the landing foot toward the ground on each landing"],why:"Lateral bounding builds the frontal plane power used in defensive slides, cut-off moves, and any sidestep. Knee cave on landing is the number one error — if the knee dives inward, slow down and focus on the stick before adding reps."}}
-        ]
-      },
-      {
-        name: "Agility — relaxed", icon: "icon-agil", iconChar: "✦", time: "8 min", type: "agil",
-        drills: [
-          { name: "T-drill", spec: "3 reps (smooth, not max)", cue: "Feel the footwork, not the clock", anim: "cone", tags: ["agil", "cod"] , drillInfo: {focus:"Multi-directional agility",setup:"4 cones in a T-shape: Cone A at the start. Cone B 10 yards straight ahead. Cone C 5 yards to the left of B. Cone D 5 yards to the right of B.",steps:["Sprint from Cone A to Cone B — touch the base of B","Shuffle laterally left to Cone C — touch it with the left hand. Do not cross your feet","Shuffle all the way right to Cone D — touch with the right hand","Shuffle back left to Cone B — touch it","Backpedal from B back to A to finish","Time from first movement to crossing back through A"],why:"The T-drill tests forward sprint, lateral shuffle in both directions, and backpedal — four movement patterns in one drill. It is widely used at all levels as an agility benchmark. Don't round the cones, don't cross your feet on the shuffle, and touch every base."}},
-          { name: "Cone weave", spec: "2 reps", cue: "Light feet, stay relaxed through the pattern", anim: "cone", tags: ["agil"] , drillInfo: {focus:"Agility — body control at speed",setup:"5 cones in a straight line, about 1 yard apart.",steps:["Start at one end of the line","Weave through the cones using quick lateral steps — alternating sides of each cone","Stay on the balls of your feet, low hips","Keep your eyes up — don't look at your feet","On return, weave back through in the opposite direction"],why:"The tight cone spacing forces short, rapid direction changes with minimal room for error. Keeping the hips low through every gate is the key — athletes who stand up between cones lose time and control."}},
-          { name: "3-cone L-drill", spec: "3 reps (smooth, not max)", cue: "Feel the pattern — sharp turns but no clock pressure this week", anim: "cone", tags: ["agil", "cod"], drillInfo: {
-              focus: "Change of direction — multi-directional cutting",
-              setup: "Place 3 cones in an L-shape: Cone A at the start, Cone B 5 yards straight ahead, Cone C 5 yards to the right of Cone B. The L shape is formed by A→B (straight) and B→C (right turn).",
-              steps: [
-                "Start at Cone A. Sprint straight to Cone B and touch it",
-                "Sprint back to Cone A and touch it",
-                "Sprint back to Cone B, round it tightly — stay low and lean into the turn",
-                "Sprint around the outside of Cone C, looping around it and back to Cone B",
-                "Finish by sprinting from B back through A"
-              ],
-              why: "The L-drill tests more movement patterns than the 5-10-5 — forward sprint, backpedal, change of direction, and a curved run around the cones. Don't brake into Cone B on the loop — carry speed through the turn by planting your outside foot and leaning."
-            } }
-        ]
-      },
-      {
-        name: "Cool-down", icon: "icon-cool", iconChar: "—", time: "10 min", type: "cool",
-        drills: [
-          { name: "Full flexibility routine", spec: "8 min", cue: "Hold every stretch 30–45 seconds", anim: "stretch", tags: [] },
-          { name: "Breathing + relaxation", spec: "2 min", cue: "4 counts in, 6 counts out", anim: "stretch", tags: [] }
-        ]
-      }
-    ],
-    load: { speed: 30, cod: 25, vert: 25, bound: 20, agil: 25 },
-    note: "This session should feel almost easy. That is correct. If an athlete thinks it's too light — that's exactly the right feeling. Push fatigue out so weeks 5 and 6 land harder adaptations."
-  },
-  {
-    num: 5, label: "Power", theme: "Intensity peak", intensity: "Hard",
-    focus: "Highest intensity of the program. Max-effort sprints, reactive jumps, competitive agility. Every rep counts.",
-    blocks: [
-      {
-        name: "Dynamic warm-up", icon: "icon-warmup", iconChar: "◎", time: "10 min", type: "warmup",
-        note: "Each drill = 1 length (~20 yds). Week 5 is peak intensity — use this warm-up to fully prime the CNS. Walk back recovery.",
-        drills: [
-          { name: "Jog", spec: "1 length", cue: "Easy start, build body temp", anim: "run", tags: [] , drillInfo: {focus:"Warm-up — raise body temperature",setup:"Any straight path, court length or similar.",steps:["Start at an easy, relaxed pace — this is not a sprint","Stay tall: head up, shoulders relaxed, arms swinging naturally at your sides","Land midfoot, not on your heels","Breathe through your nose if possible — if you can't, you're going too fast"],why:"The jog gradually raises your core temperature and gets blood moving to your muscles. Everything in the warm-up works better when the body is already warm."}},
-          { name: "High knees", spec: "1 length", cue: "Drive hard — start waking up the fast-twitch", anim: "skip", tags: [] , drillInfo: {focus:"Hip flexor activation + stride rate",setup:"Straight line, one court length.",steps:["Drive each knee up to hip height with every step — don't let them stay low","Pull your toes up toward your shin on the raised foot (dorsiflexion)","Pump your arms in opposition — right knee, left arm forward","Stay on the balls of your feet — no flat-footed landing","Keep your torso upright and tall — resist leaning back"],why:"High knees train the hip flexors and reinforce the knee drive pattern used in sprinting. Fast, high knees = faster stride frequency."}},
-          { name: "Butt kicks", spec: "1 length", cue: "Quick turnover, stay on balls of feet", anim: "run", tags: [] , drillInfo: {focus:"Hamstring activation + stride mechanics",setup:"Straight line, one court length.",steps:["Drive your heel up toward your glute with each step — aim to touch","Keep your knees pointing down, not swinging forward","Stay on the balls of your feet with a slight forward lean","Arms pump in rhythm with the legs","Keep steps quick — this is about turnover, not covering distance"],why:"Butt kicks activate the hamstrings and reinforce the recovery phase of the stride — when the foot pulls back up after ground contact. Neglecting this causes slow leg turnover."}},
-          { name: "Light skips", spec: "1 length", cue: "Find your rhythm before the power drills", anim: "skip", tags: [] , drillInfo: {focus:"Rhythm + coordination",setup:"Straight line, one court length.",steps:["Step on one foot, then skip (small hop) on that same foot before stepping on the other","Keep it low and relaxed — this is not a power skip","Arms swing gently in rhythm","Focus on finding a smooth, consistent rhythm before the more demanding drills"],why:"Light skips bridge the gap between jogging and the explosive skip drills later in the warm-up. They also activate the calves and ankles with minimal stress."}},
-          { name: "3-step squat", spec: "1 length", cue: "3 steps → squat hold 1 sec. Deep and controlled", anim: "hip", tags: [] , drillInfo: {focus:"Quad and glute activation + hip mobility",setup:"Straight line, one court length. No equipment.",steps:["Take 3 normal walking steps","On the 3rd step, sink into a squat — feet shoulder-width, hips back and down, chest tall","Hold the bottom position for 1 full second","Drive through both heels to stand, then take 3 more steps and repeat"],why:"Activates the quads, glutes, and hip flexors in a controlled range of motion. Also reinforces the squat landing position used in every jump drill later in the session."}},
-          { name: "3-step kick", spec: "1 length", cue: "3 steps → straight-leg kick — start getting loose", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility + balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","On the 3rd step, swing the opposite leg forward in a straight-leg kick — aim for hip height or above","Reach the opposite hand toward the foot as it rises","Keep the standing leg straight and tall — don't hunch forward to meet the foot","Lower the leg with control and continue walking"],why:"Actively lengthens the hamstring under mild load while also challenging single-leg balance. The straight-leg requirement forces the hamstring to work through full range."}},
-          { name: "3-step lunge", spec: "1 length", cue: "3 steps → lunge. Hip flexors need to be open for sprinting", anim: "stretch", tags: [] , drillInfo: {focus:"Hip flexor stretch + quad activation",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Step into a deep forward lunge — front knee directly over the ankle, not past the toes","Rear knee drops to about 1–2 inches from the ground","Keep torso upright — don't let the chest fall forward","Hold 1 second, then drive through the front heel to stand"],why:"One of the most important warm-up drills for athletes — opens the hip flexors on the rear leg while loading the front quad. Hip flexors that don't get warmed up restrict stride length."}},
-          { name: "3-step hip hug", spec: "1 length", cue: "3 steps → knee to chest, balance. Glute activation", anim: "hip", tags: [] , drillInfo: {focus:"Glute activation + single-leg balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up toward your chest using both hands, hugging it in","Balance on the standing leg for 1 full second — leg straight, hips level","Keep the chest tall and look forward, not down","Release and continue"],why:"Activates the glutes and hip stabilizers while building the single-leg balance needed for landing and cutting mechanics. Shaky balance here is a red flag for landing control."}},
-          { name: "3-step hip flex and open", spec: "1 length", cue: "3 steps → knee up, open externally. Full hip mobility", anim: "hip", tags: [] , drillInfo: {focus:"Hip external rotation + mobility",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up to hip height","From that position, externally rotate the hip — imagine stepping over a low fence, opening the knee out to the side","Hold briefly at the top of the rotation","Lower the leg with control and continue"],why:"Opens the hip external rotators, which are critical for lateral cutting, defensive slides, and absorbing impact on one-leg landings. Tight external rotators lead to knee valgus (caving in) on cuts."}},
-          { name: "3-step SL RDL", spec: "1 length", cue: "3 steps → single-leg hinge. Hamstrings need this before depth jumps", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring + glute strength under stretch",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Balance on one leg with a soft knee","Hinge forward at the hip — chest moves toward the ground, rear leg extends straight behind you","Keep your back flat — think 'proud chest' the whole way down","Reach your hands toward the ground, then drive the hips forward to return to standing"],why:"The single-leg RDL is one of the best hamstring activation drills available. It loads the hamstring eccentrically (as it lengthens), which is exactly how it gets stressed during sprinting and bounding. Also builds the hip stability needed for single-leg landings."}},
-          { name: "3-step quad stretch and reach", spec: "1 length", cue: "3 steps → heel to glute, reach up tall", anim: "stretch", tags: [] , drillInfo: {focus:"Quad stretch + hip flexor opening",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one heel up to your glute — grab the ankle or the shoelaces","Reach the opposite arm straight overhead as high as you can","Balance on the standing leg — keep it tall and straight","Hold 1–2 seconds, then release and continue"],why:"The overhead reach creates a full-body stretch from the quad through the hip flexor to the shoulder. It also forces better balance than a standard quad stretch because the reach shifts your center of gravity."}},
-          { name: "3-step hamstring scoop", spec: "1 length", cue: "3 steps → scoop under foot. Last hamstring prep", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility — active",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Extend one leg straight forward with the heel on the ground, toe pointing up","Hinge from the hip (not the lower back) and reach both hands underneath the foot — 'scoop' under it","Hold 1 second — feel the hamstring lengthen","Return to standing and continue"],why:"This is an active hamstring stretch — the muscle is lengthening while also being gently loaded, which is more sport-specific than a passive hold. Prepares the hamstrings for the eccentric demands of sprinting and bounding."}},
-          { name: "Straight-leg kicks", spec: "1 length", cue: "Straight legs kick forward aggressively — big arm swing, prime the hamstrings before sprinting", anim: "skip", tags: [] , drillInfo: {focus:"Hamstring activation + hip flexor mobility while moving",setup:"Straight line, one court length.",steps:["Walk or jog forward at a steady pace","With each step, swing the opposite leg forward in a straight-leg kick — toes pointed up","Reach the opposite hand toward the rising foot as it kicks up","Keep moving forward — this is not a stationary drill","Maintain a light, rhythmic pace"],why:"Unlike the 3-step kick which pauses, straight-leg kicks are continuous — training the hip flexors and hamstrings to work together at tempo. Great final primer before explosive work."}},
-          { name: "Anklers", spec: "1 length", cue: "Fast stiff-ankle hops — activate the stretch-shortening cycle", anim: "ankl", tags: [] , drillInfo: {focus:"Ankle stiffness + reactive strength",setup:"Straight line, one court length.",steps:["Start standing tall on the balls of your feet","Take short, rapid hops moving forward — the power comes from the ankle only","Keep knee bend minimal — the ankle acts like a stiff spring, not a piston","Ground contact should be brief and quiet","Move forward continuously at a quick tempo"],why:"Ankle stiffness is a major factor in sprint speed and jump height. The faster the ankle can load and unload, the more elastic energy is captured. This drill directly trains the achilles tendon and calf to act as a spring — which is exactly what happens at every foot strike during sprinting."}}
-        ]
-      },
-      {
-        name: "Max speed", icon: "icon-speed", iconChar: "▶", time: "12 min", type: "speed",
-        drills: [
-          { name: "Flying 20m", spec: "5 reps, 90s rest", cue: "True max effort — full recovery mandatory", anim: "run", tags: ["speed"] , drillInfo: {focus:"Max velocity sprinting",setup:"Mark a 15m build-up zone and a 20m timing zone — total 35m.",steps:["Start from a jog or stride — build up over the first 15m","Hit the start of the timing zone at close to full speed","Sprint through the 20m zone at maximum effort — this is your fastest running of the session","Do not decelerate until you are well past the end of the zone","Walk back fully before the next rep — at least 90 seconds rest"],why:"Flying sprints isolate max velocity mechanics because the build-up removes the acceleration phase. Athletes run faster in flying sprints than standing starts because they arrive at the timing zone already at speed. Full recovery is mandatory — a tired flying sprint is just a slow run."}},
-          { name: "Top-speed 40m sprint", spec: "3 reps", cue: "Tall posture at speed, don't tense up", anim: "run", tags: ["speed"] , drillInfo: {focus:"Extended max velocity",setup:"A clear 40m straight line.",steps:["Build out of the start hard for the first 15–20m","Transition smoothly to upright max-speed running","Hold top speed for the remaining 20–25m","Relax the face, jaw, and shoulders as you accelerate — tension kills speed","Sprint fully through and past the finish"],why:"The 40m sprint adds a longer max-velocity window compared to the 30m. It also reveals whether the athlete can maintain top speed or whether they fade in the back half — speed endurance shows up here."}},
-          { name: "Sprint from defensive stance", spec: "4 reps", cue: "React and explode — simulate a game moment", anim: "run", tags: ["speed"] , drillInfo: {focus:"Reaction + first step from game position",setup:"Open space, 10–20m sprint lane.",steps:["Start in a defensive stance — feet wide, hips down, weight on balls of feet","On a visual or verbal cue, explode out of the stance and sprint","Drive the first step aggressively — this is the most important step","Stay low for the first 3–4 steps, then rise gradually","Sprint full speed through 10–20m"],why:"Most game sprints don't start from a track stance — they start from defensive position, mid-play, off-balance. This drill trains the transition from defensive posture to explosive sprint, which is exactly what happens when a ball is tipped, intercepted, or turned over."}},
-          { name: "Alternate-leg bound", spec: "4×25m", cue: "Max distance per stride — drive the knee, big hang time", anim: "bound", tags: ["bound"] , drillInfo: {focus:"Horizontal power + bounding stride length",setup:"A straight 20–25m line.",steps:["Start with a few jogging steps to build momentum","Push off one foot with maximum force — drive the opposite knee up high and forward","Reach for maximum distance on each stride — prioritize hang time and length over speed","Land on the opposite foot, immediately load and push off again","Arms drive in opposition to legs — left knee up, right arm forward","Keep bounding continuously down the full length"],why:"Alternate-leg bounding develops the explosive hip and knee extension that powers sprinting and jumping. Fewer strides to cover the same distance = more power per stride. Count your strides each set and try to reduce them."}}
-        ]
-      },
-      {
-        name: "Plyometrics — reactive", icon: "icon-vert", iconChar: "↑", time: "12 min", type: "vert",
-        drills: [
-          { name: "Depth jump", spec: "4×5 reps", cue: "Step off → immediate max jump. Don't pause on ground", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Reactive strength — full intensity",setup:"A box or step, 8–12 inches high.",steps:["Stand on the edge of the box","Step off — both feet land simultaneously","At the instant of ground contact, jump for maximum height — no hesitation","Think of the ground like a hot surface — touch and go","Swing the arms hard overhead to maximize height","Land and reset fully before the next rep — this is a CNS drill, not a cardio drill"],why:"The depth jump is one of the most powerful plyometric drills available. It maximally loads the stretch-shortening cycle — the same mechanism that makes elite athletes explosive. Only do these when fully rested — a fatigued depth jump is less effective and harder on the joints."}},
-          { name: "Alternate-leg bound", spec: "4×25m", cue: "Max distance per stride — long hang time", anim: "bound", tags: ["bound"] , drillInfo: {focus:"Horizontal power + bounding stride length",setup:"A straight 20–25m line.",steps:["Start with a few jogging steps to build momentum","Push off one foot with maximum force — drive the opposite knee up high and forward","Reach for maximum distance on each stride — prioritize hang time and length over speed","Land on the opposite foot, immediately load and push off again","Arms drive in opposition to legs — left knee up, right arm forward","Keep bounding continuously down the full length"],why:"Alternate-leg bounding develops the explosive hip and knee extension that powers sprinting and jumping. Fewer strides to cover the same distance = more power per stride. Count your strides each set and try to reduce them."}},
-          { name: "Reactive tuck jump", spec: "3×5 reps", cue: "No pause between reps — continuous rhythm", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Repeated explosive power",setup:"Open space, no equipment.",steps:["Jump into the first tuck jump","The moment you land, immediately jump again — no pause","Maintain continuous rhythm — land and go, land and go","Keep the ground contact time as short as possible","Maintain knee height on every rep — don't let them drop as you fatigue"],why:"By removing the pause between reps, the reactive tuck jump forces continuous use of elastic energy. This trains the nervous system to maintain explosive output over multiple consecutive jumps — relevant in rebounding situations or multiple-effort plays."}},
-          { name: "Single-leg lateral hop", spec: "3×5 each side", cue: "Stick every landing, then explode the other way", anim: "lat", tags: ["vert", "cod"] , drillInfo: {focus:"Lateral reactive power on one leg",setup:"A line on the ground.",steps:["Stand on one foot beside the line","Push off laterally over the line and land on the same foot","Immediately load and push back over the line — minimal ground contact time","Keep the free leg elevated throughout — don't let it touch down","Focus on quick, snappy ground contact — not slow, controlled loading"],why:"More demanding than the lateral bound because the same leg both pushes and lands, with no rest between. Trains the reactive strength of the lateral hip stabilizers and ankle stiffness in a frontal plane movement."}}
-        ]
-      },
-      {
-        name: "Agility — competitive", icon: "icon-agil", iconChar: "✦", time: "8 min", type: "agil",
-        drills: [
-          { name: "Mirror drill vs partner", spec: "5×20s", cue: "Eyes on hips, not feet. React, don't guess", anim: "slide", tags: ["agil", "cod"] , drillInfo: {focus:"Reactive agility",setup:"Two athletes facing each other in a 5-yard wide channel.",steps:["One athlete is offense (moves freely), one is defense (mirrors)","Defender stays in a low athletic stance at all times — weight on balls of feet, hips down","Offense moves laterally, forward, or backward to try to lose the defender","Defender reacts to the offensive player's hips — not the head, shoulders, or feet","Work for 20 seconds, then switch roles"],why:"The mirror drill trains reactive agility — responding to an unpredictable stimulus rather than a planned pattern. Watching the hips is key because the hips commit first. Every other body part can fake, but the hips tell the truth."}},
-          { name: "5-10-5 personal best attempt", spec: "4 timed reps", cue: "Touch the line cleanly — no shadow cuts", anim: "cone", tags: ["agil", "cod"], drillInfo: {
-              focus: "Change of direction — lateral acceleration",
-              setup: "Place 3 cones in a straight line, each exactly 5 yards apart. You start at the middle cone. The drill covers 5 yards right, 10 yards left, then 5 yards back to the middle — total of 20 yards.",
-              steps: [
-                "Stand at the middle cone in an athletic stance — feet shoulder-width, hips down, weight on the balls of your feet",
-                "On go, sprint 5 yards to your right and touch the cone (or line) with your right hand",
-                "Push off hard and sprint 10 yards all the way to the left cone — touch with your left hand",
-                "Drive back 5 yards to the middle cone and finish through the line"
-              ],
-              why: "The key is the plant and cut — not the sprint. Stay low through the turn, drive off the outside foot, and reach down to touch without over-striding. Shadow cuts (not touching the line) don't count."
-            } },
-          { name: "Cone reaction drill", spec: "4 reps", cue: "Eyes up, react to signal — simulates defense read", anim: "cone", tags: ["agil"] , drillInfo: {focus:"Visual stimulus + first step",setup:"3–4 cones placed around the athlete in a small area, each labeled or pointed to by a coach/partner.",steps:["Stand in the center of the cone setup in an athletic stance","Coach or partner points to or calls a cone","React as fast as possible — sprint or shuffle to that cone, touch it, and return to center","Reset and react to the next call","Vary the timing — sometimes quick back-to-back calls, sometimes a pause"],why:"This drill trains cognitive agility — the ability to process visual information and convert it into movement. In a game, athletes don't know where they need to go next. This drill replicates that unpredictability and trains the brain-to-foot connection."}}
-        ]
-      },
-      {
-        name: "Cool-down", icon: "icon-cool", iconChar: "—", time: "5 min", type: "cool",
-        drills: [
-          { name: "Full lower body stretch + walk", spec: "5 min", cue: "Heart rate fully down before leaving", anim: "stretch", tags: [] }
-        ]
-      }
-    ],
-    load: { speed: 90, cod: 80, vert: 85, bound: 85, agil: 80 },
-    note: "Full recovery between sprint reps is mandatory at max effort — 60–90 seconds minimum. Fatigued sprints reinforce bad mechanics. Four great reps beat seven sloppy ones every time."
-  },
-  {
-    num: 6, label: "Finish", theme: "Test + sharpen", intensity: "Hard",
-    focus: "Apply everything. Test improvements, run game-speed drills, leave feeling fast and confident.",
-    blocks: [
-      {
-        name: "Dynamic warm-up", icon: "icon-warmup", iconChar: "◎", time: "10 min", type: "warmup",
-        note: "Final week — run this sequence with ownership. You know every drill now. Walk back recovery between lengths.",
-        drills: [
-          { name: "Jog", spec: "1 length", cue: "Start loose — this is the finish line session", anim: "run", tags: [] , drillInfo: {focus:"Warm-up — raise body temperature",setup:"Any straight path, court length or similar.",steps:["Start at an easy, relaxed pace — this is not a sprint","Stay tall: head up, shoulders relaxed, arms swinging naturally at your sides","Land midfoot, not on your heels","Breathe through your nose if possible — if you can't, you're going too fast"],why:"The jog gradually raises your core temperature and gets blood moving to your muscles. Everything in the warm-up works better when the body is already warm."}},
-          { name: "High knees", spec: "1 length", cue: "Crisp and controlled — show what you've learned", anim: "skip", tags: [] , drillInfo: {focus:"Hip flexor activation + stride rate",setup:"Straight line, one court length.",steps:["Drive each knee up to hip height with every step — don't let them stay low","Pull your toes up toward your shin on the raised foot (dorsiflexion)","Pump your arms in opposition — right knee, left arm forward","Stay on the balls of your feet — no flat-footed landing","Keep your torso upright and tall — resist leaning back"],why:"High knees train the hip flexors and reinforce the knee drive pattern used in sprinting. Fast, high knees = faster stride frequency."}},
-          { name: "Butt kicks", spec: "1 length", cue: "Quick heels, stay light on feet", anim: "run", tags: [] , drillInfo: {focus:"Hamstring activation + stride mechanics",setup:"Straight line, one court length.",steps:["Drive your heel up toward your glute with each step — aim to touch","Keep your knees pointing down, not swinging forward","Stay on the balls of your feet with a slight forward lean","Arms pump in rhythm with the legs","Keep steps quick — this is about turnover, not covering distance"],why:"Butt kicks activate the hamstrings and reinforce the recovery phase of the stride — when the foot pulls back up after ground contact. Neglecting this causes slow leg turnover."}},
-          { name: "Light skips", spec: "1 length", cue: "Relaxed rhythm — own it", anim: "skip", tags: [] , drillInfo: {focus:"Rhythm + coordination",setup:"Straight line, one court length.",steps:["Step on one foot, then skip (small hop) on that same foot before stepping on the other","Keep it low and relaxed — this is not a power skip","Arms swing gently in rhythm","Focus on finding a smooth, consistent rhythm before the more demanding drills"],why:"Light skips bridge the gap between jogging and the explosive skip drills later in the warm-up. They also activate the calves and ankles with minimal stress."}},
-          { name: "3-step squat", spec: "1 length", cue: "3 steps → squat. Deep and confident", anim: "hip", tags: [] , drillInfo: {focus:"Quad and glute activation + hip mobility",setup:"Straight line, one court length. No equipment.",steps:["Take 3 normal walking steps","On the 3rd step, sink into a squat — feet shoulder-width, hips back and down, chest tall","Hold the bottom position for 1 full second","Drive through both heels to stand, then take 3 more steps and repeat"],why:"Activates the quads, glutes, and hip flexors in a controlled range of motion. Also reinforces the squat landing position used in every jump drill later in the session."}},
-          { name: "3-step kick", spec: "1 length", cue: "3 steps → straight-leg kick. Controlled, full range", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility + balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","On the 3rd step, swing the opposite leg forward in a straight-leg kick — aim for hip height or above","Reach the opposite hand toward the foot as it rises","Keep the standing leg straight and tall — don't hunch forward to meet the foot","Lower the leg with control and continue walking"],why:"Actively lengthens the hamstring under mild load while also challenging single-leg balance. The straight-leg requirement forces the hamstring to work through full range."}},
-          { name: "3-step lunge", spec: "1 length", cue: "3 steps → lunge. Feel how much more open your hips are vs week 1", anim: "stretch", tags: [] , drillInfo: {focus:"Hip flexor stretch + quad activation",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Step into a deep forward lunge — front knee directly over the ankle, not past the toes","Rear knee drops to about 1–2 inches from the ground","Keep torso upright — don't let the chest fall forward","Hold 1 second, then drive through the front heel to stand"],why:"One of the most important warm-up drills for athletes — opens the hip flexors on the rear leg while loading the front quad. Hip flexors that don't get warmed up restrict stride length."}},
-          { name: "3-step hip hug", spec: "1 length", cue: "3 steps → knee to chest. Balance is sharper now", anim: "hip", tags: [] , drillInfo: {focus:"Glute activation + single-leg balance",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up toward your chest using both hands, hugging it in","Balance on the standing leg for 1 full second — leg straight, hips level","Keep the chest tall and look forward, not down","Release and continue"],why:"Activates the glutes and hip stabilizers while building the single-leg balance needed for landing and cutting mechanics. Shaky balance here is a red flag for landing control."}},
-          { name: "3-step hip flex and open", spec: "1 length", cue: "3 steps → open externally. Full and free", anim: "hip", tags: [] , drillInfo: {focus:"Hip external rotation + mobility",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one knee up to hip height","From that position, externally rotate the hip — imagine stepping over a low fence, opening the knee out to the side","Hold briefly at the top of the rotation","Lower the leg with control and continue"],why:"Opens the hip external rotators, which are critical for lateral cutting, defensive slides, and absorbing impact on one-leg landings. Tight external rotators lead to knee valgus (caving in) on cuts."}},
-          { name: "3-step SL RDL", spec: "1 length", cue: "3 steps → single-leg hinge. Steady and strong", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring + glute strength under stretch",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Balance on one leg with a soft knee","Hinge forward at the hip — chest moves toward the ground, rear leg extends straight behind you","Keep your back flat — think 'proud chest' the whole way down","Reach your hands toward the ground, then drive the hips forward to return to standing"],why:"The single-leg RDL is one of the best hamstring activation drills available. It loads the hamstring eccentrically (as it lengthens), which is exactly how it gets stressed during sprinting and bounding. Also builds the hip stability needed for single-leg landings."}},
-          { name: "3-step quad stretch and reach", spec: "1 length", cue: "3 steps → heel to glute, reach up. Earn the height", anim: "stretch", tags: [] , drillInfo: {focus:"Quad stretch + hip flexor opening",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Pull one heel up to your glute — grab the ankle or the shoelaces","Reach the opposite arm straight overhead as high as you can","Balance on the standing leg — keep it tall and straight","Hold 1–2 seconds, then release and continue"],why:"The overhead reach creates a full-body stretch from the quad through the hip flexor to the shoulder. It also forces better balance than a standard quad stretch because the reach shifts your center of gravity."}},
-          { name: "3-step hamstring scoop", spec: "1 length", cue: "3 steps → scoop. Last hamstring prep of the program", anim: "swing", tags: [] , drillInfo: {focus:"Hamstring flexibility — active",setup:"Straight line, one court length.",steps:["Take 3 walking steps","Extend one leg straight forward with the heel on the ground, toe pointing up","Hinge from the hip (not the lower back) and reach both hands underneath the foot — 'scoop' under it","Hold 1 second — feel the hamstring lengthen","Return to standing and continue"],why:"This is an active hamstring stretch — the muscle is lengthening while also being gently loaded, which is more sport-specific than a passive hold. Prepares the hamstrings for the eccentric demands of sprinting and bounding."}},
-          { name: "Straight-leg kicks", spec: "1 length", cue: "Straight-leg kicks — strong and controlled. Last activation before the final session begins", anim: "skip", tags: [] , drillInfo: {focus:"Hamstring activation + hip flexor mobility while moving",setup:"Straight line, one court length.",steps:["Walk or jog forward at a steady pace","With each step, swing the opposite leg forward in a straight-leg kick — toes pointed up","Reach the opposite hand toward the rising foot as it kicks up","Keep moving forward — this is not a stationary drill","Maintain a light, rhythmic pace"],why:"Unlike the 3-step kick which pauses, straight-leg kicks are continuous — training the hip flexors and hamstrings to work together at tempo. Great final primer before explosive work."}},
-          { name: "Anklers", spec: "1 length", cue: "Fast stiff-ankle hops — feel the spring. You're ready.", anim: "ankl", tags: [] , drillInfo: {focus:"Ankle stiffness + reactive strength",setup:"Straight line, one court length.",steps:["Start standing tall on the balls of your feet","Take short, rapid hops moving forward — the power comes from the ankle only","Keep knee bend minimal — the ankle acts like a stiff spring, not a piston","Ground contact should be brief and quiet","Move forward continuously at a quick tempo"],why:"Ankle stiffness is a major factor in sprint speed and jump height. The faster the ankle can load and unload, the more elastic energy is captured. This drill directly trains the achilles tendon and calf to act as a spring — which is exactly what happens at every foot strike during sprinting."}}
-        ]
-      },
-      {
-        name: "Speed testing + sprint work", icon: "icon-speed", iconChar: "▶", time: "12 min", type: "speed",
-        drills: [
-          { name: "Standing 10m sprint — test", spec: "3 reps, take the best", cue: "Time it. Compare to Week 1 feel.", anim: "run", tags: ["speed"] , drillInfo: {focus:"Acceleration — benchmark",setup:"A clear 10m straight line. Use a phone timer or stopwatch.",steps:["Start from a standing position — feet staggered, slight forward lean","On your own go, sprint all 10m at maximum effort","Time it from first movement to crossing the 10m mark","Take 3 attempts with full rest between each — at least 60 seconds","Record the best time"],why:"The 10m sprint measures pure acceleration — the most important speed quality in basketball. Most basketball movements are 5–15 meters, so acceleration matters far more than top speed. Track this number across the program."}},
-          { name: "Flying 20m", spec: "3 reps", cue: "Max effort, relaxed upper body", anim: "run", tags: ["speed"] , drillInfo: {focus:"Max velocity sprinting",setup:"Mark a 15m build-up zone and a 20m timing zone — total 35m.",steps:["Start from a jog or stride — build up over the first 15m","Hit the start of the timing zone at close to full speed","Sprint through the 20m zone at maximum effort — this is your fastest running of the session","Do not decelerate until you are well past the end of the zone","Walk back fully before the next rep — at least 90 seconds rest"],why:"Flying sprints isolate max velocity mechanics because the build-up removes the acceleration phase. Athletes run faster in flying sprints than standing starts because they arrive at the timing zone already at speed. Full recovery is mandatory — a tired flying sprint is just a slow run."}},
-          { name: "Full 40m sprint", spec: "2–3 reps (if fresh)", cue: "Only if legs feel good — quality over quantity", anim: "run", tags: ["speed"] , drillInfo: {focus:"Full sprint — test",setup:"A clear 40m straight line. Time if possible.",steps:["Start from a comfortable stance — 3-point or falling start","Sprint all 40m at maximum effort","Focus on smooth acceleration then holding form at speed","Sprint through the finish — timing ends when you cross the line","Record time if using a stopwatch or phone — 3 attempts, best counts"],why:"The full 40m is the gold standard sprint test in football and basketball combine settings. Improvement here reflects gains in both acceleration and max velocity from the program."}},
-          { name: "Alternate-leg bound — test", spec: "2×25m, count strides", cue: "Fewer strides = more distance per bound = more power. Count and compare to week 2", anim: "bound", tags: ["bound"] , drillInfo: {focus:"Horizontal power measurement",setup:"A marked 25m straight line.",steps:["Build up into the bound from a short jog","Bound with maximum effort for the full 25m","Count every ground contact — each landing is one stride","Record your stride count","The fewer strides it takes to cover 25m, the more powerful each bound is"],why:"Fewer strides = greater distance per bound = more horizontal power. Compare your count to week 2 — even 1-2 fewer strides across 25m represents a significant improvement in explosiveness."}}
-        ]
-      },
-      {
-        name: "Vertical + bounding — max effort", icon: "icon-vert", iconChar: "↑", time: "10 min", type: "vert",
-        drills: [
-          { name: "Max vertical jump — test", spec: "5 reps, take the best", cue: "Mark the wall or measure. See the improvement.", anim: "jump", tags: ["vert"] , drillInfo: {focus:"Vertical power measurement",setup:"A wall with a flat surface beside it, chalk or tape for marking.",steps:["Stand beside the wall and reach up as high as possible — mark this standing reach height","Jump and touch the wall at the highest point you can reach — mark that height","The difference between standing reach and jump touch is your vertical jump","Take 5 attempts and record the best","Rest fully between attempts — at least 45 seconds"],why:"Tracking your vertical jump over the program shows whether the plyometric work is translating into real power gains. Even 1–2 inch improvements over 6 weeks represent meaningful neuromuscular adaptation."}},
-          { name: "Standing broad jump — test", spec: "3 reps, measure distance", cue: "Compare to Week 1. Celebrate the gain.", anim: "jump", tags: ["bound", "vert"] , drillInfo: {focus:"Horizontal power measurement",setup:"A line or tape mark on the ground.",steps:["Stand with toes on the line, feet hip-width","Load into a quarter squat and swing arms back","Explode forward and out as far as possible — horizontal distance is the goal","Land on both feet simultaneously and stick the landing","Measure from the take-off line to the back of your heels at landing","Take 3 attempts and record the best"],why:"The standing broad jump is one of the simplest and most reliable measures of explosive lower body power. Track it across the program — improvement here almost always means improvement in first-step quickness and acceleration."}},
-          { name: "Alternate-leg bound", spec: "3×25m", cue: "Max effort, finish strong", anim: "bound", tags: ["bound"] , drillInfo: {focus:"Horizontal power + bounding stride length",setup:"A straight 20–25m line.",steps:["Start with a few jogging steps to build momentum","Push off one foot with maximum force — drive the opposite knee up high and forward","Reach for maximum distance on each stride — prioritize hang time and length over speed","Land on the opposite foot, immediately load and push off again","Arms drive in opposition to legs — left knee up, right arm forward","Keep bounding continuously down the full length"],why:"Alternate-leg bounding develops the explosive hip and knee extension that powers sprinting and jumping. Fewer strides to cover the same distance = more power per stride. Count your strides each set and try to reduce them."}}
-        ]
-      },
-      {
-        name: "Agility gauntlet", icon: "icon-agil", iconChar: "✦", time: "8 min", type: "agil",
-        drills: [
-          { name: "T-drill — timed", spec: "3 reps, take best", cue: "Sharp cuts, low hips — execute what you learned", anim: "cone", tags: ["agil", "cod"] , drillInfo: {focus:"Multi-directional agility — test",setup:"Same T-shape setup: Cone A start, Cone B 10 yards ahead, Cones C and D 5 yards either side of B.",steps:["Sprint from A to B, touch","Shuffle left to C, touch","Shuffle right to D, touch","Shuffle back to B, touch","Backpedal through A to finish","Record time — take best of 3 attempts"],why:"Week 6 is the time to go for a personal best. The T-drill tests everything learned in the program — sprint mechanics, lateral quickness, body control through changes of direction. A good time for a young athlete is under 12 seconds; under 11 is excellent."}},
-          { name: "5-10-5 — timed", spec: "3 reps, take best", cue: "Personal best attempt", anim: "cone", tags: ["agil", "cod"], drillInfo: {
-              focus: "Change of direction — lateral acceleration",
-              setup: "Place 3 cones in a straight line, each exactly 5 yards apart. You start at the middle cone. The drill covers 5 yards right, 10 yards left, then 5 yards back to the middle — total of 20 yards.",
-              steps: [
-                "Stand at the middle cone in an athletic stance — feet shoulder-width, hips down, weight on the balls of your feet",
-                "On go, sprint 5 yards to your right and touch the cone (or line) with your right hand",
-                "Push off hard and sprint 10 yards all the way to the left cone — touch with your left hand",
-                "Drive back 5 yards to the middle cone and finish through the line"
-              ],
-              why: "The key is the plant and cut — not the sprint. Stay low through the turn, drive off the outside foot, and reach down to touch without over-striding. Shadow cuts (not touching the line) don't count."
-            } },
-          { name: "Mirror drill", spec: "3×20s", cue: "React, compete, win the rep", anim: "slide", tags: ["agil"] , drillInfo: {focus:"Reactive agility",setup:"Two athletes facing each other in a 5-yard wide channel.",steps:["Offense leads, defense mirrors","Defender reads the offensive player's hips and reacts","Stay low — the moment you stand up, you lose the ability to change direction quickly","Compete — the offense is trying to lose the defender","Work for 20 seconds then switch"],why:"Week 6 mirror drill is about competing, not just practicing. The defender should be fighting to stay connected. This is the closest drill in the program to real game defense."}},
-          { name: "3-cone L-drill — timed", spec: "3 reps, take best", cue: "Personal best attempt — execute every turn cleanly", anim: "cone", tags: ["agil", "cod"], drillInfo: {
-              focus: "Change of direction — multi-directional cutting",
-              setup: "Place 3 cones in an L-shape: Cone A at the start, Cone B 5 yards straight ahead, Cone C 5 yards to the right of Cone B. The L shape is formed by A→B (straight) and B→C (right turn).",
-              steps: [
-                "Start at Cone A. Sprint straight to Cone B and touch it",
-                "Sprint back to Cone A and touch it",
-                "Sprint back to Cone B, round it tightly — stay low and lean into the turn",
-                "Sprint around the outside of Cone C, looping around it and back to Cone B",
-                "Finish by sprinting from B back through A"
-              ],
-              why: "The L-drill tests more movement patterns than the 5-10-5 — forward sprint, backpedal, change of direction, and a curved run around the cones. Don't brake into Cone B on the loop — carry speed through the turn by planting your outside foot and leaning."
-            } }
-        ]
-      },
-      {
-        name: "Finish", icon: "icon-cool", iconChar: "★", time: "7 min", type: "cool",
-        drills: [
-          { name: "Full static stretch routine", spec: "5 min", cue: "Earn the rest", anim: "stretch", tags: [] },
-          { name: "Reflect + set goals", spec: "2 min", cue: "What felt faster vs Week 1? What to work on next?", anim: "stretch", tags: [] }
-        ]
-      }
-    ],
-    load: { speed: 85, cod: 80, vert: 80, bound: 75, agil: 80 },
-    note: "Week 6 is partly a test. Encourage max effort on the timed drills — seeing real improvement in numbers is powerful confidence fuel heading into the season."
-  }
-];
-
-const tagMeta = {
-  speed: { label: "Speed", cls: "tag-speed" },
-  vert:  { label: "Vertical", cls: "tag-vert" },
-  bound: { label: "Bounding", cls: "tag-bound" },
-  cod:   { label: "Change of dir", cls: "tag-cod" },
-  agil:  { label: "Agility", cls: "tag-agil" }
-};
-
-const loadColors = {
-  speed: "#1a8c6e", cod: "#6b4fcf", vert: "#c8860a", bound: "#c44a2a", agil: "#1a6fb5"
-};
-
-// Video links added per drill via d.videoUrl
-
-function toggleBlock(id) {
-  const body = document.getElementById(id);
-  const chevron = document.getElementById('chevron-' + id);
-  if (!body) return;
-  const isOpen = body.style.display !== 'none';
-  body.style.display = isOpen ? 'none' : 'block';
-  if (chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-}
-
-function toggleInfo(el) {
-  const exp = el.querySelector('.drill-expand');
-  if (!exp) return;
-  const open = exp.style.display !== 'none';
-  exp.style.display = open ? 'none' : 'block';
-  const badge = el.querySelector('.drill-name + span, span[style*="How-to"]');
-  const pill = el.querySelector('span[style*="How-to"]');
-  if (pill) pill.textContent = open ? 'How-to ▾' : 'How-to ▴';
-}
-
-function buildLoadBar(load) {
-  const keys = [['speed','Speed'],['cod','Change of dir'],['vert','Vertical'],['bound','Bounding'],['agil','Agility']];
-  return `<div style="background:#fff;border:1px solid #e2ddd6;border-radius:8px;padding:14px 18px;margin-bottom:14px;">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;margin-bottom:10px;">Training emphasis this week</div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
-      ${keys.map(([k,l])=>`<div>
-        <div style="font-size:11px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;">${l}</div>
-        <div style="height:5px;background:#eee;border-radius:3px;margin-bottom:3px;">
-          <div style="width:${load[k]}%;height:100%;border-radius:3px;background:${loadColors[k]};"></div>
-        </div>
-        <div style="font-size:12px;font-weight:600;color:${loadColors[k]};">${load[k]}%</div>
-      </div>`).join('')}
-    </div>
-  </div>`;
-}
-
-function buildWeekPanel(w) {
-  const badgeCls = w.intensity==='Hard' ? 'badge-hard' : w.intensity==='Easy' ? 'badge-easy' : 'badge-build';
-  let html = `
-    <div class="week-band">
-      <div class="week-band-left">
-        <div class="week-eyebrow">Session ${w.num} of 6</div>
-        <div class="week-title">Week ${w.num}</div>
-        <div class="week-focus">${w.focus}</div>
-      </div>
-      <div class="week-badge ${badgeCls}">${w.intensity}</div>
-    </div>`;
-
-  html += `<div class="blocks-grid">`;
-
-  w.blocks.forEach((block, bi) => {
-    if (block.type === 'cool') return;
-    const isFullWidth = (block.type === 'warmup');
-    const startCollapsed = (block.type === 'warmup');
-    const blockId = `block-${w.num}-${bi}`;
-    html += `<div class="block-card${isFullWidth ? ' block-full' : ''}">
-      <div class="block-header collapsible-header" onclick="toggleBlock('${blockId}')" style="cursor:pointer;user-select:none;">
-        <div class="block-header-left">
-          <div class="block-icon ${block.icon}">${block.iconChar}</div>
-          <div class="block-name">${block.name}</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div class="block-time">${block.time}</div>
-          <div id="chevron-${blockId}" style="font-size:12px;color:#6b7280;transition:transform .2s;${startCollapsed ? '' : 'transform:rotate(180deg);'}">▼</div>
-        </div>
-      </div>
-      <div id="${blockId}" class="block-body" style="${startCollapsed ? 'display:none;' : ''}">
-      ${block.note ? `<div style="font-size:12px;color:#6b7280;background:#f9f7f4;border-radius:6px;padding:8px 12px;margin-bottom:10px;border-left:3px solid #c8860a;font-style:italic;">${block.note}</div>` : ''}`;
-
-    block.drills.forEach(d => {
-      const hasInfo = d.drillInfo;
-      html += `<div class="drill-item${hasInfo ? ' has-info' : ''}"${hasInfo ? ` onclick="toggleInfo(this)"` : ''}>
-        <div class="drill-info">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <div class="drill-name">${d.name}</div>
-            ${hasInfo ? `<span style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#185FA5;background:#E6F1FB;padding:2px 7px;border-radius:20px;flex-shrink:0;">How-to ▾</span>` : ''}
-          </div>
-          <div class="drill-spec">${d.spec}</div>
-          <div class="drill-cue">${d.cue}</div>
-          ${d.tags.length ? `<div class="drill-tags">${d.tags.map(t=>`<span class="dtag ${tagMeta[t].cls}">${tagMeta[t].label}</span>`).join('')}</div>` : ''}
-          ${d.videoUrl ? `<a class="drill-video-link" href="${d.videoUrl}" target="_blank" onclick="event.stopPropagation()">&#9654; Watch demo</a>` : ''}
-          ${hasInfo ? `<div class="drill-expand" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid #f0ede8;">
-            ${d.drillInfo.setup ? `<div style="background:#f5f2ed;border-radius:6px;padding:9px 12px;margin-bottom:12px;font-size:12px;color:#444;line-height:1.6;"><span style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;display:block;margin-bottom:3px;">Setup</span>${d.drillInfo.setup}</div>` : ''}
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div>
-                <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;margin-bottom:6px;">Focus: ${d.drillInfo.focus}</div>
-                <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7280;margin-bottom:4px;">Execution</div>
-                <ol style="font-size:12px;color:#444;line-height:1.6;padding-left:16px;">${d.drillInfo.steps.map(s=>`<li style="margin-bottom:3px;">${s}</li>`).join('')}</ol>
-              </div>
-              <div style="background:#fffbf0;border-left:3px solid #c8860a;border-radius:0 6px 6px 0;padding:10px 12px;">
-                <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7280;margin-bottom:5px;">Coaching note</div>
-                <div style="font-size:12px;color:#4a3800;line-height:1.6;font-style:italic;">${d.drillInfo.why}</div>
-              </div>
-            </div>
-          </div>` : ''}
-        </div>
-      </div>`;
-    });
-
-    html += `</div></div>`;
-  });
-
-  html += `</div>`;
-
-  html += `<div style="background:#fff;border:1px solid #e2ddd6;border-radius:8px;padding:16px 20px;margin-bottom:14px;display:flex;gap:14px;align-items:flex-start;">
-    <div style="font-size:22px;flex-shrink:0;margin-top:1px;">&#9632;</div>
+  <a class="program-card" href="basketball-plyo-program.html">
     <div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;margin-bottom:6px;">Cool-down &nbsp;·&nbsp; 5–7 min</div>
-      <div style="font-size:13px;color:#444;line-height:1.7;">Take time to bring your heart rate down before leaving — this is when your body shifts from breaking down to building back up. Walk for a few minutes, shake out the legs, and spend time on any areas that feel tight. Focus on the hips, quads, hamstrings, and calves since those did the most work today. You don't need a prescribed routine — just move slowly, breathe, and listen to what your body needs. Athletes who skip the cool-down miss the easiest recovery gains in the program.</div>
+      <div class="card-eyebrow">6 weeks · Once per week · 45 min</div>
+      <div class="card-title">Speed &amp; Plyometrics Program</div>
+      <div class="card-desc">A beginner-to-intermediate program building speed, vertical jump, bounding, change of direction, and agility. Interactive weekly sessions with drills, cues, and progressions.</div>
+      <div class="card-pills">
+        <span class="cpill">Speed</span>
+        <span class="cpill">Vertical jump</span>
+        <span class="cpill">Bounding</span>
+        <span class="cpill">Change of direction</span>
+        <span class="cpill">Agility</span>
+        <span class="cpill">Minimal equipment</span>
+      </div>
     </div>
-  </div>`;
-  html += buildLoadBar(w.load);
-  html += `<div class="coach-note"><strong>Coach note</strong>${w.note}</div>`;
+    <div class="card-arrow">→</div>
+  </a>
 
-  return html;
-}
+  <!-- SUB DOCS -->
 
-function buildProgressDots(activeIdx) {
-  const labels = ['1','2','3','4','5','6'];
-  let h = '';
-  labels.forEach((l, i) => {
-    const cls = i < activeIdx ? 'done' : i === activeIdx ? 'current' : 'future';
-    h += `<div class="prog-dot ${cls}" onclick="setWeek(${i})">${i+1}</div>`;
-    if (i < labels.length - 1) {
-      h += `<div class="prog-line${i < activeIdx ? ' done' : ''}"></div>`;
-    }
-  });
-  return h;
-}
+  <div class="sub-cards">
+    <a class="sub-card" href="program-Quick Guide.html">
+      <div class="sub-card-left">
+        <div class="sub-card-label">Quick Guide</div>
+        <div class="sub-card-title">Quick Guide</div>
+        <div class="sub-card-desc">Full program at a glance — print-ready</div>
+      </div>
+      <div class="sub-arrow">→</div>
+    </a>
+    <a class="sub-card" href="Instructions.html">
+      <div class="sub-card-left">
+        <div class="sub-card-label">Instruction guide</div>
+        <div class="sub-card-title">Instructions</div>
+        <div class="sub-card-desc">Every drill broken down with cues &amp; errors</div>
+      </div>
+      <div class="sub-arrow">→</div>
+    </a>
+  </div>
 
-let currentWeek = 0;
+</div>
 
-function setWeek(i) {
-  currentWeek = i;
-  document.querySelectorAll('.wk-tab').forEach((t,j) => t.classList.toggle('active', i===j));
-  document.querySelectorAll('.week-panel').forEach((p,j) => p.classList.toggle('active', i===j));
-  document.getElementById('progDots').innerHTML = buildProgressDots(i);
-}
+<footer>
+  Speed Works · Basketball Athlete Development
+</footer>
 
-// Build all panels
-const container = document.getElementById('weekPanels');
-weeks.forEach((w, i) => {
-  const div = document.createElement('div');
-  div.className = 'week-panel' + (i===0 ? ' active' : '');
-  div.innerHTML = buildWeekPanel(w);
-  container.appendChild(div);
-});
-
-document.getElementById('progDots').innerHTML = buildProgressDots(0);
-</script>
 </body>
 </html>
