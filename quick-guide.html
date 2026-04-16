@@ -3,437 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6-Week Speed & Plyometrics — Quick Guide</title>
+<title>Speed Works — Quick Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --black: #0d0d0d;
-  --white: #f5f2ed;
-  --court: #c8860a;
-  --teal: #1a8c6e;
-  --muted: #6b7280;
-  --border: #d8d3cc;
-}
-
-body {
-  background: #f5f2ed;
-  font-family: 'Barlow', sans-serif;
-  font-size: 13px;
-  color: var(--black);
-  padding: 24px;
-}
-
-.page {
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-}
-
-/* HEADER */
-.header {
-  background: var(--black);
-  color: var(--white);
-  padding: 22px 28px 18px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
-}
-.header-left {}
-.header-tag {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--court);
-  margin-bottom: 4px;
-}
-.header h1 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 36px; font-weight: 800;
-  text-transform: uppercase; letter-spacing: -.01em;
-  line-height: 1;
-}
-.header h1 span { color: var(--court); }
-.header-meta {
-  font-size: 12px; color: rgba(245,242,237,0.5);
-  margin-top: 6px;
-}
-.header-meta strong { color: var(--white); }
-.header-pills {
-  display: flex; gap: 6px; flex-wrap: wrap;
-  justify-content: flex-end;
-}
-.hpill {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px; font-weight: 600; letter-spacing: .06em;
-  text-transform: uppercase;
-  padding: 3px 8px; border-radius: 2px;
-  border: 1px solid rgba(245,242,237,0.2);
-  color: rgba(245,242,237,0.6);
-}
-
-/* PHASE STRIP */
-.phases {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  border-bottom: 1px solid var(--border);
-}
-.phase-col {
-  padding: 12px 14px;
-  border-right: 1px solid var(--border);
-}
-.phase-col:last-child { border-right: none; }
-.phase-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px; font-weight: 700; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--muted);
-  margin-bottom: 2px;
-}
-.phase-name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 15px; font-weight: 800;
-  text-transform: uppercase; letter-spacing: -.01em;
-  margin-bottom: 2px;
-}
-.phase-dates { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-.intensity-dot {
-  display: inline-block;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 10px; font-weight: 700; letter-spacing: .05em;
-  text-transform: uppercase;
-  padding: 2px 7px; border-radius: 2px;
-}
-.int-build { background: #d0f2e6; color: #0a5c47; }
-.int-easy  { background: #ddeeff; color: #0e3d72; }
-.int-hard  { background: #fff0c2; color: #7a4f00; }
-
-/* MAIN CONTENT */
-.content { padding: 20px 28px; }
-
-/* WARMUP SECTION */
-.section-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted);
-  margin-bottom: 10px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--border);
-}
-
-.warmup-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  margin-bottom: 20px;
-}
-.wu-item {
-  background: #f9f7f4;
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  padding: 7px 8px;
-  text-align: center;
-}
-.wu-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 16px; font-weight: 800;
-  color: var(--court);
-  line-height: 1;
-}
-.wu-name {
-  font-size: 10px; font-weight: 600;
-  color: var(--black);
-  margin-top: 3px; line-height: 1.2;
-}
-.wu-spec {
-  font-size: 10px; color: var(--muted);
-  margin-top: 2px;
-}
-
-/* WEEKLY BREAKDOWN TABLE */
-.week-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  font-size: 12px;
-}
-.week-table th {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px; font-weight: 700; letter-spacing: .07em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: left;
-  padding: 6px 10px;
-  background: #f9f7f4;
-  border-bottom: 1px solid var(--border);
-}
-.week-table td {
-  padding: 9px 10px;
-  border-bottom: 1px solid #f0ede8;
-  vertical-align: top;
-  line-height: 1.4;
-}
-.week-table tr:last-child td { border-bottom: none; }
-.wk-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 13px; font-weight: 800;
-  text-transform: uppercase; white-space: nowrap;
-}
-.wk-theme { font-weight: 600; margin-bottom: 2px; }
-.wk-focus { font-size: 11px; color: var(--muted); line-height: 1.4; }
-.drill-mini { font-size: 11px; color: var(--black); line-height: 1.5; }
-.drill-mini .d { display: block; }
-.drill-mini .d::before { content: "→ "; color: var(--court); }
-
-/* LOAD VISUAL */
-.load-row { display: flex; gap: 4px; align-items: center; margin-top: 4px; }
-.load-seg {
-  height: 4px; border-radius: 2px;
-}
-
-/* FOOTER STRIPS */
-.bottom-strips {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border-top: 1px solid var(--border);
-}
-.strip {
-  padding: 14px 20px;
-  border-right: 1px solid var(--border);
-}
-.strip:last-child { border-right: none; }
-.strip-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted);
-  margin-bottom: 8px;
-}
-.strip-items { display: flex; flex-direction: column; gap: 4px; }
-.strip-item {
-  display: flex; align-items: flex-start; gap: 8px;
-  font-size: 12px; line-height: 1.4;
-}
-.strip-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--court); flex-shrink: 0;
-  margin-top: 5px;
-}
-
-/* LEGEND */
-.legend {
-  display: flex; gap: 14px; flex-wrap: wrap;
-  padding: 10px 28px;
-  background: #f9f7f4;
-  border-top: 1px solid var(--border);
-}
-.legend-item {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 11px; color: var(--muted);
-}
-.legend-dot { width: 8px; height: 8px; border-radius: 2px; }
-
+:root { --black:#0d0d0d; --white:#f5f2ed; --court:#c8860a; --muted:#6b7280; --border:#e2ddd6; }
+body { background:#f5f2ed; font-family:'Barlow',sans-serif; font-size:13px; color:var(--black); min-height:100vh; }
+.header { background:var(--black); color:var(--white); padding:20px 28px 16px; }
+.back-link { display:inline-flex; align-items:center; gap:5px; font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(245,242,237,0.4); text-decoration:none; margin-bottom:12px; transition:color .15s; }
+.back-link:hover { color:var(--court); }
+.header-tag { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--court); margin-bottom:4px; }
+.header h1 { font-family:'Barlow Condensed',sans-serif; font-size:32px; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1; }
+.header h1 span { color:var(--court); }
+.header-sub { font-size:12px; color:rgba(245,242,237,0.4); margin-top:5px; }
+.week-tabs { background:var(--black); border-top:1px solid rgba(255,255,255,0.08); display:flex; overflow-x:auto; padding:0 28px; }
+.week-tabs::-webkit-scrollbar { display:none; }
+.wtab { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:12px 18px; color:rgba(245,242,237,0.35); cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap; transition:color .15s,border-color .15s; user-select:none; }
+.wtab:hover { color:rgba(245,242,237,0.7); }
+.wtab.active { color:var(--court); border-bottom-color:var(--court); }
+.main { max-width:900px; margin:0 auto; padding:24px 24px 48px; }
+.week-page { display:none; }
+.week-page.active { display:block; }
+.wk-header { background:var(--black); color:var(--white); border-radius:8px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.wk-num { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--court); margin-bottom:3px; }
+.wk-title { font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:800; text-transform:uppercase; letter-spacing:-.01em; line-height:1; }
+.wk-focus { font-size:12px; color:rgba(245,242,237,0.5); margin-top:5px; max-width:500px; }
+.int-badge { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:4px 12px; border-radius:3px; flex-shrink:0; }
+.int-build { background:rgba(26,140,110,0.2); color:#4ecfa8; }
+.int-easy { background:rgba(26,111,181,0.2); color:#6eb8f5; }
+.int-hard { background:rgba(200,134,10,0.2); color:#f0b83a; }
+.box { background:#fff; border:1px solid var(--border); border-radius:8px; padding:14px 18px; margin-bottom:12px; }
+.box-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; padding-bottom:7px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.box-time { font-size:11px; font-weight:600; background:#f5f2ed; border-radius:20px; padding:2px 9px; color:var(--muted); }
+.wu-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:5px; }
+.wu-item { background:#f9f7f4; border:1px solid var(--border); border-radius:4px; padding:6px 5px; text-align:center; }
+.wu-n { font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:800; color:var(--court); line-height:1; }
+.wu-name { font-size:9px; font-weight:600; color:var(--black); margin-top:2px; line-height:1.2; }
+.session-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+.sblock { background:#fff; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+.sb-head { background:#f9f7f4; padding:9px 14px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.sb-name { font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.02em; }
+.sb-time { font-size:11px; color:var(--muted); font-weight:600; }
+.sb-body { padding:10px 14px; }
+.drow { display:flex; align-items:baseline; gap:6px; padding:4px 0; border-bottom:1px solid #f5f2ed; font-size:12px; }
+.drow:last-child { border-bottom:none; }
+.drow::before { content:"→"; color:var(--court); font-weight:700; flex-shrink:0; font-size:10px; }
+.d-name { font-weight:600; flex:1; }
+.d-spec { font-size:11px; color:var(--muted); flex-shrink:0; }
+.load-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+.load-label { font-size:10px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; }
+.load-track { height:5px; background:#eee; border-radius:3px; margin-bottom:3px; }
+.load-fill { height:100%; border-radius:3px; }
+.load-pct { font-size:11px; font-weight:600; }
+.cnote { background:#fffbf0; border-left:3px solid var(--court); border-radius:0 8px 8px 0; padding:12px 16px; font-size:12px; color:#4a3800; line-height:1.6; margin-bottom:12px; }
+.cnote strong { font-weight:700; color:var(--black); font-size:10px; text-transform:uppercase; letter-spacing:.07em; display:block; margin-bottom:3px; }
+.cool-box { background:#fff; border:1px solid var(--border); border-radius:8px; padding:12px 18px; font-size:12px; color:#555; line-height:1.65; }
+footer { background:var(--black); color:rgba(245,242,237,0.2); text-align:center; padding:16px; font-size:11px; }
 @media print {
-  body { background: white; padding: 0; }
-  .page { box-shadow: none; border-radius: 0; }
-  @page { margin: 0.4in; size: letter landscape; }
+  .header,.week-tabs,footer { display:none !important; }
+  .week-page { display:block !important; page-break-after:always; }
+  body { background:white; padding:0; }
+  .main { padding:16px; }
+}
+@media (max-width:600px) {
+  .main { padding:14px 12px 40px; }
+  .session-grid { grid-template-columns:1fr; }
+  .wu-grid { grid-template-columns:repeat(4,1fr); }
+  .load-grid { grid-template-columns:repeat(3,1fr); }
+  .header { padding:16px 16px 12px; }
+  .week-tabs { padding:0 12px; }
 }
 </style>
 </head>
 <body>
 
-<div class="page">
-
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-left">
-      <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,242,237,0.45);text-decoration:none;margin-bottom:12px;transition:color .15s;" onmouseover="this.style.color='#c8860a'" onmouseout="this.style.color='rgba(245,242,237,0.45)'">&#8592; Speed Works</a>
-      <div class="header-tag">Basketball Athlete Development</div>
-      <h1>6-Week Speed &amp; <span>Plyometrics</span></h1>
-      <div class="header-meta">
-        <strong>Beginner → Intermediate</strong> &nbsp;·&nbsp; Once/week &nbsp;·&nbsp; 45 min &nbsp;·&nbsp; Minimal equipment
-      </div>
-    </div>
-    <div class="header-pills">
-      <div class="hpill">Speed</div>
-      <div class="hpill">Vertical</div>
-      <div class="hpill">Bounding</div>
-      <div class="hpill">Change of direction</div>
-      <div class="hpill">Agility</div>
-    </div>
-  </div>
-
-  <!-- PHASE STRIP -->
-  <div class="phases">
-    <div class="phase-col">
-      <div class="phase-num">Week 1</div>
-      <div class="phase-dates">Movement foundations</div>
-      <span class="intensity-dot int-build">Build</span>
-    </div>
-    <div class="phase-col">
-      <div class="phase-num">Week 2</div>
-      <div class="phase-dates">Volume + patterns</div>
-      <span class="intensity-dot int-build">Build</span>
-    </div>
-    <div class="phase-col">
-      <div class="phase-num">Week 3</div>
-      <div class="phase-dates">Increased intensity</div>
-      <span class="intensity-dot int-build">Build</span>
-    </div>
-    <div class="phase-col">
-      <div class="phase-num">Week 4</div>
-      <div class="phase-dates">Recovery + reinforce</div>
-      <span class="intensity-dot int-easy">Easy</span>
-    </div>
-    <div class="phase-col">
-      <div class="phase-num">Week 5</div>
-      <div class="phase-dates">Intensity peak</div>
-      <span class="intensity-dot int-hard">Hard</span>
-    </div>
-    <div class="phase-col">
-      <div class="phase-num">Week 6</div>
-      <div class="phase-dates">Test + sharpen</div>
-      <span class="intensity-dot int-hard">Hard</span>
-    </div>
-  </div>
-
-  <div class="content">
-
-    <!-- WARMUP -->
-    <div class="section-title">Dynamic warm-up — every week (10 min) · 1 length each (~20 yds) · walk back recovery</div>
-    <div class="warmup-grid">
-      <div class="wu-item"><div class="wu-num">1</div><div class="wu-name">Jog</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">2</div><div class="wu-name">High knees</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">3</div><div class="wu-name">Butt kicks</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">4</div><div class="wu-name">Light skips</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">5</div><div class="wu-name">3-step squat</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">6</div><div class="wu-name">3-step kick</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">7</div><div class="wu-name">3-step lunge and twist</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">8</div><div class="wu-name">3-step hip hug</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">9</div><div class="wu-name">3-step hip flex &amp; open</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">10</div><div class="wu-name">3-step SL RDL</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">11</div><div class="wu-name">3-step quad &amp; reach</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">12</div><div class="wu-name">3-step ham scoop</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">13</div><div class="wu-name">Straight-leg kicks</div><div class="wu-spec">1 length</div></div>
-      <div class="wu-item"><div class="wu-num">14</div><div class="wu-name">Anklers</div><div class="wu-spec">1 length</div></div>
-    </div>
-
-    <!-- WEEKLY BREAKDOWN TABLE -->
-    <div class="section-title">Weekly session overview</div>
-    <table class="week-table">
-      <thead>
-        <tr>
-          <th style="width:80px;">Week</th>
-          <th style="width:130px;">Theme</th>
-          <th>Speed block</th>
-          <th>Plyos / Jumps</th>
-          <th>Agility / COD</th>
-          <th style="width:90px;">Load</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><div class="wk-label" style="color:#1a8c6e;">Wk 1</div></td>
-          <td><div class="wk-theme">Movement foundations</div><div class="wk-focus">Quality over speed</div></td>
-          <td class="drill-mini"><span class="d">A-skip 2×20m</span><span class="d">B-skip 2×20m</span><span class="d">Falling start 4×10m</span></td>
-          <td class="drill-mini"><span class="d">Squat jump 3×5</span><span class="d">CMJ 3×5</span><span class="d">Box step-up + jump 2×5</span></td>
-          <td class="drill-mini"><span class="d">5-10-5 × 4 (walk-through)</span><span class="d">Lateral shuffle 3×10m</span><span class="d">Defensive slide 4 lengths</span></td>
-          <td>
-            <div class="load-row"><div class="load-seg" style="width:24px;background:#1a8c6e;"></div><div style="font-size:10px;color:var(--muted);margin-left:4px;">Low</div></div>
-          </td>
-        </tr>
-        <tr>
-          <td><div class="wk-label" style="color:#1a8c6e;">Wk 2</div></td>
-          <td><div class="wk-theme">Volume + patterns</div><div class="wk-focus">Add reps, intro bounding</div></td>
-          <td class="drill-mini"><span class="d">A-skip 2×30m</span><span class="d">Falling start 5×10m</span><span class="d">20m build-up 3×</span></td>
-          <td class="drill-mini"><span class="d">Alt-leg bound 3×20m</span><span class="d">CMJ 4×5</span><span class="d">Lateral bound 3×4</span></td>
-          <td class="drill-mini"><span class="d">T-drill × 4</span><span class="d">Cone weave 3×</span><span class="d">Skater jump 3×6</span></td>
-          <td>
-            <div class="load-row"><div class="load-seg" style="width:40px;background:#1a8c6e;"></div><div style="font-size:10px;color:var(--muted);margin-left:4px;">Mod</div></div>
-          </td>
-        </tr>
-        <tr>
-          <td><div class="wk-label" style="color:#c8860a;">Wk 3</div></td>
-          <td><div class="wk-theme">Increased intensity</div><div class="wk-focus">Hardest of first half</div></td>
-          <td class="drill-mini"><span class="d">Flying 20m × 4</span><span class="d">Top-speed 30m × 3</span><span class="d">Falling start 4×10m</span></td>
-          <td class="drill-mini"><span class="d">Depth drop → jump 3×5</span><span class="d">Tuck jump 3×5</span><span class="d">CMJ 4×5</span></td>
-          <td class="drill-mini"><span class="d">5-10-5 timed × 5</span><span class="d">L-drill × 4</span><span class="d">Lateral bound seq 4×4</span></td>
-          <td>
-            <div class="load-row"><div class="load-seg" style="width:56px;background:#c8860a;"></div><div style="font-size:10px;color:var(--muted);margin-left:4px;">Mod-Hi</div></div>
-          </td>
-        </tr>
-        <tr style="background:#f9f7f4;">
-          <td><div class="wk-label" style="color:#1a6fb5;">Wk 4</div></td>
-          <td><div class="wk-theme">Recovery week</div><div class="wk-focus">~40% volume cut</div></td>
-          <td class="drill-mini"><span class="d">A-skip 2×20m</span><span class="d">Falling start 3× @ 85%</span><span class="d">20m build-up 2×</span></td>
-          <td class="drill-mini"><span class="d">Broad jump 3×3 (easy)</span><span class="d">CMJ 3×4</span><span class="d">Lateral bound 2×3</span></td>
-          <td class="drill-mini"><span class="d">T-drill 3× (smooth)</span><span class="d">Cone weave 2×</span><span class="d">Def. slide 2 lengths</span></td>
-          <td>
-            <div class="load-row"><div class="load-seg" style="width:22px;background:#1a6fb5;"></div><div style="font-size:10px;color:var(--muted);margin-left:4px;">Low</div></div>
-          </td>
-        </tr>
-        <tr>
-          <td><div class="wk-label" style="color:#c44a2a;">Wk 5</div></td>
-          <td><div class="wk-theme">Intensity peak</div><div class="wk-focus">Max effort — full rest</div></td>
-          <td class="drill-mini"><span class="d">Flying 20m × 5 (max)</span><span class="d">Top-speed 40m × 3</span><span class="d">Sprint from def. stance × 4</span></td>
-          <td class="drill-mini"><span class="d">Depth jump 4×5</span><span class="d">Alt-leg bound 4×25m</span><span class="d">Reactive tuck jump 3×5</span></td>
-          <td class="drill-mini"><span class="d">Mirror drill 5×20s</span><span class="d">5-10-5 PB attempt × 4</span><span class="d">Cone reaction drill × 4</span></td>
-          <td>
-            <div class="load-row"><div class="load-seg" style="width:72px;background:#c44a2a;"></div><div style="font-size:10px;color:var(--muted);margin-left:4px;">High</div></div>
-          </td>
-        </tr>
-        <tr>
-          <td><div class="wk-label" style="color:#c44a2a;">Wk 6</div></td>
-          <td><div class="wk-theme">Test + sharpen</div><div class="wk-focus">Measure improvement</div></td>
-          <td class="drill-mini"><span class="d">10m sprint TEST × 3</span><span class="d">Flying 20m × 3</span><span class="d">Full 40m × 2–3</span></td>
-          <td class="drill-mini"><span class="d">Max vert jump TEST × 5</span><span class="d">Broad jump TEST × 3</span><span class="d">Alt-leg bound 3×25m</span></td>
-          <td class="drill-mini"><span class="d">T-drill TIMED × 3</span><span class="d">5-10-5 TIMED × 3</span><span class="d">Mirror drill 3×20s</span></td>
-          <td>
-            <div class="load-row"><div class="load-seg" style="width:66px;background:#c44a2a;"></div><div style="font-size:10px;color:var(--muted);margin-left:4px;">High</div></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-
-  <!-- BOTTOM STRIPS -->
-  <div class="bottom-strips">
-    <div class="strip">
-      <div class="strip-title">Equipment needed</div>
-      <div class="strip-items">
-        <div class="strip-item"><div class="strip-dot"></div><span>Flat surface — driveway, park, or basketball court (~20 yds)</span></div>
-        <div class="strip-item"><div class="strip-dot"></div><span>3–5 cones or small markers</span></div>
-        <div class="strip-item"><div class="strip-dot"></div><span>Low step or box, 6–12 inches (weeks 3, 5, 6 only)</span></div>
-        <div class="strip-item"><div class="strip-dot"></div><span>Water bottle · Athletic shoes</span></div>
-      </div>
-    </div>
-    <div class="strip">
-      <div class="strip-title">Key coaching principles</div>
-      <div class="strip-items">
-        <div class="strip-item"><div class="strip-dot"></div><span>Landing quality before load — soft, controlled, knees over toes</span></div>
-        <div class="strip-item"><div class="strip-dot"></div><span>Full recovery between max-effort sprints (60–90 sec minimum)</span></div>
-        <div class="strip-item"><div class="strip-dot"></div><span>Week 4 deload is mandatory — adaptation happens in recovery</span></div>
-        <div class="strip-item"><div class="strip-dot"></div><span>Sleep 9+ hours — most important recovery tool at this age</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- LEGEND -->
-  <div class="legend">
-    <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:6px;">Emphasis key:</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#1a8c6e;"></div>Speed</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#6b4fcf;"></div>Change of direction</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#c8860a;"></div>Vertical jump</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#c44a2a;"></div>Bounding</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#1a6fb5;"></div>Agility</div>
-    <div style="margin-left:auto;font-size:11px;color:var(--muted);">CMJ = countermovement jump · SL = single leg · RDL = Romanian deadlift · COD = change of direction · PB = personal best</div>
-  </div>
-
+<div class="header">
+  <a class="back-link" href="index.html">&#8592; Speed Works</a>
+  <div class="header-tag">Basketball Athlete Development</div>
+  <h1>Quick <span>Guide</span></h1>
+  <div class="header-sub">6 weeks &nbsp;·&nbsp; once per week &nbsp;·&nbsp; 45 min &nbsp;·&nbsp; minimal equipment</div>
 </div>
 
+<div class="week-tabs">
+  <div class="wtab active" onclick="setWeek(0)">Week 1</div>
+  <div class="wtab" onclick="setWeek(1)">Week 2</div>
+  <div class="wtab" onclick="setWeek(2)">Week 3</div>
+  <div class="wtab" onclick="setWeek(3)">Week 4</div>
+  <div class="wtab" onclick="setWeek(4)">Week 5</div>
+  <div class="wtab" onclick="setWeek(5)">Week 6</div>
+</div>
+
+<div class="main" id="pages"></div>
+
+<footer>Speed Works &nbsp;·&nbsp; Quick Guide &nbsp;·&nbsp; 6-Week Speed &amp; Plyometrics</footer>
+
+<script>
+const WU=[
+  {n:1,nm:"Jog"},{n:2,nm:"High knees"},{n:3,nm:"Butt kicks"},{n:4,nm:"Light skips"},
+  {n:5,nm:"3-step squat"},{n:6,nm:"3-step kick"},{n:7,nm:"3-step lunge & twist"},
+  {n:8,nm:"3-step hip hug"},{n:9,nm:"Hip flex & open"},{n:10,nm:"3-step SL RDL"},
+  {n:11,nm:"Quad & reach"},{n:12,nm:"Ham scoop"},{n:13,nm:"Straight-leg kicks"},{n:14,nm:"Anklers"}
+];
+
+const W=[
+  {int:"Build",focus:"Learn landing mechanics, sprint posture, and basic footwork. Quality over speed.",
+   blocks:[
+     {nm:"Speed mechanics",t:"10 min",ds:[{n:"A-skip",s:"2×20m"},{n:"B-skip",s:"2×20m"},{n:"Falling start sprint",s:"4×10m"},{n:"Standing broad jump",s:"3×3"}]},
+     {nm:"Vertical jump",t:"10 min",ds:[{n:"Squat jump",s:"3×5"},{n:"Countermovement jump",s:"3×5"},{n:"Box step-up + jump",s:"2×5 each"}]},
+     {nm:"Change of direction",t:"10 min",ds:[{n:"5-10-5 pro agility",s:"4 reps"},{n:"Two-cone lateral shuffle",s:"3×10m"},{n:"3-cone L-drill",s:"4 reps"}]}
+   ],load:{speed:30,cod:30,vert:25,bound:10,agil:30},
+   note:"Stick landing is the #1 priority. Every jump sticks for 2 full seconds. Noisy or caving landings — slow down and reset."},
+
+  {int:"Build",focus:"Add reps and distance. Introduce lateral bounds and bounding.",
+   blocks:[
+     {nm:"Speed + acceleration",t:"12 min",ds:[{n:"A-skip",s:"2×30m"},{n:"Falling start sprint",s:"5×10m"},{n:"Half kneeling start",s:"4×10m"},{n:"20m build-up sprint",s:"3×"},{n:"Alt-leg bound",s:"3×20m"}]},
+     {nm:"Bounding intro",t:"8 min",ds:[{n:"Standing broad jump",s:"3×3"},{n:"Alt-leg bound",s:"3×20m"},{n:"Single-leg hop",s:"2×10m each"}]},
+     {nm:"Vertical + lateral",t:"10 min",ds:[{n:"Countermovement jump",s:"4×5"},{n:"Lateral bound",s:"3×4 each"},{n:"Skater jump",s:"3×6 each"}]},
+     {nm:"Agility",t:"7 min",ds:[{n:"T-drill",s:"4×"},{n:"Cone weave",s:"3×"}]}
+   ],load:{speed:45,cod:40,vert:40,bound:35,agil:45},
+   note:"Watch knee cave on lateral bounds — toes forward, knee tracks over second toe on every landing."},
+
+  {int:"Build",focus:"Push reps higher, add sprint volume, introduce depth drops. Hardest session of the first half.",
+   blocks:[
+     {nm:"Speed — accel + max",t:"12 min",ds:[{n:"Falling start 10m",s:"4×"},{n:"Aggressive crouch start",s:"4×10m"},{n:"Flying 20m",s:"4×"},{n:"Top-speed 30m",s:"3×"},{n:"Single-leg hop",s:"2×10m each"}]},
+     {nm:"Plyometrics — vertical",t:"12 min",ds:[{n:"Depth drop → jump",s:"3×5"},{n:"Tuck jump",s:"3×5"},{n:"Countermovement jump",s:"4×5"},{n:"Single-leg jump",s:"2×5 each"}]},
+     {nm:"Change of direction",t:"8 min",ds:[{n:"5-10-5 timed",s:"5×, 60s rest"},{n:"L-drill",s:"4×"},{n:"Lateral bound seq.",s:"4×4 each"}]}
+   ],load:{speed:60,cod:55,vert:60,bound:50,agil:55},
+   note:"Depth drops: step off the box, don't jump off. Hit ground → immediate takeoff. Walk through it first rep every set."},
+
+  {int:"Easy",focus:"Cut volume ~40%. Let the body absorb weeks 1–3. Adaptation happens here.",
+   blocks:[
+     {nm:"Speed — light",t:"10 min",ds:[{n:"A-skip",s:"2×20m"},{n:"Falling start sprint",s:"3× @ 85%"},{n:"20m build-up",s:"2×"},{n:"Standing broad jump",s:"3×3 (easy)"}]},
+     {nm:"Jumps — quality only",t:"8 min",ds:[{n:"Broad jump",s:"3×3"},{n:"Countermovement jump",s:"3×4"},{n:"Lateral bound",s:"2×3 each"}]},
+     {nm:"Agility — relaxed",t:"8 min",ds:[{n:"T-drill",s:"3× (smooth)"},{n:"Cone weave",s:"2×"},{n:"3-cone L-drill",s:"3× (smooth)"}]}
+   ],load:{speed:30,cod:25,vert:25,bound:20,agil:25},
+   note:"This session should feel almost easy. That is correct. Protect the deload — adaptation happens in recovery."},
+
+  {int:"Hard",focus:"Highest intensity of the program. Max-effort sprints, reactive jumps, competitive agility.",
+   blocks:[
+     {nm:"Max speed",t:"12 min",ds:[{n:"Flying 20m",s:"5×, 90s rest"},{n:"Top-speed 40m",s:"3×"},{n:"Sprint from def. stance",s:"4×"},{n:"Alt-leg bound",s:"4×25m"}]},
+     {nm:"Plyometrics — reactive",t:"12 min",ds:[{n:"Depth jump",s:"4×5"},{n:"Alt-leg bound",s:"4×25m"},{n:"Reactive tuck jump",s:"3×5"},{n:"SL lateral hop",s:"3×5 each"}]},
+     {nm:"Agility — competitive",t:"8 min",ds:[{n:"Mirror drill",s:"5×20s"},{n:"5-10-5 PB attempt",s:"4 timed"},{n:"Cone reaction drill",s:"4×"}]}
+   ],load:{speed:90,cod:80,vert:85,bound:85,agil:80},
+   note:"Full recovery between sprint reps is mandatory — 60–90s minimum. Fatigued sprints reinforce bad mechanics."},
+
+  {int:"Hard",focus:"Apply everything. Test improvements, leave feeling fast and confident.",
+   blocks:[
+     {nm:"Speed — test",t:"12 min",ds:[{n:"10m sprint TEST",s:"3×, best time"},{n:"Flying 20m",s:"3×"},{n:"Full 40m sprint",s:"2–3×"},{n:"Alt-leg bound TEST",s:"2×25m, count strides"}]},
+     {nm:"Vertical + bounding",t:"10 min",ds:[{n:"Max vert jump TEST",s:"5×, mark wall"},{n:"Broad jump TEST",s:"3×, measure"},{n:"Alt-leg bound",s:"3×25m"}]},
+     {nm:"Agility gauntlet",t:"8 min",ds:[{n:"T-drill TIMED",s:"3×, best"},{n:"5-10-5 TIMED",s:"3×, best"},{n:"Mirror drill",s:"3×20s"},{n:"3-cone L-drill TIMED",s:"3×, best"}]}
+   ],load:{speed:85,cod:80,vert:80,bound:75,agil:80},
+   note:"Week 6 is partly a test. Max effort on timed drills — seeing real improvement is powerful confidence fuel heading into the season."}
+];
+
+const LC={speed:"#1a8c6e",cod:"#6b4fcf",vert:"#c8860a",bound:"#c44a2a",agil:"#1a6fb5"};
+const LL={speed:"Speed",cod:"Change of dir",vert:"Vertical",bound:"Bounding",agil:"Agility"};
+
+function build(w,i){
+  const ic=w.int==='Hard'?'int-hard':w.int==='Easy'?'int-easy':'int-build';
+
+  let wu=`<div class="box"><div class="box-label"><span>Dynamic warm-up &nbsp;·&nbsp; every session &nbsp;·&nbsp; 1 length each (~20 yds) &nbsp;·&nbsp; walk back recovery</span><span class="box-time">10 min</span></div><div class="wu-grid">`;
+  WU.forEach(d=>{ wu+=`<div class="wu-item"><div class="wu-n">${d.n}</div><div class="wu-name">${d.nm}</div></div>`; });
+  wu+=`</div></div>`;
+
+  let sg=`<div class="session-grid">`;
+  w.blocks.forEach(b=>{
+    sg+=`<div class="sblock"><div class="sb-head"><span class="sb-name">${b.nm}</span><span class="sb-time">${b.t}</span></div><div class="sb-body">`;
+    b.ds.forEach(d=>{ sg+=`<div class="drow"><span class="d-name">${d.n}</span><span class="d-spec">${d.s}</span></div>`; });
+    sg+=`</div></div>`;
+  });
+  sg+=`</div>`;
+
+  let lb=`<div class="box"><div class="box-label" style="margin-bottom:10px;"><span>Training emphasis</span></div><div class="load-grid">`;
+  Object.keys(LL).forEach(k=>{
+    const v=w.load[k];
+    lb+=`<div><div class="load-label">${LL[k]}</div><div class="load-track"><div class="load-fill" style="width:${v}%;background:${LC[k]};"></div></div><div class="load-pct" style="color:${LC[k]};">${v}%</div></div>`;
+  });
+  lb+=`</div></div>`;
+
+  const cool=`<div class="cool-box"><strong style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b7280;display:block;margin-bottom:4px;">Cool-down &nbsp;·&nbsp; 5–7 min</strong>Walk, breathe, and spend time on whatever feels tight — hips, quads, hamstrings, and calves did the most work. Move slowly and listen to your body.</div>`;
+
+  return `<div class="week-page${i===0?' active':''}" id="wp${i}">
+    <div class="wk-header">
+      <div><div class="wk-num">Week ${i+1} of 6</div><div class="wk-title">Week ${i+1}</div><div class="wk-focus">${w.focus}</div></div>
+      <div class="int-badge ${ic}">${w.int}</div>
+    </div>
+    ${wu}${sg}${lb}
+    <div class="cnote"><strong>Coach note</strong>${w.note}</div>
+    ${cool}
+  </div>`;
+}
+
+const pg=document.getElementById('pages');
+W.forEach((w,i)=>{ pg.innerHTML+=build(w,i); });
+
+function setWeek(i){
+  document.querySelectorAll('.wtab').forEach((t,j)=>t.classList.toggle('active',i===j));
+  document.querySelectorAll('.week-page').forEach((p,j)=>p.classList.toggle('active',i===j));
+}
+</script>
 </body>
 </html>
