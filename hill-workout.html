@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speed Works — Hill Workout</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0d0d0d;--white:#f5f2ed;--court:#c8860a;
+  --teal:#4ecfa8;--muted:#888780;--border:#2a2a28;
+  --card:#161616;--card2:#1a1a18;
+}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;}
+
+/* HEADER */
+.header{background:var(--black);padding:22px 28px 18px;border-bottom:1px solid var(--border);}
+.back-link{display:inline-flex;align-items:center;gap:5px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,242,237,0.4);text-decoration:none;margin-bottom:14px;transition:color .15s;}
+.back-link:hover{color:var(--court);}
+.header-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--court);margin-bottom:5px;}
+.header h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,7vw,64px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.95;}
+.header h1 span{color:var(--court);}
+.header-sub{font-size:13px;color:rgba(245,242,237,0.4);margin-top:8px;}
+
+/* TABS */
+.tabs{background:var(--black);border-bottom:1px solid var(--border);display:flex;padding:0 28px;overflow-x:auto;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:12px 18px;color:rgba(245,242,237,0.35);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;user-select:none;}
+.tab:hover{color:rgba(245,242,237,0.7);}
+.tab.active{color:var(--court);border-bottom-color:var(--court);}
+
+.main{max-width:860px;margin:0 auto;padding:28px 24px 60px;}
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+
+/* INTRO BAND */
+.intro-band{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:20px;}
+.intro-band h2{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px;}
+.intro-band p{font-size:13px;color:rgba(245,242,237,0.55);line-height:1.65;max-width:600px;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;}
+.why-card{background:var(--card2);border-radius:6px;padding:12px 14px;border:1px solid var(--border);}
+.why-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;color:var(--court);margin-bottom:4px;}
+.why-body{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* DRILL CARDS */
+.drill-group{margin-bottom:20px;}
+.group-header{background:var(--card2);border:1px solid var(--border);border-radius:8px 8px 0 0;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
+.group-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;}
+.group-meta{display:flex;align-items:center;gap:10px;}
+.group-time{font-size:11px;color:var(--muted);background:#222220;border-radius:20px;padding:2px 10px;}
+.group-chevron{font-size:11px;color:var(--muted);transition:transform .2s;}
+.group-body{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;overflow:hidden;}
+
+.drill-row{padding:14px 18px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:180px 1fr;gap:16px;align-items:start;}
+.drill-row:last-child{border-bottom:none;}
+.drill-left{}
+.drill-name{font-weight:600;font-size:14px;color:var(--white);margin-bottom:3px;}
+.drill-spec{font-size:12px;color:var(--muted);}
+.drill-rest{font-size:11px;color:var(--court);font-weight:600;margin-top:3px;}
+.drill-right{}
+.drill-cue{font-size:13px;color:var(--teal);font-style:italic;margin-bottom:6px;line-height:1.5;}
+.drill-why{font-size:12px;color:rgba(245,242,237,0.45);line-height:1.55;}
+
+/* HOW-TO TOGGLE */
+.howto-toggle{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#185FA5;background:#0d1f3d;padding:2px 8px;border-radius:20px;cursor:pointer;margin-top:6px;}
+.howto-body{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.howto-body.open{display:block;}
+.howto-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.howto-steps{font-size:12px;color:rgba(245,242,237,0.6);line-height:1.65;}
+.howto-steps ol{padding-left:16px;}
+.howto-steps li{margin-bottom:3px;}
+.howto-note{background:#1a1500;border-left:3px solid var(--court);border-radius:0 6px 6px 0;padding:10px 12px;}
+.howto-note-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.howto-note-body{font-size:12px;color:#d4a840;line-height:1.6;font-style:italic;}
+
+/* COACH NOTE */
+.coach-note{background:#1a1500;border-left:3px solid var(--court);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:#d4a840;line-height:1.6;margin-bottom:16px;}
+.coach-note strong{font-weight:700;color:#f0b83a;font-size:10px;text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:3px;}
+
+/* OVERVIEW STRIP */
+.overview-strip{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+.overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.ov-item{text-align:center;}
+.ov-num{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--court);line-height:1;}
+.ov-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+
+/* PROGRESSION TABLE */
+.prog-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.prog-table th{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 12px;background:var(--card2);border-bottom:1px solid var(--border);}
+.prog-table td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:top;line-height:1.5;}
+.prog-table tr:last-child td{border-bottom:none;}
+.prog-table tr:nth-child(even) td{background:var(--card2);}
+.prog-wk{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;color:var(--court);white-space:nowrap;}
+.prog-intensity{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-left:6px;}
+.int-build{background:rgba(26,140,110,0.2);color:#4ecfa8;}
+.int-moderate{background:rgba(200,134,10,0.15);color:#f0b83a;}
+.int-hard{background:rgba(196,74,42,0.2);color:#f09070;}
+.int-easy{background:rgba(26,111,181,0.15);color:#6eb8f5;}
+
+/* HILL TIPS */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.tip-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 18px;}
+.tip-num{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;color:#2a2a28;line-height:1;margin-bottom:4px;}
+.tip-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;text-transform:uppercase;margin-bottom:5px;}
+.tip-body{font-size:12px;color:var(--muted);line-height:1.6;}
+
+footer{background:var(--card2);color:rgba(245,242,237,0.2);text-align:center;padding:16px;font-size:11px;border-top:1px solid var(--border);}
+
+@media(max-width:600px){
+  .main{padding:16px 12px 40px;}
+  .header{padding:16px 16px 12px;}
+  .tabs{padding:0 12px;}
+  .why-grid{grid-template-columns:1fr;}
+  .overview-grid{grid-template-columns:repeat(2,1fr);}
+  .tips-grid{grid-template-columns:1fr;}
+  .drill-row{grid-template-columns:1fr;gap:8px;}
+  .howto-grid{grid-template-columns:1fr;}
+  .prog-table{font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a class="back-link" href="index.html">&#8592; Speed Works</a>
+  <div class="header-tag">Basketball Athlete Development</div>
+  <h1>Hill <span>Workout</span></h1>
+  <div class="header-sub">Beginner &nbsp;·&nbsp; 8th grade &nbsp;·&nbsp; Sprints, bounds, backpedal, lateral &nbsp;·&nbsp; Session template + progression guide</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="setTab(0)">Session template</div>
+  <div class="tab" onclick="setTab(1)">Progression guide</div>
+  <div class="tab" onclick="setTab(2)">Hill selection + tips</div>
+</div>
+
+<div class="main">
+
+<!-- ══════════════════ TAB 0: SESSION TEMPLATE ══════════════════ -->
+<div class="panel active" id="tab0">
+
+  <div class="intro-band">
+    <h2>Why train on a hill?</h2>
+    <p>Hills are one of the best tools for a developing athlete. The incline automatically forces better mechanics — more knee drive, more hip extension, a stronger push-off. You can't heel-strike going uphill. You can't lean back. The hill coaches the body before a word is said. For an 8th grader, hill work builds real speed and power with lower injury risk than flat max sprints.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-title">Sprint power</div>
+        <div class="why-body">Resisted acceleration builds explosive force in the exact muscles used in flat sprinting — quads, glutes, and hip flexors — with lower injury risk than flat max sprints.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-title">Mechanics</div>
+        <div class="why-body">The incline forces proper forward lean, knee drive, and toe-up mechanics. Athletes who fight these mechanics on the flat often clean up immediately on a hill.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-title">Conditioning</div>
+        <div class="why-body">Hill repeats build cardiovascular fitness alongside speed — combining the metabolic demand of sprinting with the resistance of the incline in one efficient session.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overview-strip">
+    <div class="sec-label" style="margin-bottom:12px;">Session overview</div>
+    <div class="overview-grid">
+      <div class="ov-item"><div class="ov-num">35–40</div><div class="ov-label">Minutes total</div></div>
+      <div class="ov-item"><div class="ov-num">4</div><div class="ov-label">Drill blocks</div></div>
+      <div class="ov-item"><div class="ov-num">20–30</div><div class="ov-label">Yards ideal hill</div></div>
+      <div class="ov-item"><div class="ov-num">6–10°</div><div class="ov-label">Ideal gradient</div></div>
+    </div>
+  </div>
+
+  <div class="coach-note"><strong>Before you start</strong>Walk the hill first. Get comfortable with the incline before any sprinting. The walk-down between reps IS the rest — don't jog back. For a beginner, full recovery between reps is non-negotiable. Quality reps beat tired reps every time.</div>
+
+  <!-- BLOCK 1: WARM-UP -->
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('g0')">
+      <div class="group-name">Warm-up</div>
+      <div class="group-meta"><span class="group-time">8 min</span><span class="group-chevron" id="chev-g0" style="transform:rotate(180deg);">▼</span></div>
+    </div>
+    <div class="group-body" id="g0">
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Easy jog</div>
+          <div class="drill-spec">2 min flat or gentle slope</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Conversational pace — get blood moving before any hill work</div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Dynamic warm-up</div>
+          <div class="drill-spec">Full sequence at the base of the hill</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Run through the standard 14-drill sequence from the 6-week program — high knees, butt kicks, lunge and twist, SL RDL, anklers, etc. The hill session demands the same preparation.</div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Hill walk-throughs</div>
+          <div class="drill-spec">2× up at 50% effort</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Walk or slow jog up the hill twice. Feel the incline, get your legs adjusted, note the top marker. Walk down slowly between each.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2: SPRINT HILLS -->
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('g1')">
+      <div class="group-name">Sprint hills</div>
+      <div class="group-meta"><span class="group-time">12 min</span><span class="group-chevron" id="chev-g1" style="transform:rotate(180deg);">▼</span></div>
+    </div>
+    <div class="group-body" id="g1">
+      <div class="coach-note" style="margin:14px 18px 0;"><strong>Overview</strong>Start at 70–80% effort on the first two reps. Let the body adjust to the hill before going full effort. By rep 3–4, push to 90%. Walk all the way to the bottom before the next rep.</div>
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Hill sprint</div>
+          <div class="drill-spec">4–6 reps × 20 yds</div>
+          <div class="drill-rest">Rest: walk down between reps</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Explosive from a standing start — lean into the hill, drive the knees, push hard off every step all the way to the top marker</div>
+          <div class="drill-why">The incline forces the forward lean and knee drive that is difficult to teach on flat ground. Every rep is a mechanics lesson and a power builder simultaneously.</div>
+          <div class="howto-toggle" onclick="toggleHowto('ht0')">How-to ▾</div>
+          <div class="howto-body" id="ht0">
+            <div class="howto-grid">
+              <div class="howto-steps">
+                <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Execution</div>
+                <ol>
+                  <li>Stand at the bottom in a slight forward lean — let the hill dictate your angle</li>
+                  <li>Drive explosively off both feet — attack the first step</li>
+                  <li>Pump the arms aggressively — opposite arm to opposite knee</li>
+                  <li>Drive each knee up to hip height with every stride</li>
+                  <li>Stay on the balls of your feet — no heel-striking</li>
+                  <li>Sprint hard all the way through the top marker — don't ease off early</li>
+                  <li>Walk back down slowly — this is your rest</li>
+                </ol>
+              </div>
+              <div class="howto-note">
+                <div class="howto-note-label">Coaching cue</div>
+                <div class="howto-note-body">The hill does the coaching. If an athlete is heel-striking, leaning back, or not driving the knees — the hill will make it feel wrong immediately. Point out the sensation, not just the error.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Acceleration sprint</div>
+          <div class="drill-spec">4 reps × 20–30 yds</div>
+          <div class="drill-rest">Rest: walk down between reps</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Start from a 3-point stance or falling start position. Emphasize the first 5 steps — maximum aggression out of the start</div>
+          <div class="drill-why">Trains explosive acceleration specifically — the first step quickness that separates good athletes from great ones on the court.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 3: BOUNDING / PLYOS -->
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('g2')">
+      <div class="group-name">Bounding + plyometrics</div>
+      <div class="group-meta"><span class="group-time">10 min</span><span class="group-chevron" id="chev-g2" style="transform:rotate(180deg);">▼</span></div>
+    </div>
+    <div class="group-body" id="g2">
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Hill bound</div>
+          <div class="drill-spec">4 reps × 20 yds</div>
+          <div class="drill-rest">Rest: walk down between reps</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Alternate-leg bound up the hill — max distance per stride, big arm swing. The incline forces more hip extension than flat bounding</div>
+          <div class="drill-why">Bounding on an incline loads the glutes and hip extensors heavily — the muscles that generate propulsive force in sprinting. Expect fewer, more powerful strides than on flat ground.</div>
+          <div class="howto-toggle" onclick="toggleHowto('ht1')">How-to ▾</div>
+          <div class="howto-body" id="ht1">
+            <div class="howto-grid">
+              <div class="howto-steps">
+                <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Execution</div>
+                <ol>
+                  <li>Start at the base, feet hip-width</li>
+                  <li>Push off one foot explosively — drive the opposite knee up and forward</li>
+                  <li>Swing arms aggressively in opposition</li>
+                  <li>Cover maximum distance per stride up the hill</li>
+                  <li>Land on the opposite foot and immediately load for the next bound</li>
+                  <li>Count strides — fewer strides = more power</li>
+                </ol>
+              </div>
+              <div class="howto-note">
+                <div class="howto-note-label">Coaching cue</div>
+                <div class="howto-note-body">The incline will naturally shorten stride length vs flat bounding. That's fine — the hip extension demand is higher, which is the point. Count strides each rep and track improvement.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Single-leg hop up hill</div>
+          <div class="drill-spec">3 reps × 15 yds each leg</div>
+          <div class="drill-rest">Rest: walk down between legs</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">One foot only — hop up the hill maintaining consistent rhythm. Feel the single-leg demand the hill adds compared to flat ground</div>
+          <div class="drill-why">The incline exposes single-leg weakness much more clearly than flat hopping. Side-to-side differences that are subtle on flat ground become obvious on a hill.</div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Two-foot squat jump up hill</div>
+          <div class="drill-spec">3 reps × 10 yds</div>
+          <div class="drill-rest">Rest: walk down between reps</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Both feet together — jump forward and up the hill, land soft, absorb, immediately load and jump again. Like a frog up the hill</div>
+          <div class="drill-why">Builds bilateral explosiveness and landing mechanics simultaneously. The constant uphill angle means every landing immediately loads for the next jump — no rest between ground contacts.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4: LATERAL + BACKPEDAL -->
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('g3')">
+      <div class="group-name">Lateral + backpedal</div>
+      <div class="group-meta"><span class="group-time">6 min</span><span class="group-chevron" id="chev-g3" style="transform:rotate(180deg);">▼</span></div>
+    </div>
+    <div class="group-body" id="g3">
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Lateral shuffle up hill</div>
+          <div class="drill-spec">4 reps × 20 yds each direction</div>
+          <div class="drill-rest">Rest: walk down between reps</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Face sideways to the hill, shuffle laterally upward — don't cross your feet. Stay low, hips square. Lead both directions</div>
+          <div class="drill-why">Lateral shuffling up an incline forces deeper hip and knee bend than flat shuffling — directly training the defensive low-stance strength needed to stay in front of quicker opponents.</div>
+          <div class="howto-toggle" onclick="toggleHowto('ht2')">How-to ▾</div>
+          <div class="howto-body" id="ht2">
+            <div class="howto-grid">
+              <div class="howto-steps">
+                <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Execution</div>
+                <ol>
+                  <li>Stand at the base, facing sideways to the slope</li>
+                  <li>Shuffle the lead foot uphill, trail foot follows — never let feet touch</li>
+                  <li>Stay in a low athletic position throughout — don't stand up between steps</li>
+                  <li>Keep hips square — don't rotate toward or away from the hill</li>
+                  <li>Reach the top, walk down, and lead with the other foot on the next rep</li>
+                </ol>
+              </div>
+              <div class="howto-note">
+                <div class="howto-note-label">Coaching cue</div>
+                <div class="howto-note-body">"Stay in your defensive stance the whole way up." If they stand up, the drill is too easy — have them go faster or get lower.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-left">
+          <div class="drill-name">Backpedal up hill</div>
+          <div class="drill-spec">4 reps × 20 yds</div>
+          <div class="drill-rest">Rest: walk down facing forward between reps</div>
+        </div>
+        <div class="drill-right">
+          <div class="drill-cue">Face downhill, backpedal upward — quick feet, low hips, arms pumping. This is harder than it sounds — go slow first</div>
+          <div class="drill-why">Backpedaling uphill mimics defensive recovery — when an opponent gets behind you and you need to sprint backward to close the gap. The incline makes the hip flexors work harder than any flat backpedal drill.</div>
+          <div class="howto-toggle" onclick="toggleHowto('ht3')">How-to ▾</div>
+          <div class="howto-body" id="ht3">
+            <div class="howto-grid">
+              <div class="howto-steps">
+                <div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Execution</div>
+                <ol>
+                  <li>Stand at the base facing downhill (so you are backpedaling upward)</li>
+                  <li>Begin quick, short backward steps — push off the ball of each foot</li>
+                  <li>Keep hips low and forward — don't sit back</li>
+                  <li>Arms pump backward in rhythm</li>
+                  <li>Progress from slow and controlled to faster each rep</li>
+                  <li>Walk down facing forward — do not backpedal downhill</li>
+                </ol>
+              </div>
+              <div class="howto-note">
+                <div class="howto-note-label">Safety note</div>
+                <div class="howto-note-body">Walk the first rep slowly to feel the balance demands. Backpedaling uphill is disorienting at first. Never run down the hill backward.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- COOL DOWN --><!-- COOL DOWN -->
+  <div class="coach-note"><strong>Cool-down · 5 min</strong>Walk the full length of the hill twice at an easy pace. Heart rate down before leaving. Focus on the calves, quads, and hip flexors — they took the most hill-specific load today.</div>
+
+</div>
+
+<!-- ══════════════════ TAB 1: PROGRESSION GUIDE ══════════════════ -->
+<div class="panel" id="tab1">
+
+  <div class="intro-band" style="margin-bottom:20px;">
+    <h2>How to progress hill work</h2>
+    <p>Hill training follows the same principle as any other speed work — increase demand gradually, recover properly, and peak at the right time. This guide assumes hill work is added alongside the 6-week program as a supplemental session once per week.</p>
+  </div>
+
+  <div class="sec-label">6-week progression alongside the main program</div>
+  <table class="prog-table">
+    <thead>
+      <tr>
+        <th style="width:80px;">Week</th>
+        <th>Focus</th>
+        <th>Sprint reps</th>
+        <th>Bounding / lateral</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="prog-wk">Wk 1</div><span class="prog-intensity int-build">Intro</span></td>
+        <td>Learn the hill. Mechanics first, intensity second.</td>
+        <td>4 sprints × 20 yds. 70–80% effort. Feel the hill.</td>
+        <td>Skip bounding — just laterals (shuffle only). Learn the mechanics.</td>
+        <td>Keep it short. 30 min total. Go home feeling good.</td>
+      </tr>
+      <tr>
+        <td><div class="prog-wk">Wk 2</div><span class="prog-intensity int-build">Build</span></td>
+        <td>Add reps, introduce bounding.</td>
+        <td>5 sprints × 20 yds. 80–85% effort.</td>
+        <td>Hill bounds 3×. Add backpedal 3× (slow and controlled first time).</td>
+        <td>This will feel harder than week 1 — that's correct.</td>
+      </tr>
+      <tr>
+        <td><div class="prog-wk">Wk 3</div><span class="prog-intensity int-moderate">Moderate</span></td>
+        <td>Push intensity. All drill types in play.</td>
+        <td>6 sprints × 25 yds. 85–90% effort.</td>
+        <td>Full bounding block. Full lateral + backpedal. All drills as written.</td>
+        <td>First full session. 35–40 min. Rest fully between everything.</td>
+      </tr>
+      <tr>
+        <td><div class="prog-wk">Wk 4</div><span class="prog-intensity int-easy">Deload</span></td>
+        <td>Recovery. Cut volume ~40%. Keep intensity similar.</td>
+        <td>4 sprints × 20 yds. Easy effort — feel fast, not tired.</td>
+        <td>Bounds only — 3 reps. Skip single-leg hops and backpedal.</td>
+        <td>Short session. Body is adapting — protect the deload.</td>
+      </tr>
+      <tr>
+        <td><div class="prog-wk">Wk 5</div><span class="prog-intensity int-hard">Peak</span></td>
+        <td>Highest intensity of the program. Full effort.</td>
+        <td>6–8 sprints × 25–30 yds. Max effort. Try 3-point or falling start.</td>
+        <td>Full bounding block. Single-leg hops included. Full lateral + backpedal.</td>
+        <td>Peak week — best effort of the program. Rest fully between every rep.</td>
+      </tr>
+      <tr>
+        <td><div class="prog-wk">Wk 6</div><span class="prog-intensity int-hard">Sharpen</span></td>
+        <td>Quality, not quantity. Fast and sharp.</td>
+        <td>6 sprints × 25 yds. Fast and sharp — not all-out tired.</td>
+        <td>Bounds only — count strides, aim for fewer than week 3.</td>
+        <td>Compare stride counts to week 3. That improvement is 6 weeks of work.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sec-label" style="margin-top:24px;">Standalone progression (no 6-week program)</div>
+  <div class="coach-note"><strong>For an 8th grader using hill work alone</strong>Start at week 1 intensity regardless of fitness level. The hill introduces demands the body isn't used to — calves and glutes will be sore after session 1 even in fit athletes. Allow 72 hours recovery between sessions. Once per week is enough for a developing athlete. Two per week only if recovery is good and soreness is gone.</div>
+
+  <table class="prog-table">
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Duration</th>
+        <th>Emphasis</th>
+        <th>Session structure</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="prog-wk" style="color:#4ecfa8;">Foundation</span></td>
+        <td>Weeks 1–3</td>
+        <td>Mechanics, introduce bounding and lateral work</td>
+        <td>4–6 sprints + partial bounding block. 40 min total.</td>
+      </tr>
+      <tr>
+        <td><span class="prog-wk" style="color:#f0b83a;">Build</span></td>
+        <td>Weeks 4–6</td>
+        <td>Volume increase, full session, add finisher</td>
+        <td>8–10 sprints + full bounding + full lateral + finisher. 50 min total.</td>
+      </tr>
+      <tr>
+        <td><span class="prog-wk" style="color:#f09070;">Peak</span></td>
+        <td>Weeks 7–8</td>
+        <td>Max intensity, taper into competition</td>
+        <td>10 sprints (max effort) + bounds + 1 finisher. 45 min total.</td>
+      </tr>
+      <tr>
+        <td><span class="prog-wk" style="color:#6eb8f5;">Maintain</span></td>
+        <td>Ongoing</td>
+        <td>Keep the adaptations. 1× per week max.</td>
+        <td>6 sprints + lateral block only. 35 min total.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- ══════════════════ TAB 2: HILL SELECTION + TIPS ══════════════════ -->
+<div class="panel" id="tab2">
+
+  <div class="intro-band" style="margin-bottom:20px;">
+    <h2>Finding and using a good hill</h2>
+    <p>The hill is as important as the drills. Too steep and mechanics break down. Too shallow and you lose the benefit. Here's what to look for.</p>
+  </div>
+
+  <div class="sec-label">What makes a good training hill</div>
+  <div class="coach-note" style="margin-bottom:20px;"><strong>The ideal hill</strong>6–10 degree gradient · 20–40 yards usable length · Grass or firm ground (not loose gravel) · Safe to sprint at full effort without trip hazards · Enough width for lateral drills</div>
+
+  <table class="prog-table" style="margin-bottom:24px;">
+    <thead>
+      <tr><th>Feature</th><th>Ideal</th><th>Avoid</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Gradient</strong></td><td>6–10 degrees — steep enough to feel, gentle enough to sprint</td><td>Anything you can't sprint up at full effort</td></tr>
+      <tr><td><strong>Surface</strong></td><td>Short grass, firm dirt, or rubberized track surface</td><td>Loose gravel, wet grass, uneven terrain</td></tr>
+      <tr><td><strong>Length</strong></td><td>20–40 yards of consistent grade</td><td>Hills that flatten out or get steeper partway up</td></tr>
+      <tr><td><strong>Width</strong></td><td>At least 5–6 feet for lateral drills</td><td>Narrow paths where you can't shuffle safely</td></tr>
+      <tr><td><strong>Location</strong></td><td>Park slope, school field, golf course fringe</td><td>Road shoulders, loose sand dunes</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-label">Coaching tips</div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-num">01</div>
+      <div class="tip-title">Walk down, always</div>
+      <div class="tip-body">Jogging or running downhill after a sprint dramatically increases eccentric load on the quads and raises injury risk. Walk down every rep. The extra 30 seconds is worth it.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">02</div>
+      <div class="tip-title">Expect soreness after session 1</div>
+      <div class="tip-body">Even fit athletes get sore calves and glutes after their first hill session. This is normal — the eccentric demand of pushing up a slope is different from anything done on flat ground. Allow 72 hours before the next session.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">03</div>
+      <div class="tip-title">The mechanics fix themselves</div>
+      <div class="tip-body">Heel-striking, back-leaning, and weak knee drive are nearly impossible to maintain going uphill. Use this — if an athlete has a flat-ground mechanics issue, put them on the hill and let it teach them.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">04</div>
+      <div class="tip-title">Count strides for bounding</div>
+      <div class="tip-body">Fewer strides to cover the hill = more power per bound. Track this number. It's one of the most satisfying progress markers in the program — athletes can see it improve in real time.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">05</div>
+      <div class="tip-title">Weather matters</div>
+      <div class="tip-body">Wet grass is dangerous for sprinting and lateral work. If the surface is slick, skip lateral drills entirely and do sprints and bounding only. Never do backpedal drills on a wet hill.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-num">06</div>
+      <div class="tip-title">Beginner volume guide</div>
+      <div class="tip-body">For an 8th grader — 4 sprints is plenty for session 1. Expect sore calves and glutes the next day even from light work. That's normal. Add 1 rep per week maximum. Quality beats quantity on a hill every time.</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end .main -->
+
+<footer>Speed Works &nbsp;·&nbsp; Hill Workout &nbsp;·&nbsp; Session Template + Progression Guide</footer>
+
+<script>
+function setTab(i){
+  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',i===j));
+  document.querySelectorAll('.panel').forEach((p,j)=>p.classList.toggle('active',i===j));
+}
+
+function toggleGroup(id){
+  const body = document.getElementById(id);
+  const chev = document.getElementById('chev-'+id);
+  if(!body) return;
+  const open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  if(chev) chev.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+}
+
+function toggleHowto(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const open = el.classList.contains('open');
+  el.classList.toggle('open', !open);
+  const toggle = el.previousElementSibling;
+  if(toggle) toggle.textContent = open ? 'How-to ▾' : 'How-to ▴';
+}
+</script>
+</body>
+</html>
