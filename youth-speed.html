@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speed Works — Youth Speed Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0d0d0d;--white:#f5f2ed;--court:#c8860a;
+  --teal:#4ecfa8;--muted:#888780;--border:#2a2a28;
+  --card:#161616;--card2:#1a1a18;
+  --speed:#1a8c6e;--power:#c44a2a;--react:#6b4fcf;--strength:#1a6fb5;
+}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-size:14px;line-height:1.6;}
+
+/* HEADER */
+.header{background:var(--black);padding:22px 28px 20px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border:40px solid rgba(200,134,10,0.07);border-radius:50%;}
+.header::after{content:'';position:absolute;bottom:-50px;left:25%;width:180px;height:180px;border:28px solid rgba(26,140,110,0.06);border-radius:50%;}
+.header-inner{position:relative;z-index:1;}
+.back-link{display:inline-flex;align-items:center;gap:5px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,242,237,0.4);text-decoration:none;margin-bottom:14px;transition:color .15s;}
+.back-link:hover{color:var(--court);}
+.header-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--court);margin-bottom:5px;}
+.header h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(38px,7vw,68px);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.92;margin-bottom:12px;}
+.header h1 span{color:var(--court);}
+.header-pills{display:flex;gap:6px;flex-wrap:wrap;}
+.hpill{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:2px;border:1px solid rgba(245,242,237,0.15);color:rgba(245,242,237,0.5);}
+
+/* SESSION TABS */
+.session-nav{background:var(--black);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 28px;}
+.session-nav::-webkit-scrollbar{display:none;}
+.snav-tab{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:12px 16px;color:rgba(245,242,237,0.3);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;user-select:none;flex-shrink:0;}
+.snav-tab:hover{color:rgba(245,242,237,0.7);}
+.snav-tab.active{color:var(--court);border-bottom-color:var(--court);}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:26px 24px 60px;}
+.s-panel{display:none;}
+.s-panel.active{display:block;}
+
+/* SESSION HEADER BAND */
+.session-band{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:18px;}
+.session-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--court);margin-bottom:5px;}
+.session-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px;line-height:1;}
+.session-desc{font-size:13px;color:rgba(245,242,237,0.5);line-height:1.65;max-width:620px;}
+.session-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:14px;}
+.session-meta-item{font-size:12px;color:var(--muted);}
+.session-meta-item strong{color:var(--white);font-weight:600;}
+
+/* SECTION BLOCKS */
+.sec-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+
+.drill-group{margin-bottom:16px;}
+.group-header{background:var(--card2);border:1px solid var(--border);border-radius:8px 8px 0 0;padding:11px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;transition:background .15s;}
+.group-header:hover{background:#222220;}
+.group-left{display:flex;align-items:center;gap:10px;}
+.group-badge{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:2px;}
+.gb-elastic{background:rgba(107,79,207,0.2);color:#a89cf5;}
+.gb-power{background:rgba(196,74,42,0.2);color:#f09070;}
+.gb-speed{background:rgba(26,140,110,0.2);color:#4ecfa8;}
+.gb-strength{background:rgba(26,111,181,0.2);color:#6eb8f5;}
+.gb-test{background:rgba(200,134,10,0.2);color:#f0b83a;}
+.gb-info{background:rgba(245,242,237,0.08);color:rgba(245,242,237,0.5);}
+.group-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;}
+.group-right{display:flex;align-items:center;gap:8px;}
+.group-time{font-size:11px;color:var(--muted);background:#222220;border-radius:20px;padding:2px 9px;}
+.group-chev{font-size:11px;color:var(--muted);transition:transform .2s;transform:rotate(180deg);}
+.group-body{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;overflow:hidden;}
+
+/* DRILL ROWS */
+.drill-row{padding:13px 18px;border-bottom:1px solid var(--border);}
+.drill-row:last-child{border-bottom:none;}
+.drill-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:5px;}
+.drill-name{font-weight:600;font-size:14px;color:var(--white);}
+.drill-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex-shrink:0;}
+.drill-spec{font-size:11px;color:var(--muted);}
+.drill-rest{font-size:11px;color:var(--court);font-weight:600;}
+.drill-cue{font-size:12px;color:var(--teal);font-style:italic;margin-bottom:4px;line-height:1.5;}
+.drill-why{font-size:12px;color:rgba(245,242,237,0.38);line-height:1.55;}
+
+/* HOW-TO */
+.howto-pill{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#185FA5;background:#0d1f3d;padding:2px 7px;border-radius:20px;cursor:pointer;margin-top:5px;}
+.howto-body{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.howto-body.open{display:block;}
+.howto-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.howto-label{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.howto-steps{font-size:12px;color:rgba(245,242,237,0.6);line-height:1.65;}
+.howto-steps ol{padding-left:14px;}
+.howto-steps li{margin-bottom:2px;}
+.howto-note{background:#1a1500;border-left:3px solid var(--court);border-radius:0 6px 6px 0;padding:9px 12px;}
+.howto-note-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.howto-note-body{font-size:12px;color:#d4a840;line-height:1.6;font-style:italic;}
+.error-box{background:#1a0a0a;border-left:3px solid #c44a2a;border-radius:0 6px 6px 0;padding:9px 12px;margin-top:8px;}
+.error-label{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.error-body{font-size:12px;color:#f09070;line-height:1.6;}
+.error-body ul{padding-left:13px;}
+.error-body li{margin-bottom:2px;}
+
+/* COACH NOTE */
+.coach-note{background:#1a1500;border-left:3px solid var(--court);border-radius:0 8px 8px 0;padding:12px 16px;font-size:13px;color:#d4a840;line-height:1.6;margin-bottom:16px;}
+.coach-note strong{font-weight:700;color:#f0b83a;font-size:10px;text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:3px;}
+
+/* SAFETY / INFO PANEL */
+.info-panel{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin-bottom:16px;}
+.info-panel h3{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;text-transform:uppercase;margin-bottom:10px;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.info-card{background:var(--card2);border-radius:6px;padding:12px 14px;border:1px solid var(--border);}
+.info-card-title{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:800;text-transform:uppercase;color:var(--court);margin-bottom:5px;}
+.info-card-body{font-size:12px;color:rgba(245,242,237,0.5);line-height:1.6;}
+
+/* TRACKING TABLE */
+.track-table{width:100%;border-collapse:collapse;margin-bottom:14px;}
+.track-table th{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 12px;background:var(--card2);border-bottom:1px solid var(--border);}
+.track-table td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:top;}
+.track-table tr:last-child td{border-bottom:none;}
+.track-table tr:nth-child(even) td{background:var(--card2);}
+.score-box{background:#1e1e1c;border:1px solid var(--border);border-radius:4px;padding:6px 10px;font-size:12px;color:var(--muted);min-width:80px;display:inline-block;}
+
+footer{background:var(--card2);color:rgba(245,242,237,0.2);text-align:center;padding:16px;font-size:11px;border-top:1px solid var(--border);}
+
+@media(max-width:600px){
+  .main{padding:14px 12px 40px;}
+  .header{padding:16px 16px 14px;}
+  .session-nav{padding:0 12px;}
+  .info-grid{grid-template-columns:1fr;}
+  .howto-cols{grid-template-columns:1fr;}
+  .drill-top{flex-direction:column;gap:4px;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <a class="back-link" href="index.html">&#8592; Speed Works</a>
+    <div class="header-tag">Basketball Athlete Development</div>
+    <h1>Youth Speed<br><span>Development</span></h1>
+    <div class="header-pills">
+      <div class="hpill">7 sessions</div>
+      <div class="hpill">Elastic strength</div>
+      <div class="hpill">Sprint mechanics</div>
+      <div class="hpill">Reactive speed</div>
+      <div class="hpill">Explosive power</div>
+      <div class="hpill">Beginner friendly</div>
+    </div>
+  </div>
+</div>
+
+<div class="session-nav">
+  <div class="snav-tab active" onclick="setSession(0)">Intro</div>
+  <div class="snav-tab" onclick="setSession(1)">Testing</div>
+  <div class="snav-tab" onclick="setSession(2)">Foundations</div>
+  <div class="snav-tab" onclick="setSession(3)">Linear mechanics</div>
+  <div class="snav-tab" onclick="setSession(4)">Reactive speed</div>
+  <div class="snav-tab" onclick="setSession(5)">Explosive rhythm</div>
+  <div class="snav-tab" onclick="setSession(6)">Peak acceleration</div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════════════════════
+     SESSION 0 — INTRO
+═══════════════════════════════════════════ -->
+<div class="s-panel active" id="sp0">
+  <div class="session-band">
+    <div class="session-eyebrow">Session 1 · Introduction</div>
+    <div class="session-title">Safety, setup &amp; parent coaching tips</div>
+    <div class="session-desc">Before training begins — what parents and coaches need to know about running a safe, effective youth speed program.</div>
+  </div>
+
+  <div class="info-panel">
+    <h3>Safety first</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title">Warm-up every session</div>
+        <div class="info-card-body">Never skip the warm-up. A young athlete's nervous system and connective tissue need gradual activation before explosive work. At minimum: 5 min easy movement, dynamic stretches, and two or three build-up runs before any sprint or plyometric drill.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Open growth plates</div>
+        <div class="info-card-body">Youth athletes have open growth plates at the knee, hip, and ankle. Any joint pain — not muscle soreness, actual joint pain — stops the session. Growth plate injuries are serious and silent. When in doubt, rest.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Rest between sessions</div>
+        <div class="info-card-body">Allow 48–72 hours between sessions, especially early in the program. Adaptation happens during recovery, not during training. Two sessions per week is the right starting volume for most youth athletes.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Footwear and surface</div>
+        <div class="info-card-body">Proper athletic shoes with grip are essential for sprint and plyo work. Avoid wet grass, slick surfaces, or uneven terrain. A flat, firm surface — gym floor, rubberized track, or short dry grass — is ideal.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Hydration</div>
+        <div class="info-card-body">Water before, during, and after every session. Youth athletes dehydrate faster than adults and don't always recognize thirst as a warning signal. In warm weather, a water break every 10–15 minutes is not optional.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Stop signs</div>
+        <div class="info-card-body">Stop immediately for: any sharp or joint pain, dizziness, nausea, unusual fatigue, or any fall that involves the head or neck. Do not push through these. Session over.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-panel">
+    <h3>Parent coaching tips</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title">Quality over quantity</div>
+        <div class="info-card-body">One perfect sprint rep teaches the nervous system more than ten sloppy ones. If form is breaking down, end the set. Youth athletes respond quickly to good mechanics — but also groove bad habits just as fast.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Encourage, don't compare</div>
+        <div class="info-card-body">Compare the athlete to themselves — not to teammates, siblings, or online benchmarks. Progress in speed development is individual. A kid who improves their 10-yard dash by 0.2 seconds has made a significant neurological adaptation.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Cue with feel, not fear</div>
+        <div class="info-card-body">The best coaching cues describe sensations, not corrections. "Feel like you're pulling the ground backward" beats "stop heel-striking." Positive, body-sensation cues build motor patterns faster in young athletes.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Sleep is the biggest variable</div>
+        <div class="info-card-body">9–10 hours of sleep for youth athletes is not a suggestion — it's training. Speed adaptation, muscle repair, and motor pattern consolidation all happen during deep sleep. The best training program fails without recovery.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Program order matters</div>
+        <div class="info-card-body">This program is sequenced deliberately — foundations before mechanics, mechanics before reactive speed, reactive before explosive. Don't jump ahead. Elastic stiffness and mechanics must be established before adding volume or intensity.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">Have fun</div>
+        <div class="info-card-body">Youth athletes who enjoy training are more consistent, more coachable, and develop faster long-term. Competition between sessions, small celebrations of progress, and a positive environment matter as much as the drills themselves.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="coach-note"><strong>Equipment needed across the program</strong>Cones or small markers · Flat open surface (~30 yards) · Optional: mini hurdles (or tape/chalk marks) · Optional: resistance band or towel for resisted sprints · Optional: medicine ball or heavy ball for slams · Optional: sled or sturdy heavy object to push · Water bottle · Stopwatch or phone timer</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SESSION 1 — SPEED TESTING
+═══════════════════════════════════════════ -->
+<div class="s-panel" id="sp1">
+  <div class="session-band">
+    <div class="session-eyebrow">Session 2 · Before training begins</div>
+    <div class="session-title">Speed testing &amp; tracking</div>
+    <div class="session-desc">Establish baselines before training begins. Retest at the end of the program. The numbers won't lie — and improvement is the best motivator a young athlete can have.</div>
+    <div class="session-meta">
+      <div class="session-meta-item"><strong>3 tests</strong> · Run each 2–3 times, take the best</div>
+      <div class="session-meta-item"><strong>Full rest</strong> between tests</div>
+      <div class="session-meta-item"><strong>Record everything</strong> · Time, distance, date</div>
+    </div>
+  </div>
+
+  <div class="coach-note"><strong>Testing protocol</strong>Run each test 2–3 times with full rest between reps (90 seconds minimum). Record the best result. Timing accuracy matters — use a phone stopwatch or have a consistent method. Errors in timing are fine as long as they're consistent — the comparison between pre and post is what counts.</div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('t0')">
+      <div class="group-left"><span class="group-badge gb-test">Test 1</span><span class="group-name">Broad jump</span></div>
+      <div class="group-right"><span class="group-time">Lower body power</span><span class="group-chev" id="chev-t0">▼</span></div>
+    </div>
+    <div class="group-body" id="t0">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Standing broad jump</div><div class="drill-meta"><span class="drill-spec">3 attempts · best counts</span><span class="drill-rest">· 90s rest</span></div></div>
+        <div class="drill-cue">Load into a quarter squat, swing arms back, explode forward as far as possible. Land on both feet simultaneously, stick the landing.</div>
+        <div class="drill-why">Measures horizontal explosive power — one of the best single indicators of lower body athletic ability. Distance is measured from the take-off line to the back of the heels at landing.</div>
+        <div class="howto-pill" onclick="toggleHowto('th0')">How-to ▾</div>
+        <div class="howto-body" id="th0">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Protocol</div>
+              <ol><li>Toes on the start line, feet hip-width</li><li>Load into a quarter squat, arms swing back</li><li>Explode forward — arms drive forward as you jump</li><li>Land on both feet simultaneously</li><li>Measure from start line to back of heels</li><li>3 attempts, record the best in inches or feet</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">What to look for</div><div class="howto-note-body">Watch the arm swing — athletes who don't use their arms leave significant distance on the table. The arm swing should feel like it pulls the body forward. Improvement here usually shows up before sprint improvements do.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('t1')">
+      <div class="group-left"><span class="group-badge gb-test">Test 2</span><span class="group-name">10-yard dash</span></div>
+      <div class="group-right"><span class="group-time">Pure acceleration</span><span class="group-chev" id="chev-t1">▼</span></div>
+    </div>
+    <div class="group-body" id="t1">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">10-yard standing start sprint</div><div class="drill-meta"><span class="drill-spec">3 attempts · best counts</span><span class="drill-rest">· 90s rest</span></div></div>
+        <div class="drill-cue">Standing start, explosive first step. Time from first movement to crossing the 10-yard mark. Sprint through — don't brake at the line.</div>
+        <div class="drill-why">The 10-yard dash measures pure acceleration — the ability to go from zero to fast as quickly as possible. In basketball, most explosive plays happen within 10 yards. This is the most sport-relevant speed test for most youth athletes.</div>
+        <div class="howto-pill" onclick="toggleHowto('th1')">How-to ▾</div>
+        <div class="howto-body" id="th1">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Protocol</div>
+              <ol><li>Mark start line and 10-yard line clearly</li><li>Stand at start, feet staggered, slight forward lean</li><li>Timer starts on first movement</li><li>Sprint through the 10-yard mark — don't brake at the line</li><li>3 attempts, record best time to the hundredth of a second</li><li>Consistent start position between attempts is critical</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Timing tip</div><div class="howto-note-body">For phone timing — one person at the start calls "go" and starts the timer, one person at the 10-yard line stops it when the athlete crosses. Consistent positioning matters more than perfect accuracy.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('t2')">
+      <div class="group-left"><span class="group-badge gb-test">Test 3</span><span class="group-name">20-yard dash</span></div>
+      <div class="group-right"><span class="group-time">Acceleration + top-end speed</span><span class="group-chev" id="chev-t2">▼</span></div>
+    </div>
+    <div class="group-body" id="t2">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">20-yard standing start sprint</div><div class="drill-meta"><span class="drill-spec">3 attempts · best counts</span><span class="drill-rest">· 90s rest</span></div></div>
+        <div class="drill-cue">Same start as the 10-yard dash — sprint through 20 yards. The additional distance shows how quickly the athlete reaches near-top speed after the acceleration phase.</div>
+        <div class="drill-why">The 20-yard dash captures the full acceleration phase plus the transition to top-end speed. Comparing the 10-yard and 20-yard times shows whether an athlete's strength is in the initial burst or in carrying that speed.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-panel">
+    <h3>Tracking results</h3>
+    <table class="track-table">
+      <thead><tr><th>Test</th><th>Pre-program</th><th>Post-program</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Broad jump</strong></td><td><div class="score-box">___ ft ___ in</div></td><td><div class="score-box">___ ft ___ in</div></td><td><div class="score-box">+ ___</div></td></tr>
+        <tr><td><strong>10-yard dash</strong></td><td><div class="score-box">___ . ___ s</div></td><td><div class="score-box">___ . ___ s</div></td><td><div class="score-box">- ___ s</div></td></tr>
+        <tr><td><strong>20-yard dash</strong></td><td><div class="score-box">___ . ___ s</div></td><td><div class="score-box">___ . ___ s</div></td><td><div class="score-box">- ___ s</div></td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:12px;color:var(--muted);line-height:1.6;">Print this page or screenshot it and fill in results manually. Retest under the same conditions — same surface, same time of day, same warm-up — for the most accurate comparison.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SESSION 2 — FOUNDATIONS
+═══════════════════════════════════════════ -->
+<div class="s-panel" id="sp2">
+  <div class="session-band">
+    <div class="session-eyebrow">Session 3 · Build elastic stiffness and basic power</div>
+    <div class="session-title">Foundations of speed</div>
+    <div class="session-desc">Everything here teaches the body to absorb and return force quickly — the elastic stiffness that is the foundation of all fast movement. Master these before adding sprint mechanics.</div>
+    <div class="session-meta">
+      <div class="session-meta-item"><strong>Focus:</strong> Ankle stiffness, ground contact, horizontal power</div>
+      <div class="session-meta-item"><strong>Intensity:</strong> Controlled — quality over speed</div>
+    </div>
+  </div>
+
+  <div class="coach-note"><strong>Session goal</strong>Elastic stiffness — the ability of the ankle and calf to act like a spring — is the single most underdeveloped quality in most young athletes. You can't sprint fast with floppy ankles. Every drill in this session builds toward that quality.</div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('f0')">
+      <div class="group-left"><span class="group-badge gb-elastic">Elastic</span><span class="group-name">Single-leg bounces</span></div>
+      <div class="group-right"><span class="group-time">8 min</span><span class="group-chev" id="chev-f0">▼</span></div>
+    </div>
+    <div class="group-body" id="f0">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">SL repeated bounce</div><div class="drill-meta"><span class="drill-spec">3×10 each leg</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Balance on one foot, bounce continuously in place — minimal knee bend, ankle acts like a spring. Quick, light contacts.</div>
+        <div class="drill-why">Builds single-leg ankle stiffness — the foundation of fast ground contact in sprinting. Every sprint stride lands on one foot. This teaches the body to handle that load elastically.</div>
+        <div class="howto-pill" onclick="toggleHowto('fh0')">How-to ▾</div>
+        <div class="howto-body" id="fh0">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Technique</div>
+              <ol><li>Stand on one foot, slight bend in the knee</li><li>Bounce continuously — push off the ball of the foot</li><li>Keep knee bend minimal — the ankle does the work</li><li>Quick, quiet contacts — not slow and heavy</li><li>Stay balanced — don't let the free leg swing</li><li>Complete all reps then switch legs</li></ol>
+            </div>
+            <div>
+              <div class="howto-note"><div class="howto-note-label">Coaching cue</div><div class="howto-note-body">"The ankle is a spring — load it and let it go. If you're bending your knee a lot, you're using the wrong muscles. Stiffen the ankle and let it bounce you."</div></div>
+              <div class="error-box" style="margin-top:8px;"><div class="error-label">Common errors</div><div class="error-body"><ul><li>Too much knee bend — drains the elastic effect</li><li>Heavy, slow contacts — cue "quick off the floor"</li><li>Losing balance — slow down before adding speed</li></ul></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">SL forward &amp; back</div><div class="drill-meta"><span class="drill-spec">3×8 each direction each leg</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">On one foot, hop forward over a line then immediately hop back — continuous rhythm. Add directionality to single-leg elasticity.</div>
+        <div class="drill-why">Adds a directional demand to the single-leg bounce. Hopping forward and backward replicates the push-off direction of sprinting more specifically than vertical bouncing alone.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Lateral pogos</div><div class="drill-meta"><span class="drill-spec">3×10 each direction</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Two feet, hop side to side over a line — stiff ankles, quick rhythm. Like a two-footed lateral bounce. Minimal ground contact time.</div>
+        <div class="drill-why">Trains reactive lateral stiffness — the ankle and calf response used in defensive slides, lateral cuts, and any side-to-side movement. Two feet before single leg.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('f1')">
+      <div class="group-left"><span class="group-badge gb-power">Power</span><span class="group-name">Explosive power drills</span></div>
+      <div class="group-right"><span class="group-time">10 min</span><span class="group-chev" id="chev-f1">▼</span></div>
+    </div>
+    <div class="group-body" id="f1">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Tuck jumps</div><div class="drill-meta"><span class="drill-spec">3×8</span><span class="drill-rest">· Rest: 45s</span></div></div>
+        <div class="drill-cue">Jump, drive knees to chest at the peak, land soft. Two feet together. Quality height every rep.</div>
+        <div class="drill-why">Total-body explosiveness — requires max vertical force AND hip flexor power to pull the knees up. Also builds body awareness at jump peak.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Broad jumps</div><div class="drill-meta"><span class="drill-spec">3×3, measure distance</span><span class="drill-rest">· Rest: 45s</span></div></div>
+        <div class="drill-cue">Arm swing + hip drive forward. Cover maximum horizontal distance. Stick the landing for 2 seconds. Record distance each set.</div>
+        <div class="drill-why">Horizontal power expression — measures the ability to project force forward. Compare to the pre-program test to track improvement.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Med ball slams</div><div class="drill-meta"><span class="drill-spec">3×8</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Overhead, throw down as hard as possible — full body extension up, then explosive slam down. No holding back.</div>
+        <div class="drill-why">Trains total-body rate of force development — the speed at which the body can produce force. The slam teaches the nervous system to go from fully extended to maximum contraction instantaneously.</div>
+        <div class="howto-pill" onclick="toggleHowto('fh1')">How-to ▾</div>
+        <div class="howto-body" id="fh1">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Technique</div>
+              <ol><li>Hold a medicine ball or heavy ball at chest height</li><li>Extend fully overhead — rise onto toes, arms straight</li><li>Slam downward as hard as possible — hips hinge, arms drive down</li><li>Let the ball bounce or pick it up and reset</li><li>The exhale happens on the slam — don't hold your breath</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Coaching cue</div><div class="howto-note-body">"Up as tall as you can, then slam it like you're trying to break the floor. The harder the better — this is an intensity drill."</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('f2')">
+      <div class="group-left"><span class="group-badge gb-strength">Strength</span><span class="group-name">Strength work</span></div>
+      <div class="group-right"><span class="group-time">10 min</span><span class="group-chev" id="chev-f2">▼</span></div>
+    </div>
+    <div class="group-body" id="f2">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Sled push / heavy object push</div><div class="drill-meta"><span class="drill-spec">4×10–15 yds</span><span class="drill-rest">· Rest: 60s</span></div></div>
+        <div class="drill-cue">Drive forward from a low push position — lean into the sled, drive through the balls of your feet. Push hard all the way through the distance.</div>
+        <div class="drill-why">Loaded acceleration training — forces the body into the same forward-lean, high-drive sprint mechanics used in the first steps of a sprint, but with resistance that builds strength in that exact pattern.</div>
+        <div class="howto-pill" onclick="toggleHowto('fh2')">How-to ▾</div>
+        <div class="howto-body" id="fh2">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Setup + technique</div>
+              <ol><li>Use a sled, weighted trash can, heavy bag, or any sturdy pushable object</li><li>Hands on the sled at shoulder height or lower — straight arms or slight bend</li><li>Body at a 45-degree forward lean — like a sprint start</li><li>Drive through the balls of your feet — short, powerful steps</li><li>Don't let the hips rise — stay low through the whole distance</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">No sled?</div><div class="howto-note-body">Push a partner (hands on their upper back, both leaning forward), push a weighted laundry basket on a smooth floor, or push a heavy trash bin on pavement. The load matters more than the equipment.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Step ups</div><div class="drill-meta"><span class="drill-spec">3×10 each leg</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Step onto a box or step, drive through the front heel to stand, control back down. One leg does all the work. Don't push off the trail foot.</div>
+        <div class="drill-why">Unilateral leg strength — each leg works independently, which mirrors the single-leg demands of sprinting and jumping. The trail foot should just balance, not push.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Zombie squats</div><div class="drill-meta"><span class="drill-spec">3×10</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Arms straight out in front (zombie position), squat deep — elbows stay shoulder height throughout. Slow and controlled. Feel the posterior chain.</div>
+        <div class="drill-why">The arms-forward position counterbalances the body, allowing a deeper squat while keeping the torso upright — activating the glutes and posterior chain more than a standard squat. Also excellent for hip and ankle mobility.</div>
+        <div class="howto-pill" onclick="toggleHowto('fh3')">How-to ▾</div>
+        <div class="howto-body" id="fh3">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Technique</div>
+              <ol><li>Stand with feet shoulder-width, toes slightly out</li><li>Extend both arms straight forward at shoulder height — "zombie"</li><li>Descend slowly into a squat — keep arms up throughout</li><li>Go as deep as mobility allows — ideally thighs parallel or below</li><li>Drive through the heels to stand</li><li>3-second descent, pause at bottom, 1-second rise</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Coaching cue</div><div class="howto-note-body">"Keep those arms up — the moment they drop, your chest falls forward and you lose the benefit. Arms up, chest tall, sit into the squat."</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SESSION 3 — LINEAR SPRINT MECHANICS
+═══════════════════════════════════════════ -->
+<div class="s-panel" id="sp3">
+  <div class="session-band">
+    <div class="session-eyebrow">Session 4 · Teach proper sprint form before intensity</div>
+    <div class="session-title">Linear sprint mechanics</div>
+    <div class="session-desc">Arm action, posture, and knee drive are the focus. Speed without mechanics is a ceiling. These drills build the motor patterns that turn into fast sprinting.</div>
+    <div class="session-meta">
+      <div class="session-meta-item"><strong>Focus:</strong> Dorsiflexion, knee drive, arm action, posture</div>
+      <div class="session-meta-item"><strong>Intensity:</strong> Low to moderate — mechanics first</div>
+    </div>
+  </div>
+
+  <div class="coach-note"><strong>The mechanics sequence</strong>These drills build in order — stationary first, then slow march, fast march, high knees, skips. Each one adds complexity to the same pattern. Don't rush to the sprints. Athletes who drill the march and skip patterns for two full sessions before sprinting develop better mechanics than athletes who sprint first and patch mechanics later.</div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('m0')">
+      <div class="group-left"><span class="group-badge gb-speed">Mechanics</span><span class="group-name">Stationary drills</span></div>
+      <div class="group-right"><span class="group-time">8 min</span><span class="group-chev" id="chev-m0">▼</span></div>
+    </div>
+    <div class="group-body" id="m0">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Stationary arm + knee drive (toe up)</div><div class="drill-meta"><span class="drill-spec">3×20 reps alternating</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Standing still — drive one knee up to hip height, opposite arm forward, toe pulled up (dorsiflexed). Hold 1 second, switch. Slow and deliberate.</div>
+        <div class="drill-why">Isolates the two most important sprint mechanics — knee drive and dorsiflexion — without movement. The nervous system learns the pattern standing still before it has to execute at speed.</div>
+        <div class="howto-pill" onclick="toggleHowto('mh0')">How-to ▾</div>
+        <div class="howto-body" id="mh0">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Technique</div>
+              <ol><li>Stand tall, slight forward lean</li><li>Drive right knee up to hip height — toes pulled up toward the shin (dorsiflexion)</li><li>Simultaneously drive the left arm forward — elbow at 90 degrees, hand at face height</li><li>Hold 1 second, feel the position</li><li>Lower and repeat on the other side</li><li>The raised foot should never hang — toe always up</li></ol>
+            </div>
+            <div>
+              <div class="howto-note"><div class="howto-note-label">Dorsiflexion cue</div><div class="howto-note-body">"Pull your toes up toward your shin — like you're trying to show someone the bottom of your shoe. A hanging foot is a slow foot. Every fast runner has this. It's trainable."</div></div>
+              <div class="error-box" style="margin-top:8px;"><div class="error-label">Common errors</div><div class="error-body"><ul><li>Foot hanging down — cue "show me the sole"</li><li>Knee not reaching hip height</li><li>Arms not in sync — check opposite arm/opposite leg</li></ul></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('m1')">
+      <div class="group-left"><span class="group-badge gb-speed">Mechanics</span><span class="group-name">March drills</span></div>
+      <div class="group-right"><span class="group-time">8 min</span><span class="group-chev" id="chev-m1">▼</span></div>
+    </div>
+    <div class="group-body" id="m1">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Slow march drill</div><div class="drill-meta"><span class="drill-spec">2×20m</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Slow-motion sprint gait — exaggerated knee drive, toe up, opposite arm. Hold each position 1 second before the next step. Walking pace only.</div>
+        <div class="drill-why">The slow march is to sprinting what slow-motion replay is to a highlight reel — every mistake is visible and correctable. The exaggerated pace gives the brain time to feel each position before it happens at speed.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Fast march drill</div><div class="drill-meta"><span class="drill-spec">2×20m</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Same pattern as slow march — now compressed and rhythmic. Quick steps, still emphasizing knee drive and dorsiflexion. Not a sprint yet — controlled tempo.</div>
+        <div class="drill-why">Bridges between the slow march and the A-skip. The same mechanics, executed at a faster tempo, begin to feel automatic rather than deliberate.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('m2')">
+      <div class="group-left"><span class="group-badge gb-speed">Mechanics</span><span class="group-name">Skip + high knee drills</span></div>
+      <div class="group-right"><span class="group-time">10 min</span><span class="group-chev" id="chev-m2">▼</span></div>
+    </div>
+    <div class="group-body" id="m2">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Super high knees</div><div class="drill-meta"><span class="drill-spec">2×20m</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Drive each knee as high as possible — above hip height. Exaggerate the knee lift beyond what sprinting requires so that normal sprint knee height feels easy.</div>
+        <div class="drill-why">Overloads the hip flexor demand so that the normal sprint knee height feels easier in contrast. Also reinforces arm drive and dorsiflexion under the extra demand of max knee height.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">A-skips</div><div class="drill-meta"><span class="drill-spec">3×20m</span><span class="drill-rest">· Walk back</span></div></div>
+        <div class="drill-cue">Skip rhythm, knee to hip height, toe up, opposite arm drives. Land on the ball of the foot under the hip — not in front of it.</div>
+        <div class="drill-why">The A-skip drills the exact knee drive, dorsiflexion, and arm action used in sprinting. Consistent reps build the motor pattern that shows up automatically at full speed.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Vertical pogos</div><div class="drill-meta"><span class="drill-spec">3×15</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Quick hops in place — stiff ankles, minimal knee bend. Rapid ground contacts. Think of the ankle as a pogo stick — not a piston.</div>
+        <div class="drill-why">Reinforces the stiff, fast ground contact that is the hallmark of fast sprinting. A slow ground contact loses elastic energy — a stiff, quick one captures and returns it.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Straight-leg kicks (running)</div><div class="drill-meta"><span class="drill-spec">2×20m</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Run forward continuously — straight leg swings forward and up with each stride. Opposite arm reaches to meet the foot. Keep moving — this is a running drill, not a march.</div>
+        <div class="drill-why">Actively lengthens the hamstring while the body is moving at tempo. Hamstrings that aren't warmed up through their full range are at risk during max sprinting and bounding.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('m3')">
+      <div class="group-left"><span class="group-badge gb-speed">Mechanics</span><span class="group-name">Hurdle runs + timed sprints</span></div>
+      <div class="group-right"><span class="group-time">12 min</span><span class="group-chev" id="chev-m3">▼</span></div>
+    </div>
+    <div class="group-body" id="m3">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Hurdle runs — stick overhead</div><div class="drill-meta"><span class="drill-spec">3× through 5–6 hurdles</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Hold a stick or PVC pipe overhead with both hands as you run over mini hurdles. The stick prevents forward lean and forces upright sprint posture.</div>
+        <div class="drill-why">The overhead stick is a posture constraint — it's physically impossible to hunch forward with a bar overhead. Athletes who struggle to stay upright during sprinting immediately clean up their posture with this drill.</div>
+        <div class="howto-pill" onclick="toggleHowto('mh1')">How-to ▾</div>
+        <div class="howto-body" id="mh1">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Setup + technique</div>
+              <ol><li>Set 5–6 mini hurdles in a row, 18–24 inches apart</li><li>Hold a broomstick, PVC pipe, or any straight rod overhead — arms straight</li><li>Run through the hurdles, clearing each one with high knees</li><li>The stick forces the chest tall and prevents forward lean</li><li>Focus on knee height — each step should clear the hurdle with the knee drive, not by reaching the foot forward</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Coaching cue</div><div class="howto-note-body">"If the stick tilts forward, your posture is falling. Keep it level. Tall spine, eyes forward — pretend you're balancing something on your head."</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Hurdle runs — free movement</div><div class="drill-meta"><span class="drill-spec">3× through 5–6 hurdles</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Same hurdle run without the stick. Now the arms can drive normally — same upright posture, but now the full sprint arm action is added back.</div>
+        <div class="drill-why">After the stick drill constrains posture, the free version applies the same upright position with full arm drive. The contrast between the two reinforces the postural lesson better than either drill alone.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Timed sprints</div><div class="drill-meta"><span class="drill-spec">4×10–20 yds</span><span class="drill-rest">· Rest: 90s</span></div></div>
+        <div class="drill-cue">Apply the mechanics at full effort. Lean, drive, tall posture. Sprint through the line. Full rest between reps.</div>
+        <div class="drill-why">All mechanics work in this session leads to this moment — applying the patterns under competitive effort. Full rest ensures full effort. Time them and compare to the baseline test.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SESSION 4 — REACTIVE SPEED
+═══════════════════════════════════════════ -->
+<div class="s-panel" id="sp4">
+  <div class="session-band">
+    <div class="session-eyebrow">Session 5 · Train the stretch-shortening cycle</div>
+    <div class="session-title">Reactive speed &amp; elastic strength</div>
+    <div class="session-desc">Fast, reactive contacts — not slow and heavy. This session trains the stretch-shortening cycle: loading elastic energy and releasing it immediately. This is what makes athletes fast.</div>
+    <div class="session-meta">
+      <div class="session-meta-item"><strong>Focus:</strong> Minimal ground contact time, elastic reactivity</div>
+      <div class="session-meta-item"><strong>Intensity:</strong> Moderate-high — quick, not heavy</div>
+    </div>
+  </div>
+
+  <div class="coach-note"><strong>The stretch-shortening cycle</strong>When a muscle is stretched quickly and then immediately contracted, it releases stored elastic energy — like a rubber band. This is how fast athletes move: load and release, not slow squeeze. Every drill in this session trains that quality. Ground contact time is the metric — shorter is better.</div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('r0')">
+      <div class="group-left"><span class="group-badge gb-elastic">Elastic</span><span class="group-name">Bilateral reactive bounces</span></div>
+      <div class="group-right"><span class="group-time">8 min</span><span class="group-chev" id="chev-r0">▼</span></div>
+    </div>
+    <div class="group-body" id="r0">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Double leg forward/back bounces</div><div class="drill-meta"><span class="drill-spec">3×10 each direction</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Two feet, hop forward over a line, immediately hop back — continuous rhythm. Stiff ankles, minimal knee bend. Quick ground contacts.</div>
+        <div class="drill-why">Bilateral rhythm and reactivity — the body learns to load and release elastically with both feet simultaneously. Establishes the reactive rhythm before progressing to single-leg patterns.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">SL lateral hops to cone &amp; back</div><div class="drill-meta"><span class="drill-spec">3×8 each leg</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">On one foot, hop laterally to a cone 3–4 feet away, land and immediately hop back. Continuous rhythm — minimal pause between hops.</div>
+        <div class="drill-why">Reactive lateral change of direction on a single leg — the exact demand of a defensive cut or cross-step. The lateral demand exposes any left-right imbalance in reactive ability.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('r1')">
+      <div class="group-left"><span class="group-badge gb-power">Power</span><span class="group-name">Power + horizontal drills</span></div>
+      <div class="group-right"><span class="group-time">10 min</span><span class="group-chev" id="chev-r1">▼</span></div>
+    </div>
+    <div class="group-body" id="r1">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Power skips</div><div class="drill-meta"><span class="drill-spec">3×20m</span><span class="drill-rest">· Walk back</span></div></div>
+        <div class="drill-cue">Maximum height and distance per skip — big arm drive, aggressive knee lift. Not just a fast skip — an explosive one. Cover the most ground in the fewest skips.</div>
+        <div class="drill-why">Drives hip extension power and teaches the body to produce force in the direction of travel. The vertical component loads the elastic system; the horizontal component transfers it into speed.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Double broad jump</div><div class="drill-meta"><span class="drill-spec">3×2 jumps, measure total distance</span><span class="drill-rest">· Rest: 45s</span></div></div>
+        <div class="drill-cue">Jump forward, land on both feet, immediately load and jump again for maximum distance. Two consecutive broad jumps — the second one should go as far as the first.</div>
+        <div class="drill-why">Repeated horizontal power — the body must absorb the first landing and immediately redirect that energy into the second jump. This tests reactive horizontal strength more than a single broad jump does.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('r2')">
+      <div class="group-left"><span class="group-badge gb-speed">Speed</span><span class="group-name">Starts + sprint work</span></div>
+      <div class="group-right"><span class="group-time">10 min</span><span class="group-chev" id="chev-r2">▼</span></div>
+    </div>
+    <div class="group-body" id="r2">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Kneeling sprints</div><div class="drill-meta"><span class="drill-spec">4×10 yds</span><span class="drill-rest">· Rest: 45s</span></div></div>
+        <div class="drill-cue">Start from a kneeling position — one knee up, one knee on the ground. First step must be explosive. Drive forward hard off that first contact.</div>
+        <div class="drill-why">Trains the explosive first-step drive from a dead stop — an unconventional start position that removes the momentum cheat of a standing start. The body must generate all of the first-step power from zero.</div>
+        <div class="howto-pill" onclick="toggleHowto('rh0')">How-to ▾</div>
+        <div class="howto-body" id="rh0">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Technique</div>
+              <ol><li>Kneel on one knee — like a football lineman stance</li><li>Hands in sprint position or touching the ground lightly</li><li>Drive the front foot into the ground and stand up into a sprint simultaneously</li><li>The first step must be low and aggressive — don't stand straight up</li><li>Accelerate hard for 10 yards</li><li>Alternate which knee is up each rep</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Coaching cue</div><div class="howto-note-body">"The first step off the ground is everything. Low, aggressive, and forward — not up. You're not standing up, you're sprinting out."</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('r3')">
+      <div class="group-left"><span class="group-badge gb-strength">Strength</span><span class="group-name">Lower leg resilience</span></div>
+      <div class="group-right"><span class="group-time">6 min</span><span class="group-chev" id="chev-r3">▼</span></div>
+    </div>
+    <div class="group-body" id="r3">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Lunges</div><div class="drill-meta"><span class="drill-spec">3×8 each leg</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Step forward, drop the back knee low, drive through the front heel to return. Tall torso throughout. Full range of motion.</div>
+        <div class="drill-why">Single-leg strength and stride length development. The lunge trains the hip extension pattern used in each stride — front heel drives back, which propels the body forward.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Calf raises</div><div class="drill-meta"><span class="drill-spec">3×15 each leg</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Slow rise, pause at the top, slow lower. Full range — heel below the step surface if possible. Single leg for max benefit.</div>
+        <div class="drill-why">Achilles tendon and calf strength — the direct support for every pogo, sprint contact, and bounding drill. Weak calves are a performance limiter and an injury risk. These are unglamorous but essential.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SESSION 5 — EXPLOSIVE SPEED + RHYTHM
+═══════════════════════════════════════════ -->
+<div class="s-panel" id="sp5">
+  <div class="session-band">
+    <div class="session-eyebrow">Session 6 · Combine elasticity with sprint rhythm</div>
+    <div class="session-title">Explosive speed &amp; rhythm</div>
+    <div class="session-desc">Volume increases. Starts become more varied. Resisted sprints are introduced. The foundation and mechanics sessions are now being combined into higher-intensity work.</div>
+    <div class="session-meta">
+      <div class="session-meta-item"><strong>Focus:</strong> Sprint rhythm, resisted acceleration, power output</div>
+      <div class="session-meta-item"><strong>Intensity:</strong> High — full effort on sprints</div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('e0')">
+      <div class="group-left"><span class="group-badge gb-elastic">Elastic</span><span class="group-name">Single-leg pogos</span></div>
+      <div class="group-right"><span class="group-time">8 min</span><span class="group-chev" id="chev-e0">▼</span></div>
+    </div>
+    <div class="group-body" id="e0">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">SL forward &amp; back pogos</div><div class="drill-meta"><span class="drill-spec">3×10 each direction each leg</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Single-leg hop forward over a line, immediately hop back — reactive rhythm. In the sprint direction now. Quick, stiff, no pause between hops.</div>
+        <div class="drill-why">Reactive single-leg stiffness in the sprint direction — more specific than the stationary bounce from session 3. The body now has to manage a directional elastic load on one leg.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">SL side to side pogos</div><div class="drill-meta"><span class="drill-spec">3×10 each direction each leg</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Single-leg lateral hop over a line — same quick, stiff ankle. Both directions. This is the same as SL lateral hops but faster and more continuous.</div>
+        <div class="drill-why">Reactive lateral stiffness at higher volume and faster tempo than session 3. The lateral plane has significant carry-over to defensive movement, lateral cuts, and cross-step acceleration.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('e1')">
+      <div class="group-left"><span class="group-badge gb-speed">Speed</span><span class="group-name">Sprint mechanics — reinforcement</span></div>
+      <div class="group-right"><span class="group-time">8 min</span><span class="group-chev" id="chev-e1">▼</span></div>
+    </div>
+    <div class="group-body" id="e1">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Fast march</div><div class="drill-meta"><span class="drill-spec">2×20m</span><span class="drill-rest">· Walk back</span></div></div>
+        <div class="drill-cue">Quick march rhythm — reinforce mechanics before the sprint work. This is the nervous system primer for the full sprints coming.</div>
+        <div class="drill-why">Re-establishing mechanics pattern at the start of a high-intensity session prevents the body from defaulting to sloppy habits under effort.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">A-skips</div><div class="drill-meta"><span class="drill-spec">3×25m</span><span class="drill-rest">· Walk back</span></div></div>
+        <div class="drill-cue">Higher intensity than session 4 — more power per skip. Distance per skip matters now, not just the mechanics.</div>
+        <div class="drill-why">At this point in the program, A-skips reinforce the mechanics while also building power. The athlete should be noticeably more powerful in the skip vs their first session.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Power skips</div><div class="drill-meta"><span class="drill-spec">3×25m</span><span class="drill-rest">· Walk back</span></div></div>
+        <div class="drill-cue">Max effort power skips — cover the most distance in the fewest skips. Drive hard, hang long.</div>
+        <div class="drill-why">Max-effort horizontal and vertical power expression. Compare skip count per length to session 4 — fewer skips means more power per rep.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('e2')">
+      <div class="group-left"><span class="group-badge gb-power">Power</span><span class="group-name">Bounds + resisted sprints</span></div>
+      <div class="group-right"><span class="group-time">12 min</span><span class="group-chev" id="chev-e2">▼</span></div>
+    </div>
+    <div class="group-body" id="e2">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Alternate-leg bounds</div><div class="drill-meta"><span class="drill-spec">4×20m</span><span class="drill-rest">· Walk back</span></div></div>
+        <div class="drill-cue">Max distance per stride — aggressive ground contacts, long hang time. Cover the most ground in the fewest bounds. Count strides and try to beat it.</div>
+        <div class="drill-why">Aggressive bounding at higher volume builds the posterior chain and hip extension strength that directly fuels sprint speed. Counting strides tracks improvement in power output per ground contact.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Timed sprints</div><div class="drill-meta"><span class="drill-spec">3×20 yds</span><span class="drill-rest">· Rest: 90s</span></div></div>
+        <div class="drill-cue">Max effort. Apply everything. Time them and compare to the baseline test.</div>
+        <div class="drill-why">Measuring improvement at the same distance as the baseline test shows the direct translation from mechanics and elastic training to actual sprint speed.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Resisted sprints (band or towel)</div><div class="drill-meta"><span class="drill-spec">4×10–15 yds</span><span class="drill-rest">· Rest: 60s</span></div></div>
+        <div class="drill-cue">Partner holds a resistance band or towel looped around the sprinter's waist. Sprint forward against the resistance — this overloads the acceleration phase and forces a powerful drive angle.</div>
+        <div class="drill-why">Overloading the acceleration phase with resistance builds more force in the hip extensors and calves than unresisted sprinting alone. Contrast effect: resisted then unresisted in the same session can produce faster sprints immediately after.</div>
+        <div class="howto-pill" onclick="toggleHowto('eh0')">How-to ▾</div>
+        <div class="howto-body" id="eh0">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Setup + technique</div>
+              <ol><li>Loop a resistance band or towel around the sprinter's waist or hips</li><li>Partner holds the other end — arms extended, braced for resistance</li><li>Sprinter drives forward against the resistance at max effort</li><li>The angle of resistance should be low — pulls back, not up</li><li>Partner walks back as sprinter accelerates — don't lock them in place</li><li>10–15 yards is enough — don't extend to full speed with resistance</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Contrast tip</div><div class="howto-note-body">Do 2 resisted sprints immediately followed by 1 unresisted sprint with 90s between. The removal of resistance often produces a noticeably faster sprint — this is the contrast effect and one of the most powerful training tools available.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('e3')">
+      <div class="group-left"><span class="group-badge gb-strength">Strength</span><span class="group-name">Strength maintenance</span></div>
+      <div class="group-right"><span class="group-time">6 min</span><span class="group-chev" id="chev-e3">▼</span></div>
+    </div>
+    <div class="group-body" id="e3">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Calf raises</div><div class="drill-meta"><span class="drill-spec">3×15 each leg</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Slow and controlled. Full range. Single leg if possible.</div>
+        <div class="drill-why">Maintaining lower leg resilience through the higher-intensity phase. The Achilles and calf are under increased demand with resisted sprints and bounding — these prevent overuse issues.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Step ups</div><div class="drill-meta"><span class="drill-spec">3×10 each leg</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Drive through the front heel. Trail foot doesn't contribute. Full extension at the top.</div>
+        <div class="drill-why">Maintaining unilateral leg drive strength as sprint and bounding volume increases. Single-leg strength is the foundation that makes everything else work.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SESSION 6 — PEAK ACCELERATION
+═══════════════════════════════════════════ -->
+<div class="s-panel" id="sp6">
+  <div class="session-band">
+    <div class="session-eyebrow">Session 7 · Contrast training and maximum speed work</div>
+    <div class="session-title">Peak acceleration</div>
+    <div class="session-desc">The body is primed from all prior sessions. This session uses contrast training — pairing explosive potentiation drills with max sprints to produce the fastest output of the program.</div>
+    <div class="session-meta">
+      <div class="session-meta-item"><strong>Focus:</strong> Contrast method, max speed output, loaded acceleration</div>
+      <div class="session-meta-item"><strong>Intensity:</strong> Maximum — full rest between every rep</div>
+    </div>
+  </div>
+
+  <div class="coach-note"><strong>Contrast training</strong>This session is built on a principle: performing a heavy or highly explosive movement immediately primes the nervous system to produce more force in the following lighter movement. Reactive bounces before a vertical jump. A sled push before a sprint. The pre-activation makes the second movement faster than it would be alone. This is one of the most effective tools in advanced speed development.</div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('p0')">
+      <div class="group-left"><span class="group-badge gb-power">Contrast</span><span class="group-name">Potentiation + vertical</span></div>
+      <div class="group-right"><span class="group-time">8 min</span><span class="group-chev" id="chev-p0">▼</span></div>
+    </div>
+    <div class="group-body" id="p0">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Double quick bounce into big vertical</div><div class="drill-meta"><span class="drill-spec">4×3 reps</span><span class="drill-rest">· Rest: 60s</span></div></div>
+        <div class="drill-cue">Two quick stiff-ankle bounces in place — then immediately explode into a maximum vertical jump. The quick bounces prime the elastic system for the jump.</div>
+        <div class="drill-why">Potentiation: the fast reactive bounces load the nervous system before the max jump, producing higher jumps than a standing countermovement alone. This is the contrast method applied to jumping.</div>
+        <div class="howto-pill" onclick="toggleHowto('ph0')">How-to ▾</div>
+        <div class="howto-body" id="ph0">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Sequence</div>
+              <ol><li>Stand tall, weight on balls of feet</li><li>Quick stiff-ankle bounce — bounce 1</li><li>Quick stiff-ankle bounce — bounce 2 (no pause between 1 and 2)</li><li>On the landing of bounce 2, immediately load into a full CMJ and jump for maximum height</li><li>The transition from bounce to jump should feel like one loaded spring</li><li>Land soft, reset fully, repeat</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Why it works</div><div class="howto-note-body">The quick bounces prime the stretch-shortening cycle. When the body transitions from fast-reactive to max-explosive, the nervous system is already firing at a high level. Athletes typically jump 1–3 inches higher with this sequence than from a standing start.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">SL side to side hops</div><div class="drill-meta"><span class="drill-spec">3×10 each leg</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Single-leg lateral hops at max effort — peak reactive lateral stiffness. Fast ground contacts, big horizontal distance per hop.</div>
+        <div class="drill-why">Peak-intensity single-leg lateral reactivity. By session 7, the ankle and calf should handle this load significantly better than in earlier sessions — this is where adaptation becomes visible.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('p1')">
+      <div class="group-left"><span class="group-badge gb-speed">Sprint</span><span class="group-name">Starts + sprint work</span></div>
+      <div class="group-right"><span class="group-time">12 min</span><span class="group-chev" id="chev-p1">▼</span></div>
+    </div>
+    <div class="group-body" id="p1">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Pushup start sprints</div><div class="drill-meta"><span class="drill-spec">4×10 yds</span><span class="drill-rest">· Rest: 60s</span></div></div>
+        <div class="drill-cue">Start in a pushup position on the ground. On go — get up and sprint 10 yards as fast as possible. The transition from floor to sprint is the whole drill.</div>
+        <div class="drill-why">Explosive first-step drive from the most unconventional start position in the program. Forces total-body recruitment to go from zero to sprint in one movement — builds the reactive first-step ability that shows up in loose-ball situations and takeaways.</div>
+        <div class="howto-pill" onclick="toggleHowto('ph1')">How-to ▾</div>
+        <div class="howto-body" id="ph1">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Technique</div>
+              <ol><li>Start face-down in a full pushup position — arms straight, body flat</li><li>On the signal, push up explosively and get your feet under you</li><li>The first step should be low and forward — don't stand straight up</li><li>Accelerate hard for 10 yards from the moment your feet hit the ground</li><li>Alternate which foot leads on each rep</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Coaching cue</div><div class="howto-note-body">"When you hit the ground on the way up, that foot is already pushing forward — not pushing up. You're going horizontal, not vertical."</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Bounds into sprint</div><div class="drill-meta"><span class="drill-spec">4×3 bounds + 15 yd sprint</span><span class="drill-rest">· Rest: 75s</span></div></div>
+        <div class="drill-cue">3 maximum-effort alternate-leg bounds, then on the last landing — transition directly into a full sprint for 15 yards. No pause between the bounds and the sprint.</div>
+        <div class="drill-why">Links horizontal bounding power directly into sprinting — the body must convert the bounding rhythm and hip extension into sprint mechanics without breaking stride. This is the most direct transfer drill from plyometric power to sprint speed.</div>
+        <div class="howto-pill" onclick="toggleHowto('ph2')">How-to ▾</div>
+        <div class="howto-body" id="ph2">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Execution</div>
+              <ol><li>Take 3 maximum-effort alternate-leg bounds — big, aggressive, long strides</li><li>On the landing of the 3rd bound, do not stick the landing</li><li>Instead, let that landing be the first step of your sprint</li><li>Accelerate hard for 15 yards from that transition point</li><li>The key is the seamless handoff from bounding rhythm to sprint rhythm</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Coaching cue</div><div class="howto-note-body">"The last bound IS the first sprint step. You don't land then sprint — you bound into the sprint. If there's a pause, the connection is broken."</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Kneeling runs into sprint</div><div class="drill-meta"><span class="drill-spec">4×10 yds</span><span class="drill-rest">· Rest: 60s</span></div></div>
+        <div class="drill-cue">Start kneeling, drive up explosively and sprint. Drive phase emphasis — this is all about the first 3 steps.</div>
+        <div class="drill-why">At peak intensity, the kneeling start demands maximum drive phase explosiveness. Compare to the kneeling sprints from session 4 — athletes should feel significantly more powerful and instinctive now.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('p2')">
+      <div class="group-left"><span class="group-badge gb-power">Contrast</span><span class="group-name">Resisted + unresisted contrast</span></div>
+      <div class="group-right"><span class="group-time">8 min</span><span class="group-chev" id="chev-p2">▼</span></div>
+    </div>
+    <div class="group-body" id="p2">
+      <div class="coach-note" style="margin:14px 18px 0;"><strong>Contrast protocol for this block</strong>Do 1 resisted sprint (band/towel), rest 20 seconds, then immediately do 1 unresisted sprint. The unresisted sprint should feel noticeably faster. Rest 90 seconds fully between each pair.</div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Resisted → unresisted sprint contrast</div><div class="drill-meta"><span class="drill-spec">4 pairs × 10 yds each</span><span class="drill-rest">· Rest: 90s between pairs</span></div></div>
+        <div class="drill-cue">1 resisted sprint (band/towel held by partner) → 20s rest → 1 max unresisted sprint. Feel the speed amplification after the resistance is removed.</div>
+        <div class="drill-why">The contrast method at its most concentrated. The resisted sprint overloads the nervous system; the unresisted sprint immediately after captures the potentiated output. This is one of the most effective ways to produce fast sprint times in training.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Sled push / heavy object push</div><div class="drill-meta"><span class="drill-spec">3×15 yds</span><span class="drill-rest">· Rest: 60s</span></div></div>
+        <div class="drill-cue">Maximum effort push — drive from a low angle all the way through. Peak loaded acceleration session. Go harder than session 3.</div>
+        <div class="drill-why">Peak loaded acceleration. Combined with the contrast sprints above, this session produces the highest force output of the program. The sled push primes the same muscles used in the sprint drive phase.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drill-group">
+    <div class="group-header" onclick="toggleGroup('p3')">
+      <div class="group-left"><span class="group-badge gb-strength">Strength</span><span class="group-name">Posterior chain</span></div>
+      <div class="group-right"><span class="group-time">6 min</span><span class="group-chev" id="chev-p3">▼</span></div>
+    </div>
+    <div class="group-body" id="p3">
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Supermans on floor</div><div class="drill-meta"><span class="drill-spec">3×10 · 2s hold at top</span><span class="drill-rest">· Rest: 20s</span></div></div>
+        <div class="drill-cue">Face down on the floor — lift opposite arm and leg simultaneously. Hold 2 seconds, lower slow. Keep the back flat, don't arch aggressively.</div>
+        <div class="drill-why">Posterior chain activation — glutes, lower back, and upper back working together. The sprinting action requires these muscles to fire synchronously. Supermans reinforce that pattern in a controlled setting.</div>
+      </div>
+      <div class="drill-row">
+        <div class="drill-top"><div class="drill-name">Elevated glute bridge iso hold</div><div class="drill-meta"><span class="drill-spec">3×20–30s hold</span><span class="drill-rest">· Rest: 30s</span></div></div>
+        <div class="drill-cue">Shoulders on a bench or elevated surface, feet on the floor. Drive hips to full extension, hold. Squeeze the glutes hard at the top — don't let the hips sag.</div>
+        <div class="drill-why">Glute and hip strength under sustained isometric load — builds the posterior chain strength that drives every sprint stride. The elevated position increases the range of motion and glute activation compared to a floor bridge.</div>
+        <div class="howto-pill" onclick="toggleHowto('ph3')">How-to ▾</div>
+        <div class="howto-body" id="ph3">
+          <div class="howto-cols">
+            <div class="howto-steps">
+              <div class="howto-label">Setup + technique</div>
+              <ol><li>Place upper back and shoulders on a bench, chair, or couch — not the head or neck</li><li>Feet flat on the floor, knees bent at 90 degrees</li><li>Drive hips up to full extension — body forms a straight line from shoulders to knees</li><li>Squeeze the glutes hard — don't let the hips sag or rotate</li><li>Hold for 20–30 seconds, lower slowly</li><li>Single-leg version: extend one leg straight — much harder</li></ol>
+            </div>
+            <div class="howto-note"><div class="howto-note-label">Coaching cue</div><div class="howto-note-body">"Squeeze like you're trying to crack a walnut. A soft glute bridge is just resting. The isometric hold should be burning by 15 seconds — if it's not, you're not squeezing hard enough."</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="coach-note"><strong>Finishing the program — retest</strong>After completing session 7, retest all three baseline tests — broad jump, 10-yard dash, and 20-yard dash. Use the exact same conditions and timing method as the pre-program test. Record the results in the tracking table from session 2. Improvement in even one test is meaningful. Improvement in all three reflects a genuine neural and physical adaptation to the program.</div>
+</div>
+
+</div><!-- .main -->
+
+<footer>Speed Works &nbsp;·&nbsp; Youth Speed Development Program &nbsp;·&nbsp; 7 Sessions</footer>
+
+<script>
+function setSession(i){
+  document.querySelectorAll('.snav-tab').forEach((t,j)=>t.classList.toggle('active',i===j));
+  document.querySelectorAll('.s-panel').forEach((p,j)=>p.classList.toggle('active',i===j));
+  window.scrollTo(0,0);
+}
+function toggleGroup(id){
+  const body=document.getElementById(id);
+  const chev=document.getElementById('chev-'+id);
+  if(!body)return;
+  const open=body.style.display!=='none';
+  body.style.display=open?'none':'block';
+  if(chev)chev.style.transform=open?'rotate(0deg)':'rotate(180deg)';
+}
+function toggleHowto(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  const open=el.classList.contains('open');
+  el.classList.toggle('open',!open);
+  const pill=el.previousElementSibling;
+  if(pill)pill.textContent=open?'How-to ▾':'How-to ▴';
+}
+</script>
+</body>
+</html>
