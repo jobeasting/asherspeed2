@@ -141,7 +141,7 @@ h1 span { color: #c8860a; }
   color: #c8860a;
 }
 
-/* Sub-links (Quick Guide + coach guide) */
+/* Sub-links */
 .sub-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -162,8 +162,6 @@ h1 span { color: #c8860a; }
   border-color: rgba(26,140,110,0.4);
   background: #1a1a1a;
 }
-.sub-card::before { display: none; }
-.sub-card-left {}
 .sub-card-label {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 10px; font-weight: 700; letter-spacing: .1em;
@@ -220,20 +218,19 @@ footer {
 <div class="programs">
   <div class="section-label">Programs</div>
 
-  <!-- MAIN INTERACTIVE PROGRAM -->
-  <youth-speed.html>
+  <!-- 6-WEEK PROGRAM -->
   <a class="program-card" href="basketball-plyo-program.html">
     <div>
       <div class="card-eyebrow">6 weeks · Once per week · 45 min</div>
       <div class="card-title">Speed &amp; Plyometrics Program</div>
-      <div class="card-desc">A beginner-to-intermediate program building speed, vertical jump, bounding, change of direction, and agility. Interactive weekly sessions with drills, cues, and progressions.</div>
+      <div class="card-desc">A beginner-to-intermediate program building speed, vertical jump, bounding, change of direction, and agility. Interactive weekly sessions with drills, cues, progressions, and defensive movement.</div>
       <div class="card-pills">
         <span class="cpill">Speed</span>
         <span class="cpill">Vertical jump</span>
         <span class="cpill">Bounding</span>
         <span class="cpill">Change of direction</span>
         <span class="cpill">Agility</span>
-        <span class="cpill">Minimal equipment</span>
+        <span class="cpill">Defensive movement</span>
       </div>
     </div>
     <div class="card-arrow">→</div>
@@ -243,9 +240,9 @@ footer {
   <div class="sub-cards">
     <a class="sub-card" href="quick-guide.html">
       <div class="sub-card-left">
-        <div class="sub-card-label">Quick Guide</div>
+        <div class="sub-card-label">Reference sheet</div>
         <div class="sub-card-title">Quick Guide</div>
-        <div class="sub-card-desc">Full program at a glance — print-ready</div>
+        <div class="sub-card-desc">Full program at a glance — week by week</div>
       </div>
       <div class="sub-arrow">→</div>
     </a>
@@ -259,17 +256,52 @@ footer {
     </a>
   </div>
 
+  <!-- YOUTH SPEED -->
+  <a class="program-card" href="youth-speed.html">
+    <div>
+      <div class="card-eyebrow">7 sessions · Beginner friendly · All ages</div>
+      <div class="card-title">Youth Speed Development</div>
+      <div class="card-desc">A complete 7-session program building from elastic foundations through sprint mechanics, reactive speed, and peak contrast training. Includes pre/post testing, parent coaching tips, and how-tos for every drill.</div>
+      <div class="card-pills">
+        <span class="cpill">Elastic strength</span>
+        <span class="cpill">Sprint mechanics</span>
+        <span class="cpill">Reactive speed</span>
+        <span class="cpill">Contrast training</span>
+        <span class="cpill">Speed testing</span>
+      </div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <!-- HILL WORKOUT -->
   <a class="program-card" href="hill-workout.html">
     <div>
-      <div class="card-eyebrow">Supplemental &nbsp;·&nbsp; All levels &nbsp;·&nbsp; Add-on session</div>
+      <div class="card-eyebrow">Supplemental · Beginner · Add-on session</div>
       <div class="card-title">Hill Workout</div>
-      <div class="card-desc">Full-variety hill session with sprint hills, bounding, lateral drills, backpedal, and a conditioning finisher. Includes a 6-week progression guide and hill selection tips.</div>
+      <div class="card-desc">Hill session with sprint hills, bounding, lateral drills, and backpedal work. Includes a 6-week progression guide and hill selection tips. Lower injury risk than flat max sprints.</div>
       <div class="card-pills">
         <span class="cpill">Sprint hills</span>
         <span class="cpill">Bounding</span>
         <span class="cpill">Lateral</span>
         <span class="cpill">Backpedal</span>
-        <span class="cpill">Conditioning</span>
+        <span class="cpill">Progression guide</span>
+      </div>
+    </div>
+    <div class="card-arrow">→</div>
+  </a>
+
+  <!-- DEFENSIVE SPEED -->
+  <a class="program-card" href="defensive-speed.html">
+    <div>
+      <div class="card-eyebrow">Supplemental · Beginner + intermediate · Footwork only</div>
+      <div class="card-title">Defensive Speed</div>
+      <div class="card-desc">Systematic defensive footwork training — lateral slides, backpedal, zig-zag patterns, and multi-direction combinations. Built around game-realistic movement with a phase-based progression guide.</div>
+      <div class="card-pills">
+        <span class="cpill">Lateral</span>
+        <span class="cpill">Backpedal</span>
+        <span class="cpill">Zig-zag</span>
+        <span class="cpill">Close-out</span>
+        <span class="cpill">Reaction</span>
       </div>
     </div>
     <div class="card-arrow">→</div>
